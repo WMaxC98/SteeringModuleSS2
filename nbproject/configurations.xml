@@ -37,6 +37,9 @@
       </logicalFolder>
       <logicalFolder name="middleware" displayName="middleware" projectFiles="true">
       </logicalFolder>
+      <logicalFolder name="f2" displayName="sepos" projectFiles="true">
+        <itemPath>sepos/sepos_RS232.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="xf" displayName="xf" projectFiles="true">
         <itemPath>xf/event.h</itemPath>
         <itemPath>xf/xf.h</itemPath>
@@ -83,6 +86,9 @@
       </logicalFolder>
       <logicalFolder name="middleware" displayName="middleware" projectFiles="true">
       </logicalFolder>
+      <logicalFolder name="f2" displayName="sepos" projectFiles="true">
+        <itemPath>sepos/sepos_RS232.c</itemPath>
+      </logicalFolder>
       <logicalFolder name="xf" displayName="xf" projectFiles="true">
         <itemPath>xf/event.c</itemPath>
         <itemPath>xf/xf.c</itemPath>
@@ -98,12 +104,7 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>board</Elem>
-    <Elem>led</Elem>
-    <Elem>factory</Elem>
-    <Elem>middleware</Elem>
-    <Elem>app</Elem>
-    <Elem>xf</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -113,13 +114,13 @@
         <targetDevice>PIC18F26K83</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PICkit3PlatformTool</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.36</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC18F-K_DFP" vendor="Microchip" version="1.5.114"/>
+        <pack name="PIC18F-K_DFP" vendor="Microchip" version="1.4.87"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -235,8 +236,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="debugoptions.debug-startup" value="Use system settings"/>
-        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
@@ -336,6 +335,47 @@
         <property key="user-pack-device-support" value=""/>
         <property key="wpo-lto" value="false"/>
       </XC8-config-global>
+      <pic-as-assembler>
+        <property key="fmax-errors" value="20"/>
+        <property key="list-custom-assembler-options" value=""/>
+        <property key="list-custom-preprocessor-options" value=""/>
+        <property key="list-ddefine-symbols" value=""/>
+        <property key="list-define-symbols" value=""/>
+        <property key="list-include-directories" value=""/>
+        <property key="suppress-warnings" value="false"/>
+        <property key="verbose" value="false"/>
+        <property key="warning-level" value="0"/>
+        <property key="xassembler-with-cpp" value="true"/>
+      </pic-as-assembler>
+      <pic-as-global>
+        <property key="custom-dfp" value=""/>
+        <property key="instruction-set" value="std"/>
+        <property key="summary-class" value="false"/>
+        <property key="summary-file" value="false"/>
+        <property key="summary-hex" value="false"/>
+        <property key="summary-mem" value="true"/>
+        <property key="summary-psect" value="false"/>
+        <property key="summary-sha1" value="false"/>
+        <property key="summary-sha256" value="false"/>
+        <property key="summary-xml" value="false"/>
+        <property key="summary-xmlfull" value="false"/>
+      </pic-as-global>
+      <pic-as-linker>
+        <property key="linker-callgraph" value="std"/>
+        <property key="linker-checksum" value=""/>
+        <property key="linker-custom-options" value=""/>
+        <property key="linker-fill" value=""/>
+        <property key="linker-format-hex-file-for-download" value="false"/>
+        <property key="linker-libraries" value=""/>
+        <property key="linker-library-search-paths" value=""/>
+        <property key="linker-maxi-chip" value="false"/>
+        <property key="linker-produce-intel-hex-extended-address-zero-output"
+                  value="false"/>
+        <property key="linker-ram" value=""/>
+        <property key="linker-reserve" value=""/>
+        <property key="linker-rom" value=""/>
+        <property key="linker-serial" value=""/>
+      </pic-as-linker>
     </conf>
   </confs>
 </configurationDescriptor>

@@ -1,5 +1,6 @@
 #include "commControl.h"
 #include "../factory/factory.h"
+#include "../sepos/sepos_RS232.h"
 
 /*
  * Private Methods
@@ -247,23 +248,23 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
     
     if(msg->frame.data0 != 0){
         // TODO : stop the driver
-        //sepos_send_controlword(0); 
+        sepos_send_controlword(0); 
         // TODO : start the driver sequence
-        //sepos_send_controlword(6);
-        //sepos_send_controlword(7);
-        //sepos_send_controlword(15)       
+        sepos_send_controlword(6);
+        sepos_send_controlword(7);
+        sepos_send_controlword(15);       
         // then the driver is ready
     }
     if(msg->frame.data1 != 0){
         // TODO : homing sequence
-        //sepos_send_modOfOpp(6);
+        sepos_send_modOfOpp(6);
         msgs.frame.data0 = 1;
         msgs.frame.data1 = 1;
         CAN_transmit(&msgs);
-        //sepos_send_controlword(4);
-        //while(sepos_receive_statusword() != 0x700 ){
-        //    __delay_ms(10);
-        //}   
+        sepos_send_controlword(4);
+        while(sepos_receive_statusword() != 0x700 ){
+            __delay_ms(10);
+        }   
         msgs.frame.data0 = 2;
         msgs.frame.data1 = 0;
         CAN_transmit(&msgs);
@@ -274,10 +275,10 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
     }
     if(msg->frame.data2 != 0){
         //TODO : go center position
-        //sepos_send_positionValue(218000);
-        //while(sepose_receive_statusword() != 0x200 ){
-        //    __delay_ms(10);
-        //}
+        sepos_send_positionValue(218000);
+        while(sepos_receive_statusword() != 0x200 ){
+            __delay_ms(10);
+        }
     }
     aliveTime = msg->frame.data3;
       
@@ -361,10 +362,10 @@ void setPosition(CommControl* me, uCAN_MSG* msg) {
     
     uint32_t position; 
     position = (((uint32_t)msg->frame.data0)<<24) + (((uint32_t)msg->frame.data1)<<16) + ((uint32_t)(msg->frame.data2)<<8) + (uint32_t)(msg->frame.data3);
-    //sepos_send_positionValue(position);
-    //while(sepose_receive_statusword() != 0x200 ){
-        //    __delay_ms(10);
-    //}
+    sepos_send_positionValue(position);
+    while(sepos_receive_statusword() != 0x200 ){
+            __delay_ms(10);
+    }
 }
 
 /**
@@ -373,7 +374,7 @@ void setPosition(CommControl* me, uCAN_MSG* msg) {
  */
 void getPositionFrame(CommControl* me) {
     uint32_t position;
-    //position = sepos_receive_positionValue();
+    position = sepos_receive_positionValue();
     uCAN_MSG msg;
     msg.frame.idType = dSTANDARD_CAN_MSG_ID_2_0B;
     msg.frame.id  = STEERING_GET_POS_MSG;

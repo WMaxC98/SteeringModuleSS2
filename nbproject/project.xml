@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>driveModule</name>
+            <name>steeringModule</name>
             <creation-uuid>89baf189-5cb3-4a17-9f0a-47659c07dc79</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
@@ -13,12 +13,7 @@
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>board</sourceRootElem>
-                <sourceRootElem>led</sourceRootElem>
-                <sourceRootElem>factory</sourceRootElem>
-                <sourceRootElem>middleware</sourceRootElem>
-                <sourceRootElem>app</sourceRootElem>
-                <sourceRootElem>xf</sourceRootElem>
+                <sourceRootElem>.</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

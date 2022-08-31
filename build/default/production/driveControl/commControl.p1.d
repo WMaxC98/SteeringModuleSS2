@@ -17,4 +17,5 @@ driveControl/../factory/../board/led/led.h  \
 driveControl/../factory/../board/button/button.h  \
 driveControl/../factory/../board/button/buttonsm.h  \
 driveControl/../factory/../app/blcontrol.h  \
-driveControl/../factory/../driveControl/store.h 
+driveControl/../factory/../driveControl/store.h  \
+driveControl/../sepos/sepos_RS232.h 

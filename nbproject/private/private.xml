@@ -3,19 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/driveModule/board/button/button.h</file>
-            <file>file:/C:/driveModule/xf/xf.c</file>
-            <file>file:/C:/driveModule/board/button/buttonsm.c</file>
-            <file>file:/C:/driveModule/board/button/buttonsm.h</file>
-            <file>file:/C:/driveModule/driveControl/commControl.c</file>
-            <file>file:/C:/driveModule/driveControl/store.h</file>
-            <file>file:/C:/driveModule/main.c</file>
-            <file>file:/C:/driveModule/driveControl/commControl.h</file>
-            <file>file:/C:/driveModule/driveControl/store.c</file>
-            <file>file:/C:/driveModule/mcc_generated_files/memory.h</file>
-            <file>file:/C:/driveModule/factory/factory.c</file>
-            <file>file:/C:/driveModule/board/led/led.c</file>
-            <file>file:/C:/driveModule/board/button/button.c</file>
+            <file>file:/C:/Users/maxim/OneDrive/Cours%202eme/Summer%20School/steeringModule/driveControl/commControl.c</file>
+            <file>file:/C:/Users/maxim/OneDrive/Cours%202eme/Summer%20School/steeringModule/sepos/sepos_RS232.c</file>
+            <file>file:/C:/Users/maxim/OneDrive/Cours%202eme/Summer%20School/steeringModule/sepos/sepos_RS232.h</file>
         </group>
     </open-files>
 </project-private>
