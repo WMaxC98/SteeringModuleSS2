@@ -13,6 +13,7 @@
 #include "../app/blcontrol.h"
 #include "../driveControl/commControl.h"
 #include "../driveControl/store.h"
+#include "../sepos/sepos_RS232.h"
 
 
 
@@ -29,6 +30,7 @@ struct Factory_
     BLControl blc_;
     CommControl cc_;
     Store st_;
+    Sepos sepos_;
 };
 
 typedef struct Factory_ Factory;
@@ -44,5 +46,6 @@ ButtonSM* bsm();
 BLControl* blc();
 CommControl* cc();
 Store* st();
+Sepos* sepos();
 
 #endif

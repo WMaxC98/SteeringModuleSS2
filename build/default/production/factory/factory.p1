@@ -41,10 +41,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;factory/../driveControl/store.h: 30: typedef struct Store_ {
 [s S3225 `uc -> 5 `i ]
 [n S3225 Store_ eeValues ]
-"25 factory/factory.h
-[; ;factory/factory.h: 25: {
-[s S3226 `S1 1 `S2 1 `S3220 1 `S3221 1 `S3224 1 `S3225 1 ]
-[n S3226 Factory_ l_ b_ bsm_ blc_ cc_ st_ ]
+"50 factory/../sepos/sepos_RS232.h
+[; ;factory/../sepos/sepos_RS232.h: 50: typedef struct Sepos_ {
+[s S3230 `uc -> 50 `i `us -> 25 `i `uc -> 50 `i `us -> 25 `i ]
+[n S3230 Sepos_ txbuf txdata rxbuf rxdata ]
+"26 factory/factory.h
+[; ;factory/factory.h: 26: {
+[s S3231 `S1 1 `S2 1 `S3220 1 `S3221 1 `S3224 1 `S3225 1 `S3230 1 ]
+[n S3231 Factory_ l_ b_ bsm_ blc_ cc_ st_ sepos_ ]
 "17 factory/../board/led/led.h
 [; ;factory/../board/led/led.h: 17: void LED_init(LED* me, uint8_t id);
 [v _LED_init `(v ~T0 @X0 0 ef2`*S1`uc ]
@@ -68,6 +72,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "35 factory/../driveControl/store.h
 [; ;factory/../driveControl/store.h: 35: void store_init(Store* me);
 [v _store_init `(v ~T0 @X0 0 ef1`*S3225 ]
+"57 factory/../sepos/sepos_RS232.h
+[; ;factory/../sepos/sepos_RS232.h: 57: void sepos_init(Sepos* me);
+[v _sepos_init `(v ~T0 @X0 0 ef1`*S3230 ]
 [v F23168 `(v ~T0 @X0 0 tf3`*v`uc`a ]
 "68 factory/../app/../board/button/buttonsm.h
 [v _ButtonSM_setObserver `(v ~T0 @X0 0 ef3`*S3220`*v`*F23168 ]
@@ -93,13 +100,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v F23122 `(a ~T0 @X0 0 tf1`*S3216 ]
 "80 factory/../driveControl/../xf/xf.h
 [v _POST `(uc ~T0 @X0 0 ef5`*v`*F23122`uc`us`o ]
-[v F23293 `(a ~T0 @X0 0 tf1`*S3216 ]
+[v F23337 `(a ~T0 @X0 0 tf1`*S3216 ]
 "66 factory/../app/../board/button/buttonsm.h
 [v _ButtonSM_startBehaviour `(v ~T0 @X0 0 ef1`*S3220 ]
 "113 factory/../driveControl/commControl.h
 [; ;factory/../driveControl/commControl.h: 113:     void commControl_startBehaviour(CommControl* me);
 [v _commControl_startBehaviour `(v ~T0 @X0 0 ef1`*S3224 ]
-[v F23297 `(a ~T0 @X0 0 tf1`*S3216 ]
+[v F23341 `(a ~T0 @X0 0 tf1`*S3216 ]
 "272 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k83.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k83.h: 272: __asm("CIOCON equ 03700h");
 [; <" CIOCON equ 03700h ;# ">
@@ -3126,7 +3133,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSU equ 03FFFh ;# ">
 "5 factory/factory.c
 [; ;factory/factory.c: 5: static Factory theFactory;
-[v _theFactory `S3226 ~T0 @X0 1 s ]
+[v _theFactory `S3231 ~T0 @X0 1 s ]
 "9
 [; ;factory/factory.c: 9: LED* l()
 [v _l `(*S1 ~T0 @X0 1 ef ]
@@ -3138,10 +3145,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "11
 [; ;factory/factory.c: 11:     return &theFactory.l_;
 [e ) &U . _theFactory 0 ]
-[e $UE 3227  ]
+[e $UE 3232  ]
 "12
 [; ;factory/factory.c: 12: }
-[e :UE 3227 ]
+[e :UE 3232 ]
 }
 "14
 [; ;factory/factory.c: 14: Button* b()
@@ -3154,10 +3161,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16
 [; ;factory/factory.c: 16:     return &theFactory.b_;
 [e ) &U . _theFactory 1 ]
-[e $UE 3228  ]
+[e $UE 3233  ]
 "17
 [; ;factory/factory.c: 17: }
-[e :UE 3228 ]
+[e :UE 3233 ]
 }
 "19
 [; ;factory/factory.c: 19: ButtonSM* bsm()
@@ -3170,10 +3177,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21
 [; ;factory/factory.c: 21:     return &theFactory.bsm_;
 [e ) &U . _theFactory 2 ]
-[e $UE 3229  ]
+[e $UE 3234  ]
 "22
 [; ;factory/factory.c: 22: }
-[e :UE 3229 ]
+[e :UE 3234 ]
 }
 "24
 [; ;factory/factory.c: 24: BLControl* blc()
@@ -3186,10 +3193,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26
 [; ;factory/factory.c: 26:     return &theFactory.blc_;
 [e ) &U . _theFactory 3 ]
-[e $UE 3230  ]
+[e $UE 3235  ]
 "27
 [; ;factory/factory.c: 27: }
-[e :UE 3230 ]
+[e :UE 3235 ]
 }
 "29
 [; ;factory/factory.c: 29: CommControl* cc(){
@@ -3200,10 +3207,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "30
 [; ;factory/factory.c: 30:     return &theFactory.cc_;
 [e ) &U . _theFactory 4 ]
-[e $UE 3231  ]
+[e $UE 3236  ]
 "31
 [; ;factory/factory.c: 31: }
-[e :UE 3231 ]
+[e :UE 3236 ]
 }
 "33
 [; ;factory/factory.c: 33: Store* st(){
@@ -3214,100 +3221,117 @@ Version 4.0 HI-TECH Software Intermediate Code
 "34
 [; ;factory/factory.c: 34:     return &theFactory.st_;
 [e ) &U . _theFactory 5 ]
-[e $UE 3232  ]
+[e $UE 3237  ]
 "35
 [; ;factory/factory.c: 35: }
-[e :UE 3232 ]
+[e :UE 3237 ]
 }
-"39
-[; ;factory/factory.c: 39: void Factory_init()
+"36
+[; ;factory/factory.c: 36: Sepos* sepos(){
+[v _sepos `(*S3230 ~T0 @X0 1 ef ]
+{
+[e :U _sepos ]
+[f ]
+"37
+[; ;factory/factory.c: 37:     return &theFactory.sepos_;
+[e ) &U . _theFactory 6 ]
+[e $UE 3238  ]
+"38
+[; ;factory/factory.c: 38: }
+[e :UE 3238 ]
+}
+"42
+[; ;factory/factory.c: 42: void Factory_init()
 [v _Factory_init `(v ~T0 @X0 1 ef ]
-"40
-[; ;factory/factory.c: 40: {
+"43
+[; ;factory/factory.c: 43: {
 {
 [e :U _Factory_init ]
 [f ]
-"41
-[; ;factory/factory.c: 41:     LED_init(l(),1);
-[e ( _LED_init (2 , ( _l ..  -> -> 1 `i `uc ]
-"42
-[; ;factory/factory.c: 42:     LED_initHW(l());
-[e ( _LED_initHW (1 ( _l ..  ]
-"43
-[; ;factory/factory.c: 43:     Button_init(b(),1, 1);
-[e ( _Button_init (3 , , ( _b ..  -> -> 1 `i `uc -> -> 1 `i `a ]
 "44
-[; ;factory/factory.c: 44:     Button_initHW(b());
-[e ( _Button_initHW (1 ( _b ..  ]
+[; ;factory/factory.c: 44:     LED_init(l(),1);
+[e ( _LED_init (2 , ( _l ..  -> -> 1 `i `uc ]
 "45
-[; ;factory/factory.c: 45:     ButtonSM_init(bsm(),b());
-[e ( _ButtonSM_init (2 , ( _bsm ..  ( _b ..  ]
+[; ;factory/factory.c: 45:     LED_initHW(l());
+[e ( _LED_initHW (1 ( _l ..  ]
 "46
-[; ;factory/factory.c: 46:     BLControl_init(blc());
-[e ( _BLControl_init (1 ( _blc ..  ]
+[; ;factory/factory.c: 46:     Button_init(b(),1, 1);
+[e ( _Button_init (3 , , ( _b ..  -> -> 1 `i `uc -> -> 1 `i `a ]
 "47
-[; ;factory/factory.c: 47:     commControl_init(cc());
-[e ( _commControl_init (1 ( _cc ..  ]
+[; ;factory/factory.c: 47:     Button_initHW(b());
+[e ( _Button_initHW (1 ( _b ..  ]
 "48
-[; ;factory/factory.c: 48:     store_init(st());
-[e ( _store_init (1 ( _st ..  ]
+[; ;factory/factory.c: 48:     ButtonSM_init(bsm(),b());
+[e ( _ButtonSM_init (2 , ( _bsm ..  ( _b ..  ]
 "49
-[; ;factory/factory.c: 49: }
-[e :UE 3233 ]
-}
+[; ;factory/factory.c: 49:     BLControl_init(blc());
+[e ( _BLControl_init (1 ( _blc ..  ]
+"50
+[; ;factory/factory.c: 50:     commControl_init(cc());
+[e ( _commControl_init (1 ( _cc ..  ]
+"51
+[; ;factory/factory.c: 51:     store_init(st());
+[e ( _store_init (1 ( _st ..  ]
 "52
-[; ;factory/factory.c: 52: void Factory_build()
-[v _Factory_build `(v ~T0 @X0 1 ef ]
+[; ;factory/factory.c: 52:     sepos_init(sepos());
+[e ( _sepos_init (1 ( _sepos ..  ]
 "53
-[; ;factory/factory.c: 53: {
+[; ;factory/factory.c: 53: }
+[e :UE 3239 ]
+}
+"56
+[; ;factory/factory.c: 56: void Factory_build()
+[v _Factory_build `(v ~T0 @X0 1 ef ]
+"57
+[; ;factory/factory.c: 57: {
 {
 [e :U _Factory_build ]
 [f ]
-"54
-[; ;factory/factory.c: 54:     ButtonSM_setObserver(bsm(), blc(), &BLControl_onButton);
+"58
+[; ;factory/factory.c: 58:     ButtonSM_setObserver(bsm(), blc(), &BLControl_onButton);
 [e ( _ButtonSM_setObserver (3 , , ( _bsm ..  -> ( _blc ..  `*v &U _BLControl_onButton ]
-"55
-[; ;factory/factory.c: 55: }
-[e :UE 3234 ]
+"59
+[; ;factory/factory.c: 59: }
+[e :UE 3240 ]
 }
-"60
-[; ;factory/factory.c: 60: void factory_toggleLed(){
+"64
+[; ;factory/factory.c: 64: void factory_toggleLed(){
 [v _factory_toggleLed `(v ~T0 @X0 1 ef ]
 {
 [e :U _factory_toggleLed ]
 [f ]
-"61
-[; ;factory/factory.c: 61:     do { LATBbits.LATB0 = ~LATBbits.LATB0; } while(0);
-[e :U 3238 ]
+"65
+[; ;factory/factory.c: 65:     do { LATBbits.LATB0 = ~LATBbits.LATB0; } while(0);
+[e :U 3244 ]
 {
 [e = . . _LATBbits 0 0 -> ~ -> . . _LATBbits 0 0 `i `uc ]
 }
-[e :U 3237 ]
-"62
-[; ;factory/factory.c: 62:     POST(&theFactory, &factory_toggleLed, 11, 1000, 0);
-[e ( _POST (4 , , , , -> &U _theFactory `*v -> &U _factory_toggleLed `*F23293 -> -> 11 `i `uc -> -> 1000 `i `us -> -> 0 `i `o ]
-"64
-[; ;factory/factory.c: 64: }
-[e :UE 3235 ]
-}
+[e :U 3243 ]
 "66
-[; ;factory/factory.c: 66: void Factory_start()
+[; ;factory/factory.c: 66:     POST(&theFactory, &factory_toggleLed, 11, 1000, 0);
+[e ( _POST (4 , , , , -> &U _theFactory `*v -> &U _factory_toggleLed `*F23337 -> -> 11 `i `uc -> -> 1000 `i `us -> -> 0 `i `o ]
+"68
+[; ;factory/factory.c: 68: }
+[e :UE 3241 ]
+}
+"70
+[; ;factory/factory.c: 70: void Factory_start()
 [v _Factory_start `(v ~T0 @X0 1 ef ]
-"67
-[; ;factory/factory.c: 67: {
+"71
+[; ;factory/factory.c: 71: {
 {
 [e :U _Factory_start ]
 [f ]
-"68
-[; ;factory/factory.c: 68:     ButtonSM_startBehaviour(bsm());
+"72
+[; ;factory/factory.c: 72:     ButtonSM_startBehaviour(bsm());
 [e ( _ButtonSM_startBehaviour (1 ( _bsm ..  ]
-"69
-[; ;factory/factory.c: 69:     commControl_startBehaviour(cc());
+"73
+[; ;factory/factory.c: 73:     commControl_startBehaviour(cc());
 [e ( _commControl_startBehaviour (1 ( _cc ..  ]
-"70
-[; ;factory/factory.c: 70:     POST(&theFactory, &factory_toggleLed, 11, 1000, 0);
-[e ( _POST (4 , , , , -> &U _theFactory `*v -> &U _factory_toggleLed `*F23297 -> -> 11 `i `uc -> -> 1000 `i `us -> -> 0 `i `o ]
-"71
-[; ;factory/factory.c: 71: }
-[e :UE 3239 ]
+"74
+[; ;factory/factory.c: 74:     POST(&theFactory, &factory_toggleLed, 11, 1000, 0);
+[e ( _POST (4 , , , , -> &U _theFactory `*v -> &U _factory_toggleLed `*F23341 -> -> 11 `i `uc -> -> 1000 `i `us -> -> 0 `i `o ]
+"75
+[; ;factory/factory.c: 75: }
+[e :UE 3245 ]
 }

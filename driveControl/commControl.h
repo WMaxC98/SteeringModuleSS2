@@ -30,7 +30,8 @@ extern "C" {
     
 #define STEERING_SECURITY_MSG   0x600   
 
-    
+#define POLLCTM                 20
+#define TIMEFACTOR              10    
     
 #define CONTROL 0x1
 #define JOYSTICK 0x2

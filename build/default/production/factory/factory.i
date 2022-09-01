@@ -37046,6 +37046,55 @@ void store_init(Store* me);
 uint8_t store_read(Store* me, EEITEMID item);
 void store_write(Store* me, EEITEMID item, uint8_t value);
 # 16 "factory/factory.h" 2
+# 1 "factory/../sepos/sepos_RS232.h" 1
+# 24 "factory/../sepos/sepos_RS232.h"
+typedef struct bits32_
+{
+    unsigned byte1:8;
+    unsigned byte2:8;
+    unsigned byte3:8;
+    unsigned byte4:8;
+}bits32;
+
+typedef struct bits16_
+{
+    unsigned byte1:8;
+    unsigned byte2:8;
+}bits16;
+
+typedef union b8to32_
+{
+    bits32 b;
+    int32_t i32;
+}b8to32;
+
+typedef union b8to16_
+{
+    bits16 b;
+    int16_t i16;
+}b8to16;
+
+typedef struct Sepos_ {
+    uint8_t txbuf[50];
+    uint16_t txdata[25];
+    uint8_t rxbuf[50];
+    uint16_t rxdata[25];
+} Sepos;
+
+void sepos_init(Sepos* me);
+
+void sepos_send_modOfOpp(Sepos* me, int8_t mode);
+
+void sepos_send_controlword(Sepos* me,uint16_t controlword);
+
+void sepos_send_positionValue(Sepos* me,int32_t position);
+
+int32_t sepos_receive_positionValue(Sepos* me);
+
+uint16_t sepos_receive_digitalInput(Sepos* me);
+
+uint16_t sepos_receive_statusword(Sepos* me);
+# 17 "factory/factory.h" 2
 
 
 
@@ -37062,6 +37111,7 @@ struct Factory_
     BLControl blc_;
     CommControl cc_;
     Store st_;
+    Sepos sepos_;
 };
 
 typedef struct Factory_ Factory;
@@ -37077,6 +37127,7 @@ ButtonSM* bsm();
 BLControl* blc();
 CommControl* cc();
 Store* st();
+Sepos* sepos();
 # 2 "factory/factory.c" 2
 
 
@@ -37112,6 +37163,9 @@ CommControl* cc(){
 Store* st(){
     return &theFactory.st_;
 }
+Sepos* sepos(){
+    return &theFactory.sepos_;
+}
 
 
 
@@ -37125,6 +37179,7 @@ void Factory_init()
     BLControl_init(blc());
     commControl_init(cc());
     store_init(st());
+    sepos_init(sepos());
 }
 
 

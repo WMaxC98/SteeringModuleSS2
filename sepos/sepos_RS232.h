@@ -15,23 +15,58 @@ extern "C" {
 
 #include "../mcc_generated_files/mcc.h"
     
-uint16_t sepos_CalcFieldCRC(uint16_t* pDataArray, uint16_t ArrayLength);
+  
+#define READ_CODE   0x60
+#define WRITE_CODE  0x68
+#define NODE_ID     1
+#define CST_MODE    10
 
-void sepos_send_RS232(uint8_t length);
+typedef struct bits32_
+{
+    unsigned byte1:8;
+    unsigned byte2:8;
+    unsigned byte3:8;
+    unsigned byte4:8;
+}bits32;
 
-void sepos_recive_RS232();
+typedef struct bits16_
+{
+    unsigned byte1:8;
+    unsigned byte2:8;
+}bits16;
 
-void sepos_send_modOfOpp(int8_t mode);
+typedef union b8to32_
+{
+    bits32 b;
+    int32_t i32;
+}b8to32;
 
-void sepos_send_controlword(uint16_t controlword);
+typedef union b8to16_
+{
+    bits16 b;
+    int16_t i16;
+}b8to16;
 
-void sepos_send_positionValue(int32_t position);
+typedef struct Sepos_ {
+    uint8_t txbuf[50];
+    uint16_t txdata[25];
+    uint8_t rxbuf[50];
+    uint16_t rxdata[25];
+} Sepos; 
 
-int32_t sepos_receive_positionValue();
+void sepos_init(Sepos* me);
 
-uint16_t sepos_receive_digitalInput();
+void sepos_send_modOfOpp(Sepos* me, int8_t mode);
 
-uint16_t sepos_receive_statusword();
+void sepos_send_controlword(Sepos* me,uint16_t controlword);
+
+void sepos_send_positionValue(Sepos* me,int32_t position);
+
+int32_t sepos_receive_positionValue(Sepos* me);
+
+uint16_t sepos_receive_digitalInput(Sepos* me);
+
+uint16_t sepos_receive_statusword(Sepos* me);
 
 
 #ifdef	__cplusplus

@@ -33,6 +33,9 @@ CommControl* cc(){
 Store* st(){
     return &theFactory.st_;
 }
+Sepos* sepos(){
+    return &theFactory.sepos_;
+}
 
 
 //initialize all objects
@@ -46,6 +49,7 @@ void Factory_init()
     BLControl_init(blc());
     commControl_init(cc());
     store_init(st());
+    sepos_init(sepos());
 }
 
 //connect objects if required

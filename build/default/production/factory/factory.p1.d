@@ -17,4 +17,5 @@ factory/../board/button/../../xf/event.h  \
 factory/../board/button/../../xf/ireactive.h  \
 factory/../app/blcontrol.h  \
 factory/../driveControl/commControl.h  \
-factory/../driveControl/store.h 
+factory/../driveControl/store.h  \
+factory/../sepos/sepos_RS232.h 
