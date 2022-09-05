@@ -36802,8 +36802,8 @@ typedef struct Timer_
 # 38 "xf/xf.h"
 typedef struct XF
 {
-    Timer timerList[8];
-    Event eventQueue[12];
+    Timer timerList[12];
+    Event eventQueue[20];
     uint8_t in;
     uint8_t out;
 } XF;
@@ -36865,12 +36865,12 @@ XF theXF;
 void XF_init()
 {
     int i;
-    for (i=0; i<12; i++)
+    for (i=0; i<20; i++)
     {
         Event_init(&(theXF.eventQueue[i]));
     }
 
-    for (i=0; i<8; i++)
+    for (i=0; i<12; i++)
     {
         theXF.timerList[i].tm = 0;
         Event_init(&(theXF.timerList[i].ev));
@@ -36936,7 +36936,7 @@ uint8_t XF_scheduleTimer(uint16_t tm, Event ev, _Bool inISR)
     uint8_t i;
 
     ENTERCRITICAL(inISR);
-    for (i=0; i<8; i++)
+    for (i=0; i<12; i++)
     {
         if (theXF.timerList[i].ev.id == 0)
         {
@@ -36970,7 +36970,7 @@ void XF_unscheduleTimer(uint8_t id, _Bool inISR)
 void XF_decrementAndQueueTimers()
 {
     uint8_t i;
-    for (i=0; i<8; i++)
+    for (i=0; i<12; i++)
     {
         if (theXF.timerList[i].ev.id != 0)
         {
@@ -37026,7 +37026,7 @@ static void LEAVECRITICAL(_Bool inISR)
 
 uint8_t POST(void* target, processEventT processEvent, uint8_t id, uint16_t delay , int64_t data)
 {
-    uint8_t tmid = 8;
+    uint8_t tmid = 12;
 
 
     Event ev;

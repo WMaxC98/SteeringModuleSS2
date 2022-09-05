@@ -1,22 +1,43 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"50 sepos/sepos_RS232.h
-[; ;sepos/sepos_RS232.h: 50: typedef struct Sepos_ {
-[s S3217 `uc -> 50 `i `us -> 25 `i `uc -> 50 `i `us -> 25 `i ]
-[n S3217 Sepos_ txbuf txdata rxbuf rxdata ]
+"44 sepos/sepos_RS232.h
+[; ;sepos/sepos_RS232.h: 44:     typedef struct Sepos_ {
+[s S3211 `uc -> 50 `i `us -> 25 `i `uc -> 50 `i `us -> 25 `i ]
+[n S3211 Sepos_ txbuf txdata rxbuf rxdata ]
+"47071 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k83.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k83.h: 47071: extern volatile unsigned char U1RXB __attribute__((address(0x3DE8)));
+[v _U1RXB `Vuc ~T0 @X0 0 e@15848 ]
 "375 sepos/../mcc_generated_files/uart1.h
 [; ;sepos/../mcc_generated_files/uart1.h: 375: void UART1_Write(uint8_t txData);
 [v _UART1_Write `(v ~T0 @X0 0 ef1`uc ]
+"11 sepos/sepos_RS232.c
+[; ;sepos/sepos_RS232.c: 11: uint8_t MyRead(Sepos* me, uint8_t* error);
+[v _MyRead `(uc ~T0 @X0 0 ef2`*S3211`*uc ]
+[v F22596 `(v ~T0 @X0 1 tf1`ul ]
+"203 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\pic18.h
+[v __delay `JF22596 ~T0 @X0 0 e ]
+[p i __delay ]
+"158 sepos/../mcc_generated_files/uart1.h
+[; ;sepos/../mcc_generated_files/uart1.h: 158: _Bool UART1_is_rx_ready(void);
+[v _UART1_is_rx_ready `(a ~T0 @X0 0 ef ]
 "350
 [; ;sepos/../mcc_generated_files/uart1.h: 350: uint8_t UART1_Read(void);
 [v _UART1_Read `(uc ~T0 @X0 0 ef ]
-"25 sepos/sepos_RS232.h
-[; ;sepos/sepos_RS232.h: 25: {
-[s S3213 :8 `uc 1 :8 `uc 1 :8 `uc 1 :8 `uc 1 ]
-[n S3213 bits32_ byte1 byte2 byte3 byte4 ]
+"22 sepos/sepos_RS232.h
+[; ;sepos/sepos_RS232.h: 22:     typedef struct bits32_ {
+[s S3207 :8 `uc 1 :8 `uc 1 :8 `uc 1 :8 `uc 1 ]
+[n S3207 bits32_ byte1 byte2 byte3 byte4 ]
+"34
+[; ;sepos/sepos_RS232.h: 34:     typedef union b8to32_ {
+[u S3209 `S3207 1 `l 1 ]
+[n S3209 b8to32_ b i32 ]
+"29
+[; ;sepos/sepos_RS232.h: 29:     typedef struct bits16_ {
+[s S3208 :8 `uc 1 :8 `uc 1 ]
+[n S3208 bits16_ byte1 byte2 ]
 "39
-[; ;sepos/sepos_RS232.h: 39: {
-[u S3215 `S3213 1 `l 1 ]
-[n S3215 b8to32_ b i32 ]
+[; ;sepos/sepos_RS232.h: 39:     typedef union b8to16_ {
+[u S3210 `S3208 1 `s 1 ]
+[n S3210 b8to16_ b i16 ]
 "272 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k83.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k83.h: 272: __asm("CIOCON equ 03700h");
 [; <" CIOCON equ 03700h ;# ">
@@ -3041,672 +3062,709 @@ Version 4.0 HI-TECH Software Intermediate Code
 "72003
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k83.h: 72003: __asm("TOSU equ 03FFFh");
 [; <" TOSU equ 03FFFh ;# ">
-"10 sepos/sepos_RS232.c
-[; ;sepos/sepos_RS232.c: 10: void sepos_init(Sepos* me){
-[v _sepos_init `(v ~T0 @X0 1 ef1`*S3217 ]
+"13 sepos/sepos_RS232.c
+[; ;sepos/sepos_RS232.c: 13: static uint8_t dummy;
+[v _dummy `uc ~T0 @X0 1 s ]
+"14
+[; ;sepos/sepos_RS232.c: 14: static uint8_t error = 0;
+[v _error `uc ~T0 @X0 1 s ]
+[i _error
+-> -> 0 `i `uc
+]
+"16
+[; ;sepos/sepos_RS232.c: 16: void sepos_init(Sepos* me){
+[v _sepos_init `(v ~T0 @X0 1 ef1`*S3211 ]
 {
 [e :U _sepos_init ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
 [f ]
-"11
-[; ;sepos/sepos_RS232.c: 11:     for(uint8_t i; i < 50; i++){
+"17
+[; ;sepos/sepos_RS232.c: 17:     for(uint8_t i; i < 50; i++){
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e $ < -> _i `i -> 50 `i 3219  ]
 [e $U 3220  ]
 [e :U 3219 ]
 {
-"12
-[; ;sepos/sepos_RS232.c: 12:         me->rxbuf[i] = 0;
+"18
+[; ;sepos/sepos_RS232.c: 18:         me->rxbuf[i] = 0;
 [e = *U + &U . *U _me 2 * -> _i `ux -> -> # *U &U . *U _me 2 `ui `ux -> -> 0 `i `uc ]
-"13
-[; ;sepos/sepos_RS232.c: 13:         me->txbuf[i] = 0;
+"19
+[; ;sepos/sepos_RS232.c: 19:         me->txbuf[i] = 0;
 [e = *U + &U . *U _me 0 * -> _i `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
-"14
-[; ;sepos/sepos_RS232.c: 14:         if(i < 25){
+"20
+[; ;sepos/sepos_RS232.c: 20:         if(i < 25){
 [e $ ! < -> _i `i -> 25 `i 3222  ]
 {
-"15
-[; ;sepos/sepos_RS232.c: 15:             me->rxdata[i] = 0;
+"21
+[; ;sepos/sepos_RS232.c: 21:             me->rxdata[i] = 0;
 [e = *U + &U . *U _me 3 * -> _i `ux -> -> # *U &U . *U _me 3 `ui `ux -> -> 0 `i `us ]
-"16
-[; ;sepos/sepos_RS232.c: 16:             me->txdata[i] = 0;
+"22
+[; ;sepos/sepos_RS232.c: 22:             me->txdata[i] = 0;
 [e = *U + &U . *U _me 1 * -> _i `ux -> -> # *U &U . *U _me 1 `ui `ux -> -> 0 `i `us ]
-"17
-[; ;sepos/sepos_RS232.c: 17:         }
+"23
+[; ;sepos/sepos_RS232.c: 23:         }
 }
 [e :U 3222 ]
-"18
-[; ;sepos/sepos_RS232.c: 18:     }
+"24
+[; ;sepos/sepos_RS232.c: 24:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 50 `i 3219  ]
 [e :U 3220 ]
 }
-"19
-[; ;sepos/sepos_RS232.c: 19: }
+"25
+[; ;sepos/sepos_RS232.c: 25: }
 [e :UE 3218 ]
 }
-"21
-[; ;sepos/sepos_RS232.c: 21: uint16_t sepos_CalcFieldCRC(Sepos* me, uint16_t* pDataArray, uint16_t ArrayLength){
-[v _sepos_CalcFieldCRC `(us ~T0 @X0 1 ef3`*S3217`*us`us ]
+"27
+[; ;sepos/sepos_RS232.c: 27: uint16_t sepos_CalcFieldCRC(Sepos* me, uint16_t* pDataArray, uint16_t ArrayLength){
+[v _sepos_CalcFieldCRC `(us ~T0 @X0 1 ef3`*S3211`*us`us ]
 {
 [e :U _sepos_CalcFieldCRC ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
 [v _pDataArray `*us ~T0 @X0 1 r2 ]
 [v _ArrayLength `us ~T0 @X0 1 r3 ]
 [f ]
-"22
-[; ;sepos/sepos_RS232.c: 22:     uint16_t shifter, c;
+"28
+[; ;sepos/sepos_RS232.c: 28:     uint16_t shifter, c;
 [v _shifter `us ~T0 @X0 1 a ]
 [v _c `us ~T0 @X0 1 a ]
-"23
-[; ;sepos/sepos_RS232.c: 23:     uint16_t carry;
+"29
+[; ;sepos/sepos_RS232.c: 29:     uint16_t carry;
 [v _carry `us ~T0 @X0 1 a ]
-"24
-[; ;sepos/sepos_RS232.c: 24:     uint16_t CRC = 0;
+"30
+[; ;sepos/sepos_RS232.c: 30:     uint16_t CRC = 0;
 [v _CRC `us ~T0 @X0 1 a ]
 [e = _CRC -> -> 0 `i `us ]
-"26
-[; ;sepos/sepos_RS232.c: 26:     while (ArrayLength--){
+"32
+[; ;sepos/sepos_RS232.c: 32:     while (ArrayLength--){
 [e $U 3224  ]
 [e :U 3225 ]
 {
-"27
-[; ;sepos/sepos_RS232.c: 27:         shifter = 0x8000;
+"33
+[; ;sepos/sepos_RS232.c: 33:         shifter = 0x8000;
 [e = _shifter -> -> 32768 `ui `us ]
-"28
-[; ;sepos/sepos_RS232.c: 28:         c = *pDataArray++;
+"34
+[; ;sepos/sepos_RS232.c: 34:         c = *pDataArray++;
 [e = _c *U ++ _pDataArray * -> -> 1 `i `x -> -> # *U _pDataArray `i `x ]
-"29
-[; ;sepos/sepos_RS232.c: 29:         do {
+"35
+[; ;sepos/sepos_RS232.c: 35:         do {
 [e :U 3229 ]
 {
-"32
-[; ;sepos/sepos_RS232.c: 32:             carry = CRC & 0x8000;
+"38
+[; ;sepos/sepos_RS232.c: 38:             carry = CRC & 0x8000;
 [e = _carry -> & -> _CRC `ui -> 32768 `ui `us ]
-"33
-[; ;sepos/sepos_RS232.c: 33:             CRC <<= 1;
+"39
+[; ;sepos/sepos_RS232.c: 39:             CRC <<= 1;
 [e =<< _CRC -> -> 1 `i `us ]
-"34
-[; ;sepos/sepos_RS232.c: 34:             if (c & shifter) CRC++;
+"40
+[; ;sepos/sepos_RS232.c: 40:             if (c & shifter) CRC++;
 [e $ ! != & -> _c `ui -> _shifter `ui -> -> 0 `i `ui 3230  ]
 [e ++ _CRC -> -> 1 `i `us ]
 [e :U 3230 ]
-"35
-[; ;sepos/sepos_RS232.c: 35:             if (carry) CRC ^= 0x1021;
+"41
+[; ;sepos/sepos_RS232.c: 41:             if (carry) CRC ^= 0x1021;
 [e $ ! != -> _carry `ui -> -> 0 `i `ui 3231  ]
 [e =^ _CRC -> -> 4129 `i `us ]
 [e :U 3231 ]
-"36
-[; ;sepos/sepos_RS232.c: 36:             shifter >>= 1;
-[e =>> _shifter -> -> 1 `i `us ]
 "42
-[; ;sepos/sepos_RS232.c: 42:         } while (shifter);
+[; ;sepos/sepos_RS232.c: 42:             shifter >>= 1;
+[e =>> _shifter -> -> 1 `i `us ]
+"48
+[; ;sepos/sepos_RS232.c: 48:         } while (shifter);
 }
 [e $ != -> _shifter `ui -> -> 0 `i `ui 3229  ]
 [e :U 3228 ]
-"43
-[; ;sepos/sepos_RS232.c: 43:     }
+"49
+[; ;sepos/sepos_RS232.c: 49:     }
 }
 [e :U 3224 ]
-"26
-[; ;sepos/sepos_RS232.c: 26:     while (ArrayLength--){
+"32
+[; ;sepos/sepos_RS232.c: 32:     while (ArrayLength--){
 [e $ != -> -- _ArrayLength -> -> 1 `i `us `ui -> -> 0 `i `ui 3225  ]
 [e :U 3226 ]
-"44
-[; ;sepos/sepos_RS232.c: 44:     return CRC;
+"50
+[; ;sepos/sepos_RS232.c: 50:     return CRC;
 [e ) _CRC ]
 [e $UE 3223  ]
-"45
-[; ;sepos/sepos_RS232.c: 45: }
+"51
+[; ;sepos/sepos_RS232.c: 51: }
 [e :UE 3223 ]
 }
-"47
-[; ;sepos/sepos_RS232.c: 47: void sepos_send_RS232(Sepos* me, uint8_t length){
-[v _sepos_send_RS232 `(v ~T0 @X0 1 ef2`*S3217`uc ]
+"53
+[; ;sepos/sepos_RS232.c: 53: void sepos_send_RS232(Sepos* me) {
+[v _sepos_send_RS232 `(v ~T0 @X0 1 ef1`*S3211 ]
 {
 [e :U _sepos_send_RS232 ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
-[v _length `uc ~T0 @X0 1 r2 ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
 [f ]
-"48
-[; ;sepos/sepos_RS232.c: 48:     me->txdata[length] = 0;
-[e = *U + &U . *U _me 1 * -> _length `ux -> -> # *U &U . *U _me 1 `ui `ux -> -> 0 `i `us ]
-"49
-[; ;sepos/sepos_RS232.c: 49:     me->txdata[length] = sepos_CalcFieldCRC(me, me->txdata,length + 1);
-[e = *U + &U . *U _me 1 * -> _length `ux -> -> # *U &U . *U _me 1 `ui `ux ( _sepos_CalcFieldCRC (3 , , _me &U . *U _me 1 -> + -> _length `i -> 1 `i `us ]
-"51
-[; ;sepos/sepos_RS232.c: 51:     me->txbuf[0 + 2*length] = me->txdata[length];
-[e = *U + &U . *U _me 0 * -> -> + -> 0 `i * -> 2 `i -> _length `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> *U + &U . *U _me 1 * -> _length `ux -> -> # *U &U . *U _me 1 `ui `ux `uc ]
-"52
-[; ;sepos/sepos_RS232.c: 52:     me->txbuf[1 + 2*length] = me->txdata[length] >> (8);
-[e = *U + &U . *U _me 0 * -> -> + -> 1 `i * -> 2 `i -> _length `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> -> *U + &U . *U _me 1 * -> _length `ux -> -> # *U &U . *U _me 1 `ui `ux `ui -> 8 `i `uc ]
 "54
-[; ;sepos/sepos_RS232.c: 54:     UART1_Write(me->txbuf[0]);
-[e ( _UART1_Write (1 *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux ]
-"56
-[; ;sepos/sepos_RS232.c: 56:     if (UART1_Read() != 0x4F){
-[e $ ! != -> ( _UART1_Read ..  `i -> 79 `i 3233  ]
-{
+[; ;sepos/sepos_RS232.c: 54:     dummy = U1RXB;
+[e = _dummy _U1RXB ]
+"55
+[; ;sepos/sepos_RS232.c: 55:     dummy = U1RXB;
+[e = _dummy _U1RXB ]
 "57
-[; ;sepos/sepos_RS232.c: 57:         return;
-[e $UE 3232  ]
-"58
-[; ;sepos/sepos_RS232.c: 58:     }
-}
-[e :U 3233 ]
+[; ;sepos/sepos_RS232.c: 57:     uint8_t length = me->txbuf[1] + 2;
+[v _length `uc ~T0 @X0 1 a ]
+[e = _length -> + -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `i -> 2 `i `uc ]
+"59
+[; ;sepos/sepos_RS232.c: 59:     me->txdata[0] = (uint16_t) (me->txbuf[0] << (8)) | me->txbuf[1];
+[e = *U + &U . *U _me 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 1 `ui `ux -> | -> -> << -> *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `i -> 8 `i `us `ui -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
 "60
-[; ;sepos/sepos_RS232.c: 60:      for(uint8_t i = 1; i <= 1 + 2*length; i++){
+[; ;sepos/sepos_RS232.c: 60:     for (uint8_t i = 1; i < length; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 1 `i `uc ]
-[e $U 3237  ]
-[e :U 3234 ]
+[e $U 3236  ]
+[e :U 3233 ]
 {
 "61
-[; ;sepos/sepos_RS232.c: 61:     UART1_Write(me->txbuf[i]);
-[e ( _UART1_Write (1 *U + &U . *U _me 0 * -> _i `ux -> -> # *U &U . *U _me 0 `ui `ux ]
+[; ;sepos/sepos_RS232.c: 61:         me->txdata[i] = (uint16_t) (me->txbuf[1 + 2 * i] << (8)) | me->txbuf[0 + 2 * i];
+[e = *U + &U . *U _me 1 * -> _i `ux -> -> # *U &U . *U _me 1 `ui `ux -> | -> -> << -> *U + &U . *U _me 0 * -> -> + -> 1 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `i -> 8 `i `us `ui -> *U + &U . *U _me 0 * -> -> + -> 0 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
 "62
 [; ;sepos/sepos_RS232.c: 62:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 3237 ]
-[e $ <= -> _i `i + -> 1 `i * -> 2 `i -> _length `i 3234  ]
-[e :U 3235 ]
+[e :U 3236 ]
+[e $ < -> _i `i -> _length `i 3233  ]
+[e :U 3234 ]
 }
 "64
-[; ;sepos/sepos_RS232.c: 64:     if (UART1_Read() != 0x4F){
-[e $ ! != -> ( _UART1_Read ..  `i -> 79 `i 3238  ]
-{
+[; ;sepos/sepos_RS232.c: 64:     me->txdata[length] = 0;
+[e = *U + &U . *U _me 1 * -> _length `ux -> -> # *U &U . *U _me 1 `ui `ux -> -> 0 `i `us ]
 "65
-[; ;sepos/sepos_RS232.c: 65:         return;
-[e $UE 3232  ]
-"66
-[; ;sepos/sepos_RS232.c: 66:     }
-}
-[e :U 3238 ]
+[; ;sepos/sepos_RS232.c: 65:     me->txdata[length] = sepos_CalcFieldCRC(me, me->txdata, length + 1);
+[e = *U + &U . *U _me 1 * -> _length `ux -> -> # *U &U . *U _me 1 `ui `ux ( _sepos_CalcFieldCRC (3 , , _me &U . *U _me 1 -> + -> _length `i -> 1 `i `us ]
 "67
-[; ;sepos/sepos_RS232.c: 67: }
+[; ;sepos/sepos_RS232.c: 67:     me->txbuf[0 + 2 * length] = me->txdata[length];
+[e = *U + &U . *U _me 0 * -> -> + -> 0 `i * -> 2 `i -> _length `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> *U + &U . *U _me 1 * -> _length `ux -> -> # *U &U . *U _me 1 `ui `ux `uc ]
+"68
+[; ;sepos/sepos_RS232.c: 68:     me->txbuf[1 + 2 * length] = me->txdata[length] >> (8);
+[e = *U + &U . *U _me 0 * -> -> + -> 1 `i * -> 2 `i -> _length `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> -> *U + &U . *U _me 1 * -> _length `ux -> -> # *U &U . *U _me 1 `ui `ux `ui -> 8 `i `uc ]
+"70
+[; ;sepos/sepos_RS232.c: 70:     UART1_Write(me->txbuf[0]);
+[e ( _UART1_Write (1 *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux ]
+"72
+[; ;sepos/sepos_RS232.c: 72:     if (MyRead(me, &error) != 0x4F) {
+[e $ ! != -> ( _MyRead (2 , _me &U _error `i -> 79 `i 3237  ]
+{
+"73
+[; ;sepos/sepos_RS232.c: 73:         return;
+[e $UE 3232  ]
+"74
+[; ;sepos/sepos_RS232.c: 74:     }
+}
+[e :U 3237 ]
+"76
+[; ;sepos/sepos_RS232.c: 76:     for (uint8_t i = 1; i <= 1 + 2 * length; i++) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 1 `i `uc ]
+[e $U 3241  ]
+[e :U 3238 ]
+{
+"77
+[; ;sepos/sepos_RS232.c: 77:         UART1_Write(me->txbuf[i]);
+[e ( _UART1_Write (1 *U + &U . *U _me 0 * -> _i `ux -> -> # *U &U . *U _me 0 `ui `ux ]
+"78
+[; ;sepos/sepos_RS232.c: 78:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 3241 ]
+[e $ <= -> _i `i + -> 1 `i * -> 2 `i -> _length `i 3238  ]
+[e :U 3239 ]
+}
+"80
+[; ;sepos/sepos_RS232.c: 80:     if (MyRead(me, &error) != 0x4F) {
+[e $ ! != -> ( _MyRead (2 , _me &U _error `i -> 79 `i 3242  ]
+{
+"81
+[; ;sepos/sepos_RS232.c: 81:         return;
+[e $UE 3232  ]
+"82
+[; ;sepos/sepos_RS232.c: 82:     }
+}
+[e :U 3242 ]
+"83
+[; ;sepos/sepos_RS232.c: 83: }
 [e :UE 3232 ]
 }
-"69
-[; ;sepos/sepos_RS232.c: 69: void sepos_receive_RS232(Sepos* me){
-[v _sepos_receive_RS232 `(v ~T0 @X0 1 ef1`*S3217 ]
+"85
+[; ;sepos/sepos_RS232.c: 85: uint8_t MyRead(Sepos* me, uint8_t* error) {
+[v _MyRead `(uc ~T0 @X0 1 ef2`*S3211`*uc ]
+{
+[e :U _MyRead ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
+[v _error `*uc ~T0 @X0 1 r2 ]
+[f ]
+"86
+[; ;sepos/sepos_RS232.c: 86:     uint16_t count = 0;
+[v _count `us ~T0 @X0 1 a ]
+[e = _count -> -> 0 `i `us ]
+"87
+[; ;sepos/sepos_RS232.c: 87:     *error = 0x0;
+[e = *U _error -> -> 0 `i `uc ]
+"88
+[; ;sepos/sepos_RS232.c: 88:     while (UART1_is_rx_ready() == 0) {
+[e $U 3244  ]
+[e :U 3245 ]
+{
+"89
+[; ;sepos/sepos_RS232.c: 89:         _delay((unsigned long)((10)*(64000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000000.0 `ul ]
+"90
+[; ;sepos/sepos_RS232.c: 90:         count++;
+[e ++ _count -> -> 1 `i `us ]
+"91
+[; ;sepos/sepos_RS232.c: 91:         if (count > 20000) {
+[e $ ! > -> _count `ui -> -> 20000 `i `ui 3247  ]
+{
+"92
+[; ;sepos/sepos_RS232.c: 92:             *error = 0xFF;
+[e = *U _error -> -> 255 `i `uc ]
+"93
+[; ;sepos/sepos_RS232.c: 93:             return 0xEE;
+[e ) -> -> 238 `i `uc ]
+[e $UE 3243  ]
+"94
+[; ;sepos/sepos_RS232.c: 94:         }
+}
+[e :U 3247 ]
+"95
+[; ;sepos/sepos_RS232.c: 95:     }
+}
+[e :U 3244 ]
+"88
+[; ;sepos/sepos_RS232.c: 88:     while (UART1_is_rx_ready() == 0) {
+[e $ == -> ( _UART1_is_rx_ready ..  `i -> 0 `i 3245  ]
+[e :U 3246 ]
+"96
+[; ;sepos/sepos_RS232.c: 96:     return UART1_Read();
+[e ) ( _UART1_Read ..  ]
+[e $UE 3243  ]
+"97
+[; ;sepos/sepos_RS232.c: 97: }
+[e :UE 3243 ]
+}
+"99
+[; ;sepos/sepos_RS232.c: 99: void sepos_receive_RS232(Sepos* me) {
+[v _sepos_receive_RS232 `(v ~T0 @X0 1 ef1`*S3211 ]
 {
 [e :U _sepos_receive_RS232 ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
 [f ]
-"70
-[; ;sepos/sepos_RS232.c: 70:     for(uint8_t i = 0; i <= 50; i++){
+"100
+[; ;sepos/sepos_RS232.c: 100:     dummy = U1RXB;
+[e = _dummy _U1RXB ]
+"101
+[; ;sepos/sepos_RS232.c: 101:     dummy = U1RXB;
+[e = _dummy _U1RXB ]
+"102
+[; ;sepos/sepos_RS232.c: 102:     error = 0x0;
+[e = _error -> -> 0 `i `uc ]
+"103
+[; ;sepos/sepos_RS232.c: 103:     for (uint8_t i = 0; i < 50; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ <= -> _i `i -> 50 `i 3240  ]
-[e $U 3241  ]
-[e :U 3240 ]
+[e $ < -> _i `i -> 50 `i 3249  ]
+[e $U 3250  ]
+[e :U 3249 ]
 {
-"71
-[; ;sepos/sepos_RS232.c: 71:         me->rxbuf[i] = 0;
+"104
+[; ;sepos/sepos_RS232.c: 104:         me->rxbuf[i] = 0;
 [e = *U + &U . *U _me 2 * -> _i `ux -> -> # *U &U . *U _me 2 `ui `ux -> -> 0 `i `uc ]
-"72
-[; ;sepos/sepos_RS232.c: 72:         if(i <= 25){
-[e $ ! <= -> _i `i -> 25 `i 3243  ]
+"105
+[; ;sepos/sepos_RS232.c: 105:         if (i < 25) {
+[e $ ! < -> _i `i -> 25 `i 3252  ]
 {
-"73
-[; ;sepos/sepos_RS232.c: 73:             me->rxdata[i] = 0;
+"106
+[; ;sepos/sepos_RS232.c: 106:             me->rxdata[i] = 0;
 [e = *U + &U . *U _me 3 * -> _i `ux -> -> # *U &U . *U _me 3 `ui `ux -> -> 0 `i `us ]
-"74
-[; ;sepos/sepos_RS232.c: 74:         }
+"107
+[; ;sepos/sepos_RS232.c: 107:         }
 }
-[e :U 3243 ]
-"75
-[; ;sepos/sepos_RS232.c: 75:     }
+[e :U 3252 ]
+"108
+[; ;sepos/sepos_RS232.c: 108:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ <= -> _i `i -> 50 `i 3240  ]
-[e :U 3241 ]
+[e $ < -> _i `i -> 50 `i 3249  ]
+[e :U 3250 ]
 }
-"77
-[; ;sepos/sepos_RS232.c: 77:     me->rxbuf[0] = UART1_Read();
-[e = *U + &U . *U _me 2 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ( _UART1_Read ..  ]
-"79
-[; ;sepos/sepos_RS232.c: 79:     UART1_Write(0x4F);
+"110
+[; ;sepos/sepos_RS232.c: 110:     me->rxbuf[0] = MyRead(me, &error);
+[e = *U + &U . *U _me 2 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ( _MyRead (2 , _me &U _error ]
+"111
+[; ;sepos/sepos_RS232.c: 111:     if (error != 0) {
+[e $ ! != -> _error `i -> 0 `i 3253  ]
+{
+"112
+[; ;sepos/sepos_RS232.c: 112:         error = 44;
+[e = _error -> -> 44 `i `uc ]
+"113
+[; ;sepos/sepos_RS232.c: 113:         return;
+[e $UE 3248  ]
+"114
+[; ;sepos/sepos_RS232.c: 114:     }
+}
+[e :U 3253 ]
+"116
+[; ;sepos/sepos_RS232.c: 116:     UART1_Write(0x4F);
 [e ( _UART1_Write (1 -> -> 79 `i `uc ]
-"81
-[; ;sepos/sepos_RS232.c: 81:     me->rxbuf[1] = UART1_Read();
-[e = *U + &U . *U _me 2 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ( _UART1_Read ..  ]
-"83
-[; ;sepos/sepos_RS232.c: 83:     for(uint8_t i = 2; i < me->rxbuf[1] * 2 + 6; i++){
+"118
+[; ;sepos/sepos_RS232.c: 118:     me->rxbuf[1] = MyRead(me, &error);
+[e = *U + &U . *U _me 2 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ( _MyRead (2 , _me &U _error ]
+"119
+[; ;sepos/sepos_RS232.c: 119:     if (error != 0) {
+[e $ ! != -> _error `i -> 0 `i 3254  ]
+{
+"120
+[; ;sepos/sepos_RS232.c: 120:         error = 100;
+[e = _error -> -> 100 `i `uc ]
+"121
+[; ;sepos/sepos_RS232.c: 121:         return;
+[e $UE 3248  ]
+"122
+[; ;sepos/sepos_RS232.c: 122:     }
+}
+[e :U 3254 ]
+"124
+[; ;sepos/sepos_RS232.c: 124:     for (uint8_t i = 2; i < me->rxbuf[1] * 2 + 6; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 2 `i `uc ]
-[e $U 3247  ]
-[e :U 3244 ]
+[e $U 3258  ]
+[e :U 3255 ]
 {
-"84
-[; ;sepos/sepos_RS232.c: 84:       me->rxbuf[i] = UART1_Read();
-[e = *U + &U . *U _me 2 * -> _i `ux -> -> # *U &U . *U _me 2 `ui `ux ( _UART1_Read ..  ]
-"85
-[; ;sepos/sepos_RS232.c: 85:     }
+"125
+[; ;sepos/sepos_RS232.c: 125:         me->rxbuf[i] = MyRead(me, &error);
+[e = *U + &U . *U _me 2 * -> _i `ux -> -> # *U &U . *U _me 2 `ui `ux ( _MyRead (2 , _me &U _error ]
+"126
+[; ;sepos/sepos_RS232.c: 126:         if (error != 0) {
+[e $ ! != -> _error `i -> 0 `i 3259  ]
+{
+"127
+[; ;sepos/sepos_RS232.c: 127:             error = 24;
+[e = _error -> -> 24 `i `uc ]
+"128
+[; ;sepos/sepos_RS232.c: 128:             return;
+[e $UE 3248  ]
+"129
+[; ;sepos/sepos_RS232.c: 129:         }
+}
+[e :U 3259 ]
+"130
+[; ;sepos/sepos_RS232.c: 130:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 3247 ]
-[e $ < -> _i `i + * -> *U + &U . *U _me 2 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux `i -> 2 `i -> 6 `i 3244  ]
-[e :U 3245 ]
+[e :U 3258 ]
+[e $ < -> _i `i + * -> *U + &U . *U _me 2 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux `i -> 2 `i -> 6 `i 3255  ]
+[e :U 3256 ]
 }
-"87
-[; ;sepos/sepos_RS232.c: 87:     UART1_Write(0x4F);
+"132
+[; ;sepos/sepos_RS232.c: 132:     UART1_Write(0x4F);
 [e ( _UART1_Write (1 -> -> 79 `i `uc ]
-"104
-[; ;sepos/sepos_RS232.c: 104: }
-[e :UE 3239 ]
-}
-"106
-[; ;sepos/sepos_RS232.c: 106: void sepos_send_modOfOpp(Sepos* me, int8_t mode){
-[v _sepos_send_modOfOpp `(v ~T0 @X0 1 ef2`*S3217`c ]
-{
-[e :U _sepos_send_modOfOpp ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
-[v _mode `c ~T0 @X0 1 r2 ]
-[f ]
-"107
-[; ;sepos/sepos_RS232.c: 107:     me->txbuf[0] = 0x68;
-[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 104 `i `uc ]
-"108
-[; ;sepos/sepos_RS232.c: 108:     me->txbuf[1] = 0x02;
-[e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 2 `i `uc ]
-"109
-[; ;sepos/sepos_RS232.c: 109:     me->txbuf[2] = 0x60;
-[e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
-"110
-[; ;sepos/sepos_RS232.c: 110:     me->txbuf[3] = 0x60;
-[e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
-"111
-[; ;sepos/sepos_RS232.c: 111:     me->txbuf[4] = 0x0;
-[e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
-"112
-[; ;sepos/sepos_RS232.c: 112:     me->txbuf[5] = 1;
-[e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
-"113
-[; ;sepos/sepos_RS232.c: 113:     me->txbuf[6] = mode;
-[e = *U + &U . *U _me 0 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> _mode `uc ]
-"115
-[; ;sepos/sepos_RS232.c: 115:     uint8_t length = me->txbuf[1] + 2;
-[v _length `uc ~T0 @X0 1 a ]
-[e = _length -> + -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `i -> 2 `i `uc ]
-"117
-[; ;sepos/sepos_RS232.c: 117:     me->txdata[0] = (uint16_t)(me->txbuf[0]) << (8) | me->txbuf[1];
-[e = *U + &U . *U _me 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"118
-[; ;sepos/sepos_RS232.c: 118:     for (uint8_t i = 1; i < length; i++){
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 1 `i `uc ]
-[e $U 3252  ]
-[e :U 3249 ]
-{
-"119
-[; ;sepos/sepos_RS232.c: 119:         me->txdata[i] = (uint16_t)(me->txbuf[1 + 2 * i]) << (8) | me->txbuf[0 + 2 * i];
-[e = *U + &U . *U _me 1 * -> _i `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> + -> 1 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> + -> 0 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"120
-[; ;sepos/sepos_RS232.c: 120:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 3252 ]
-[e $ < -> _i `i -> _length `i 3249  ]
-[e :U 3250 ]
-}
-"121
-[; ;sepos/sepos_RS232.c: 121:     sepos_send_RS232(me, length);
-[e ( _sepos_send_RS232 (2 , _me _length ]
-"123
-[; ;sepos/sepos_RS232.c: 123: }
+"149
+[; ;sepos/sepos_RS232.c: 149: }
 [e :UE 3248 ]
 }
-"125
-[; ;sepos/sepos_RS232.c: 125: void sepos_send_controlword(Sepos* me, uint16_t controlword){
-[v _sepos_send_controlword `(v ~T0 @X0 1 ef2`*S3217`us ]
-{
-[e :U _sepos_send_controlword ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
-[v _controlword `us ~T0 @X0 1 r2 ]
-[f ]
-"126
-[; ;sepos/sepos_RS232.c: 126:     me->txbuf[0] = 0x68;
-[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 104 `i `uc ]
-"127
-[; ;sepos/sepos_RS232.c: 127:     me->txbuf[1] = 0x02;
-[e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 2 `i `uc ]
-"128
-[; ;sepos/sepos_RS232.c: 128:     me->txbuf[2] = 0x40;
-[e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 64 `i `uc ]
-"129
-[; ;sepos/sepos_RS232.c: 129:     me->txbuf[3] = 0x60;
-[e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
-"130
-[; ;sepos/sepos_RS232.c: 130:     me->txbuf[4] = 0x0;
-[e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
-"131
-[; ;sepos/sepos_RS232.c: 131:     me->txbuf[5] = 1;
-[e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
-"132
-[; ;sepos/sepos_RS232.c: 132:     me->txbuf[6] = controlword;
-[e = *U + &U . *U _me 0 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> _controlword `uc ]
-"133
-[; ;sepos/sepos_RS232.c: 133:     me->txbuf[7] = controlword >> 8;
-[e = *U + &U . *U _me 0 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> -> _controlword `ui -> 8 `i `uc ]
-"136
-[; ;sepos/sepos_RS232.c: 136:     uint8_t length = me->txbuf[1] + 2;
-[v _length `uc ~T0 @X0 1 a ]
-[e = _length -> + -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `i -> 2 `i `uc ]
-"138
-[; ;sepos/sepos_RS232.c: 138:     me->txdata[0] = (uint16_t)(me->txbuf[0]) << (8) | me->txbuf[1];
-[e = *U + &U . *U _me 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"139
-[; ;sepos/sepos_RS232.c: 139:     for (uint8_t i = 1; i < length; i++){
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 1 `i `uc ]
-[e $U 3257  ]
-[e :U 3254 ]
-{
-"140
-[; ;sepos/sepos_RS232.c: 140:         me->txdata[i] = (uint16_t)(me->txbuf[1 + 2 * i]) << (8) | me->txbuf[0 + 2 * i];
-[e = *U + &U . *U _me 1 * -> _i `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> + -> 1 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> + -> 0 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"141
-[; ;sepos/sepos_RS232.c: 141:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 3257 ]
-[e $ < -> _i `i -> _length `i 3254  ]
-[e :U 3255 ]
-}
-"142
-[; ;sepos/sepos_RS232.c: 142:     sepos_send_RS232(me, length);
-[e ( _sepos_send_RS232 (2 , _me _length ]
-"144
-[; ;sepos/sepos_RS232.c: 144: }
-[e :UE 3253 ]
-}
-"146
-[; ;sepos/sepos_RS232.c: 146: void sepos_send_positionValue(Sepos* me, int32_t position){
-[v _sepos_send_positionValue `(v ~T0 @X0 1 ef2`*S3217`l ]
-{
-[e :U _sepos_send_positionValue ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
-[v _position `l ~T0 @X0 1 r2 ]
-[f ]
-"147
-[; ;sepos/sepos_RS232.c: 147:     me->txbuf[0] = 0x68;
-[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 104 `i `uc ]
-"148
-[; ;sepos/sepos_RS232.c: 148:     me->txbuf[1] = 0x03;
-[e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 3 `i `uc ]
-"149
-[; ;sepos/sepos_RS232.c: 149:     me->txbuf[2] = 0x62;
-[e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 98 `i `uc ]
-"150
-[; ;sepos/sepos_RS232.c: 150:     me->txbuf[3] = 0x20;
-[e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 32 `i `uc ]
 "151
-[; ;sepos/sepos_RS232.c: 151:     me->txbuf[4] = 0x0;
-[e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
+[; ;sepos/sepos_RS232.c: 151: void sepos_send_modOfOpp(Sepos* me, int8_t mode){
+[v _sepos_send_modOfOpp `(v ~T0 @X0 1 ef2`*S3211`c ]
+{
+[e :U _sepos_send_modOfOpp ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
+[v _mode `c ~T0 @X0 1 r2 ]
+[f ]
 "152
-[; ;sepos/sepos_RS232.c: 152:     me->txbuf[5] = 1;
-[e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
+[; ;sepos/sepos_RS232.c: 152:     me->txbuf[0] = 0x11;
+[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 17 `i `uc ]
 "153
-[; ;sepos/sepos_RS232.c: 153:     me->txbuf[6] = position;
-[e = *U + &U . *U _me 0 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> _position `uc ]
+[; ;sepos/sepos_RS232.c: 153:     me->txbuf[1] = 0x02;
+[e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 2 `i `uc ]
 "154
-[; ;sepos/sepos_RS232.c: 154:     me->txbuf[7] = position >> 8;
-[e = *U + &U . *U _me 0 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> _position -> 8 `i `uc ]
+[; ;sepos/sepos_RS232.c: 154:     me->txbuf[2] = 0x60;
+[e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
 "155
-[; ;sepos/sepos_RS232.c: 155:     me->txbuf[8] = position >> 16;
-[e = *U + &U . *U _me 0 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> _position -> 16 `i `uc ]
+[; ;sepos/sepos_RS232.c: 155:     me->txbuf[3] = 0x60;
+[e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
 "156
-[; ;sepos/sepos_RS232.c: 156:     me->txbuf[9] = position >> 24;
-[e = *U + &U . *U _me 0 * -> -> -> 9 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> _position -> 24 `i `uc ]
+[; ;sepos/sepos_RS232.c: 156:     me->txbuf[4] = 0x0;
+[e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
+"157
+[; ;sepos/sepos_RS232.c: 157:     me->txbuf[5] = 1;
+[e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
+"158
+[; ;sepos/sepos_RS232.c: 158:     me->txbuf[6] = mode;
+[e = *U + &U . *U _me 0 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> _mode `uc ]
 "159
-[; ;sepos/sepos_RS232.c: 159:     uint8_t length = me->txbuf[1] + 2;
-[v _length `uc ~T0 @X0 1 a ]
-[e = _length -> + -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `i -> 2 `i `uc ]
+[; ;sepos/sepos_RS232.c: 159:     me->txbuf[7] = 0;
+[e = *U + &U . *U _me 0 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
 "161
-[; ;sepos/sepos_RS232.c: 161:     me->txdata[0] = (uint16_t)(me->txbuf[0]) << (8) | me->txbuf[1];
-[e = *U + &U . *U _me 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"162
-[; ;sepos/sepos_RS232.c: 162:     for (uint8_t i = 1; i < length; i++){
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 1 `i `uc ]
-[e $U 3262  ]
-[e :U 3259 ]
-{
+[; ;sepos/sepos_RS232.c: 161:     sepos_send_RS232(me);
+[e ( _sepos_send_RS232 (1 _me ]
 "163
-[; ;sepos/sepos_RS232.c: 163:         me->txdata[i] = (uint16_t)(me->txbuf[1 + 2 * i]) << (8) | me->txbuf[0 + 2 * i];
-[e = *U + &U . *U _me 1 * -> _i `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> + -> 1 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> + -> 0 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"164
-[; ;sepos/sepos_RS232.c: 164:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 3262 ]
-[e $ < -> _i `i -> _length `i 3259  ]
-[e :U 3260 ]
+[; ;sepos/sepos_RS232.c: 163: }
+[e :UE 3260 ]
 }
 "165
-[; ;sepos/sepos_RS232.c: 165:     sepos_send_RS232(me, length);
-[e ( _sepos_send_RS232 (2 , _me _length ]
+[; ;sepos/sepos_RS232.c: 165: void sepos_send_controlword(Sepos* me, uint16_t controlword){
+[v _sepos_send_controlword `(v ~T0 @X0 1 ef2`*S3211`us ]
+{
+[e :U _sepos_send_controlword ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
+[v _controlword `us ~T0 @X0 1 r2 ]
+[f ]
+"166
+[; ;sepos/sepos_RS232.c: 166:     me->txbuf[0] = 0x11;
+[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 17 `i `uc ]
 "167
-[; ;sepos/sepos_RS232.c: 167: }
-[e :UE 3258 ]
-}
+[; ;sepos/sepos_RS232.c: 167:     me->txbuf[1] = 0x02;
+[e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 2 `i `uc ]
+"168
+[; ;sepos/sepos_RS232.c: 168:     me->txbuf[2] = 0x40;
+[e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 64 `i `uc ]
 "169
-[; ;sepos/sepos_RS232.c: 169: int32_t sepos_receive_positionValue(Sepos* me){
-[v _sepos_receive_positionValue `(l ~T0 @X0 1 ef1`*S3217 ]
+[; ;sepos/sepos_RS232.c: 169:     me->txbuf[3] = 0x60;
+[e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
+"170
+[; ;sepos/sepos_RS232.c: 170:     me->txbuf[4] = 0x0;
+[e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
+"171
+[; ;sepos/sepos_RS232.c: 171:     me->txbuf[5] = 1;
+[e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
+"172
+[; ;sepos/sepos_RS232.c: 172:     me->txbuf[6] = controlword;
+[e = *U + &U . *U _me 0 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> _controlword `uc ]
+"173
+[; ;sepos/sepos_RS232.c: 173:     me->txbuf[7] = controlword >> 8;
+[e = *U + &U . *U _me 0 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> -> _controlword `ui -> 8 `i `uc ]
+"175
+[; ;sepos/sepos_RS232.c: 175:     sepos_send_RS232(me);
+[e ( _sepos_send_RS232 (1 _me ]
+"177
+[; ;sepos/sepos_RS232.c: 177: }
+[e :UE 3261 ]
+}
+"179
+[; ;sepos/sepos_RS232.c: 179: void sepos_send_positionValue(Sepos* me, int32_t position){
+[v _sepos_send_positionValue `(v ~T0 @X0 1 ef2`*S3211`l ]
+{
+[e :U _sepos_send_positionValue ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
+[v _position `l ~T0 @X0 1 r2 ]
+[f ]
+"180
+[; ;sepos/sepos_RS232.c: 180:     me->txbuf[0] = 0x11;
+[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 17 `i `uc ]
+"181
+[; ;sepos/sepos_RS232.c: 181:     me->txbuf[1] = 0x03;
+[e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 3 `i `uc ]
+"182
+[; ;sepos/sepos_RS232.c: 182:     me->txbuf[2] = 0x62;
+[e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 98 `i `uc ]
+"183
+[; ;sepos/sepos_RS232.c: 183:     me->txbuf[3] = 0x20;
+[e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 32 `i `uc ]
+"184
+[; ;sepos/sepos_RS232.c: 184:     me->txbuf[4] = 0x0;
+[e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
+"185
+[; ;sepos/sepos_RS232.c: 185:     me->txbuf[5] = 1;
+[e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
+"186
+[; ;sepos/sepos_RS232.c: 186:     me->txbuf[6] = position;
+[e = *U + &U . *U _me 0 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> _position `uc ]
+"187
+[; ;sepos/sepos_RS232.c: 187:     me->txbuf[7] = position >> 8;
+[e = *U + &U . *U _me 0 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> _position -> 8 `i `uc ]
+"188
+[; ;sepos/sepos_RS232.c: 188:     me->txbuf[8] = position >> 16;
+[e = *U + &U . *U _me 0 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> _position -> 16 `i `uc ]
+"189
+[; ;sepos/sepos_RS232.c: 189:     me->txbuf[9] = position >> 24;
+[e = *U + &U . *U _me 0 * -> -> -> 9 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> >> _position -> 24 `i `uc ]
+"191
+[; ;sepos/sepos_RS232.c: 191:    sepos_send_RS232(me);
+[e ( _sepos_send_RS232 (1 _me ]
+"193
+[; ;sepos/sepos_RS232.c: 193: }
+[e :UE 3262 ]
+}
+"195
+[; ;sepos/sepos_RS232.c: 195: int32_t sepos_receive_positionValue(Sepos* me){
+[v _sepos_receive_positionValue `(l ~T0 @X0 1 ef1`*S3211 ]
 {
 [e :U _sepos_receive_positionValue ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
 [f ]
-"170
-[; ;sepos/sepos_RS232.c: 170:     me->txbuf[0] = 0x60;
-[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
-"171
-[; ;sepos/sepos_RS232.c: 171:     me->txbuf[1] = 0x01;
+"196
+[; ;sepos/sepos_RS232.c: 196:     me->txbuf[0] = 0x10;
+[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 16 `i `uc ]
+"197
+[; ;sepos/sepos_RS232.c: 197:     me->txbuf[1] = 0x01;
 [e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
-"172
-[; ;sepos/sepos_RS232.c: 172:     me->txbuf[2] = 0x64;
+"198
+[; ;sepos/sepos_RS232.c: 198:     me->txbuf[2] = 0x64;
 [e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 100 `i `uc ]
-"173
-[; ;sepos/sepos_RS232.c: 173:     me->txbuf[3] = 0x60;
+"199
+[; ;sepos/sepos_RS232.c: 199:     me->txbuf[3] = 0x60;
 [e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
-"174
-[; ;sepos/sepos_RS232.c: 174:     me->txbuf[4] = 0x0;
+"200
+[; ;sepos/sepos_RS232.c: 200:     me->txbuf[4] = 0x0;
 [e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
-"175
-[; ;sepos/sepos_RS232.c: 175:     me->txbuf[5] = 1;
+"201
+[; ;sepos/sepos_RS232.c: 201:     me->txbuf[5] = 1;
 [e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
-"177
-[; ;sepos/sepos_RS232.c: 177:     uint8_t length = me->txbuf[1] + 2;
-[v _length `uc ~T0 @X0 1 a ]
-[e = _length -> + -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `i -> 2 `i `uc ]
-"179
-[; ;sepos/sepos_RS232.c: 179:     me->txdata[0] = (uint16_t)(me->txbuf[0]) << (8) | me->txbuf[1];
-[e = *U + &U . *U _me 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"180
-[; ;sepos/sepos_RS232.c: 180:     for (uint8_t i = 1; i < length; i++){
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 1 `i `uc ]
-[e $U 3267  ]
-[e :U 3264 ]
-{
-"181
-[; ;sepos/sepos_RS232.c: 181:         me->txdata[i] = (uint16_t)(me->txbuf[1 + 2 * i]) << (8) | me->txbuf[0 + 2 * i];
-[e = *U + &U . *U _me 1 * -> _i `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> + -> 1 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> + -> 0 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"182
-[; ;sepos/sepos_RS232.c: 182:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 3267 ]
-[e $ < -> _i `i -> _length `i 3264  ]
-[e :U 3265 ]
-}
-"183
-[; ;sepos/sepos_RS232.c: 183:     sepos_send_RS232(me,length);
-[e ( _sepos_send_RS232 (2 , _me _length ]
-"185
-[; ;sepos/sepos_RS232.c: 185:     sepos_receive_RS232(me);
+"203
+[; ;sepos/sepos_RS232.c: 203:     sepos_send_RS232(me);
+[e ( _sepos_send_RS232 (1 _me ]
+"205
+[; ;sepos/sepos_RS232.c: 205:     sepos_receive_RS232(me);
 [e ( _sepos_receive_RS232 (1 _me ]
-"187
-[; ;sepos/sepos_RS232.c: 187:     b8to32 x;
-[v _x `S3215 ~T0 @X0 1 a ]
-"188
-[; ;sepos/sepos_RS232.c: 188:     x.b.byte1 = me->rxbuf[6];
+"207
+[; ;sepos/sepos_RS232.c: 207:     b8to32 x;
+[v _x `S3209 ~T0 @X0 1 a ]
+"208
+[; ;sepos/sepos_RS232.c: 208:     x.b.byte1 = me->rxbuf[6];
 [e = . . _x 0 0 *U + &U . *U _me 2 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ]
-"189
-[; ;sepos/sepos_RS232.c: 189:     x.b.byte2 = me->rxbuf[7];
+"209
+[; ;sepos/sepos_RS232.c: 209:     x.b.byte2 = me->rxbuf[7];
 [e = . . _x 0 1 *U + &U . *U _me 2 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ]
-"190
-[; ;sepos/sepos_RS232.c: 190:     x.b.byte3 = me->rxbuf[8];
+"210
+[; ;sepos/sepos_RS232.c: 210:     x.b.byte3 = me->rxbuf[8];
 [e = . . _x 0 2 *U + &U . *U _me 2 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ]
-"191
-[; ;sepos/sepos_RS232.c: 191:     x.b.byte4 = me->rxbuf[9];
+"211
+[; ;sepos/sepos_RS232.c: 211:     x.b.byte4 = me->rxbuf[9];
 [e = . . _x 0 3 *U + &U . *U _me 2 * -> -> -> 9 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ]
-"193
-[; ;sepos/sepos_RS232.c: 193:     return x.i32;
+"213
+[; ;sepos/sepos_RS232.c: 213:     return x.i32;
 [e ) . _x 1 ]
 [e $UE 3263  ]
-"194
-[; ;sepos/sepos_RS232.c: 194: }
+"214
+[; ;sepos/sepos_RS232.c: 214: }
 [e :UE 3263 ]
 }
-"196
-[; ;sepos/sepos_RS232.c: 196: uint16_t sepos_receive_digitalInput(Sepos* me){
-[v _sepos_receive_digitalInput `(us ~T0 @X0 1 ef1`*S3217 ]
+"216
+[; ;sepos/sepos_RS232.c: 216: uint16_t sepos_receive_digitalInput(Sepos* me){
+[v _sepos_receive_digitalInput `(us ~T0 @X0 1 ef1`*S3211 ]
 {
 [e :U _sepos_receive_digitalInput ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
 [f ]
-"197
-[; ;sepos/sepos_RS232.c: 197:     me->txbuf[0] = 0x60;
-[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
-"198
-[; ;sepos/sepos_RS232.c: 198:     me->txbuf[1] = 0x01;
-[e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
-"199
-[; ;sepos/sepos_RS232.c: 199:     me->txbuf[2] = 0x71;
-[e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 113 `i `uc ]
-"200
-[; ;sepos/sepos_RS232.c: 200:     me->txbuf[3] = 0x20;
-[e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 32 `i `uc ]
-"201
-[; ;sepos/sepos_RS232.c: 201:     me->txbuf[4] = 0x1;
-[e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
-"202
-[; ;sepos/sepos_RS232.c: 202:     me->txbuf[5] = 1;
-[e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
-"204
-[; ;sepos/sepos_RS232.c: 204:     uint8_t length = me->txbuf[1] + 2;
-[v _length `uc ~T0 @X0 1 a ]
-[e = _length -> + -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `i -> 2 `i `uc ]
-"206
-[; ;sepos/sepos_RS232.c: 206:     me->txdata[0] = (uint16_t)(me->txbuf[0]) << (8) | me->txbuf[1];
-[e = *U + &U . *U _me 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"207
-[; ;sepos/sepos_RS232.c: 207:     for (uint8_t i = 1; i < length; i++){
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 1 `i `uc ]
-[e $U 3272  ]
-[e :U 3269 ]
-{
-"208
-[; ;sepos/sepos_RS232.c: 208:         me->txdata[i] = (uint16_t)(me->txbuf[1 + 2 * i]) << (8) | me->txbuf[0 + 2 * i];
-[e = *U + &U . *U _me 1 * -> _i `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> + -> 1 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> + -> 0 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"209
-[; ;sepos/sepos_RS232.c: 209:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 3272 ]
-[e $ < -> _i `i -> _length `i 3269  ]
-[e :U 3270 ]
-}
-"210
-[; ;sepos/sepos_RS232.c: 210:     sepos_send_RS232(me, length);
-[e ( _sepos_send_RS232 (2 , _me _length ]
-"212
-[; ;sepos/sepos_RS232.c: 212:     sepos_receive_RS232(me);
-[e ( _sepos_receive_RS232 (1 _me ]
-"214
-[; ;sepos/sepos_RS232.c: 214:     return me->rxbuf[6] | me->rxbuf[7] << 8;
-[e ) -> | -> *U + &U . *U _me 2 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux `i << -> *U + &U . *U _me 2 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux `i -> 8 `i `us ]
-[e $UE 3268  ]
-"215
-[; ;sepos/sepos_RS232.c: 215: }
-[e :UE 3268 ]
-}
 "217
-[; ;sepos/sepos_RS232.c: 217: uint16_t sepos_receive_statusword(Sepos* me){
-[v _sepos_receive_statusword `(us ~T0 @X0 1 ef1`*S3217 ]
+[; ;sepos/sepos_RS232.c: 217:     me->txbuf[0] = 0x10;
+[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 16 `i `uc ]
+"218
+[; ;sepos/sepos_RS232.c: 218:     me->txbuf[1] = 0x01;
+[e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
+"219
+[; ;sepos/sepos_RS232.c: 219:     me->txbuf[2] = 0x71;
+[e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 113 `i `uc ]
+"220
+[; ;sepos/sepos_RS232.c: 220:     me->txbuf[3] = 0x20;
+[e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 32 `i `uc ]
+"221
+[; ;sepos/sepos_RS232.c: 221:     me->txbuf[4] = 0x1;
+[e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
+"222
+[; ;sepos/sepos_RS232.c: 222:     me->txbuf[5] = 1;
+[e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
+"224
+[; ;sepos/sepos_RS232.c: 224:     sepos_send_RS232(me);
+[e ( _sepos_send_RS232 (1 _me ]
+"226
+[; ;sepos/sepos_RS232.c: 226:     sepos_receive_RS232(me);
+[e ( _sepos_receive_RS232 (1 _me ]
+"228
+[; ;sepos/sepos_RS232.c: 228:     b8to16 x;
+[v _x `S3210 ~T0 @X0 1 a ]
+"229
+[; ;sepos/sepos_RS232.c: 229:     x.b.byte1 = me->rxbuf[6];
+[e = . . _x 0 0 *U + &U . *U _me 2 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ]
+"230
+[; ;sepos/sepos_RS232.c: 230:     x.b.byte2 = me->rxbuf[7];
+[e = . . _x 0 1 *U + &U . *U _me 2 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ]
+"232
+[; ;sepos/sepos_RS232.c: 232:     if(error != 0){
+[e $ ! != -> _error `i -> 0 `i 3265  ]
+{
+"233
+[; ;sepos/sepos_RS232.c: 233:         return error;
+[e ) -> _error `us ]
+[e $UE 3264  ]
+"234
+[; ;sepos/sepos_RS232.c: 234:     }
+}
+[e :U 3265 ]
+"236
+[; ;sepos/sepos_RS232.c: 236:     return x.i16;
+[e ) -> . _x 1 `us ]
+[e $UE 3264  ]
+"237
+[; ;sepos/sepos_RS232.c: 237: }
+[e :UE 3264 ]
+}
+"239
+[; ;sepos/sepos_RS232.c: 239: uint16_t sepos_receive_statusword(Sepos* me){
+[v _sepos_receive_statusword `(us ~T0 @X0 1 ef1`*S3211 ]
 {
 [e :U _sepos_receive_statusword ]
-[v _me `*S3217 ~T0 @X0 1 r1 ]
+[v _me `*S3211 ~T0 @X0 1 r1 ]
 [f ]
-"218
-[; ;sepos/sepos_RS232.c: 218:     me->txbuf[0] = 0x60;
-[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
-"219
-[; ;sepos/sepos_RS232.c: 219:     me->txbuf[1] = 0x01;
+"240
+[; ;sepos/sepos_RS232.c: 240:     me->txbuf[0] = 0x10;
+[e = *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 16 `i `uc ]
+"241
+[; ;sepos/sepos_RS232.c: 241:     me->txbuf[1] = 0x01;
 [e = *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
-"220
-[; ;sepos/sepos_RS232.c: 220:     me->txbuf[2] = 0x41;
+"242
+[; ;sepos/sepos_RS232.c: 242:     me->txbuf[2] = 0x41;
 [e = *U + &U . *U _me 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 65 `i `uc ]
-"221
-[; ;sepos/sepos_RS232.c: 221:     me->txbuf[3] = 0x60;
+"243
+[; ;sepos/sepos_RS232.c: 243:     me->txbuf[3] = 0x60;
 [e = *U + &U . *U _me 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 96 `i `uc ]
-"222
-[; ;sepos/sepos_RS232.c: 222:     me->txbuf[4] = 0x0;
+"244
+[; ;sepos/sepos_RS232.c: 244:     me->txbuf[4] = 0x0;
 [e = *U + &U . *U _me 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 0 `i `uc ]
-"223
-[; ;sepos/sepos_RS232.c: 223:     me->txbuf[5] = 1;
+"245
+[; ;sepos/sepos_RS232.c: 245:     me->txbuf[5] = 1;
 [e = *U + &U . *U _me 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux -> -> 1 `i `uc ]
-"225
-[; ;sepos/sepos_RS232.c: 225:     uint8_t length = me->txbuf[1] + 2;
-[v _length `uc ~T0 @X0 1 a ]
-[e = _length -> + -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `i -> 2 `i `uc ]
-"227
-[; ;sepos/sepos_RS232.c: 227:     me->txdata[0] = (uint16_t)(me->txbuf[0]) << (8) | me->txbuf[1];
-[e = *U + &U . *U _me 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"228
-[; ;sepos/sepos_RS232.c: 228:     for (uint8_t i = 1; i < length; i++){
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 1 `i `uc ]
-[e $U 3277  ]
-[e :U 3274 ]
-{
-"229
-[; ;sepos/sepos_RS232.c: 229:         me->txdata[i] = (uint16_t)(me->txbuf[1 + 2 * i]) << (8) | me->txbuf[0 + 2 * i];
-[e = *U + &U . *U _me 1 * -> _i `ux -> -> # *U &U . *U _me 1 `ui `ux -> | << -> -> *U + &U . *U _me 0 * -> -> + -> 1 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `us `ui -> 8 `i -> *U + &U . *U _me 0 * -> -> + -> 0 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . *U _me 0 `ui `ux `ui `us ]
-"230
-[; ;sepos/sepos_RS232.c: 230:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 3277 ]
-[e $ < -> _i `i -> _length `i 3274  ]
-[e :U 3275 ]
-}
-"231
-[; ;sepos/sepos_RS232.c: 231:     sepos_send_RS232(me, length);
-[e ( _sepos_send_RS232 (2 , _me _length ]
-"233
-[; ;sepos/sepos_RS232.c: 233:     sepos_receive_RS232(me);
+"247
+[; ;sepos/sepos_RS232.c: 247:     sepos_send_RS232(me);
+[e ( _sepos_send_RS232 (1 _me ]
+"249
+[; ;sepos/sepos_RS232.c: 249:     sepos_receive_RS232(me);
 [e ( _sepos_receive_RS232 (1 _me ]
-"235
-[; ;sepos/sepos_RS232.c: 235:     return me->rxbuf[6] | me->rxbuf[7] << 8;
-[e ) -> | -> *U + &U . *U _me 2 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux `i << -> *U + &U . *U _me 2 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux `i -> 8 `i `us ]
-[e $UE 3273  ]
-"236
-[; ;sepos/sepos_RS232.c: 236: }
-[e :UE 3273 ]
+"251
+[; ;sepos/sepos_RS232.c: 251:     b8to16 x;
+[v _x `S3210 ~T0 @X0 1 a ]
+"252
+[; ;sepos/sepos_RS232.c: 252:     x.b.byte1 = me->rxbuf[6];
+[e = . . _x 0 0 *U + &U . *U _me 2 * -> -> -> 6 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ]
+"253
+[; ;sepos/sepos_RS232.c: 253:     x.b.byte2 = me->rxbuf[7];
+[e = . . _x 0 1 *U + &U . *U _me 2 * -> -> -> 7 `i `ui `ux -> -> # *U &U . *U _me 2 `ui `ux ]
+"255
+[; ;sepos/sepos_RS232.c: 255:     if(error != 0){
+[e $ ! != -> _error `i -> 0 `i 3267  ]
+{
+"256
+[; ;sepos/sepos_RS232.c: 256:         return 0xEEEE;
+[e ) -> -> 61166 `ui `us ]
+[e $UE 3266  ]
+"257
+[; ;sepos/sepos_RS232.c: 257:     }
+}
+[e :U 3267 ]
+"258
+[; ;sepos/sepos_RS232.c: 258:     return x.i16;
+[e ) -> . _x 1 `us ]
+[e $UE 3266  ]
+"259
+[; ;sepos/sepos_RS232.c: 259: }
+[e :UE 3266 ]
 }

@@ -3493,23 +3493,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/ecan.c: 87:     convertCANid2Reg(0x000, 1, &RXF0EIDH, &RXF0EIDL, &RXF0SIDH, &RXF0SIDL);
 [e ( _convertCANid2Reg (4 , , , , , -> -> -> 0 `i `l `ul -> -> 1 `i `uc &U _RXF0EIDH &U _RXF0EIDL &U _RXF0SIDH &U _RXF0SIDL ]
 "88
-[; ;mcc_generated_files/ecan.c: 88:     convertCANid2Reg(0x5, 1, &RXF1EIDH, &RXF1EIDL, &RXF1SIDH, &RXF1SIDL);
-[e ( _convertCANid2Reg (4 , , , , , -> -> -> 5 `i `l `ul -> -> 1 `i `uc &U _RXF1EIDH &U _RXF1EIDL &U _RXF1SIDH &U _RXF1SIDL ]
+[; ;mcc_generated_files/ecan.c: 88:     convertCANid2Reg(0x5 << 4, 1, &RXF1EIDH, &RXF1EIDL, &RXF1SIDH, &RXF1SIDL);
+[e ( _convertCANid2Reg (4 , , , , , -> -> << -> 5 `i -> 4 `i `l `ul -> -> 1 `i `uc &U _RXF1EIDH &U _RXF1EIDL &U _RXF1SIDH &U _RXF1SIDL ]
 "91
 [; ;mcc_generated_files/ecan.c: 91:     convertCANid2Reg(0x0F0, 1, &RXM1EIDH, &RXM1EIDL, &RXM1SIDH, &RXM1SIDL);
 [e ( _convertCANid2Reg (4 , , , , , -> -> -> 240 `i `l `ul -> -> 1 `i `uc &U _RXM1EIDH &U _RXM1EIDL &U _RXM1SIDH &U _RXM1SIDL ]
 "93
-[; ;mcc_generated_files/ecan.c: 93:     convertCANid2Reg(0x5, 1, &RXF2EIDH, &RXF2EIDL, &RXF2SIDH, &RXF2SIDL);
-[e ( _convertCANid2Reg (4 , , , , , -> -> -> 5 `i `l `ul -> -> 1 `i `uc &U _RXF2EIDH &U _RXF2EIDL &U _RXF2SIDH &U _RXF2SIDL ]
+[; ;mcc_generated_files/ecan.c: 93:     convertCANid2Reg(0x5 << 4, 1, &RXF2EIDH, &RXF2EIDL, &RXF2SIDH, &RXF2SIDL);
+[e ( _convertCANid2Reg (4 , , , , , -> -> << -> 5 `i -> 4 `i `l `ul -> -> 1 `i `uc &U _RXF2EIDH &U _RXF2EIDL &U _RXF2SIDH &U _RXF2SIDL ]
 "94
-[; ;mcc_generated_files/ecan.c: 94:     convertCANid2Reg(0x5, 1, &RXF3EIDH, &RXF3EIDL, &RXF3SIDH, &RXF3SIDL);
-[e ( _convertCANid2Reg (4 , , , , , -> -> -> 5 `i `l `ul -> -> 1 `i `uc &U _RXF3EIDH &U _RXF3EIDL &U _RXF3SIDH &U _RXF3SIDL ]
+[; ;mcc_generated_files/ecan.c: 94:     convertCANid2Reg(0x5 << 4, 1, &RXF3EIDH, &RXF3EIDL, &RXF3SIDH, &RXF3SIDL);
+[e ( _convertCANid2Reg (4 , , , , , -> -> << -> 5 `i -> 4 `i `l `ul -> -> 1 `i `uc &U _RXF3EIDH &U _RXF3EIDL &U _RXF3SIDH &U _RXF3SIDL ]
 "95
-[; ;mcc_generated_files/ecan.c: 95:     convertCANid2Reg(0x5, 1, &RXF4EIDH, &RXF4EIDL, &RXF4SIDH, &RXF4SIDL);
-[e ( _convertCANid2Reg (4 , , , , , -> -> -> 5 `i `l `ul -> -> 1 `i `uc &U _RXF4EIDH &U _RXF4EIDL &U _RXF4SIDH &U _RXF4SIDL ]
+[; ;mcc_generated_files/ecan.c: 95:     convertCANid2Reg(0x5 << 4, 1, &RXF4EIDH, &RXF4EIDL, &RXF4SIDH, &RXF4SIDL);
+[e ( _convertCANid2Reg (4 , , , , , -> -> << -> 5 `i -> 4 `i `l `ul -> -> 1 `i `uc &U _RXF4EIDH &U _RXF4EIDL &U _RXF4SIDH &U _RXF4SIDL ]
 "96
-[; ;mcc_generated_files/ecan.c: 96:     convertCANid2Reg(0x5, 1, &RXF5EIDH, &RXF5EIDL, &RXF5SIDH, &RXF5SIDL);
-[e ( _convertCANid2Reg (4 , , , , , -> -> -> 5 `i `l `ul -> -> 1 `i `uc &U _RXF5EIDH &U _RXF5EIDL &U _RXF5SIDH &U _RXF5SIDL ]
+[; ;mcc_generated_files/ecan.c: 96:     convertCANid2Reg(0x5 << 4, 1, &RXF5EIDH, &RXF5EIDL, &RXF5SIDH, &RXF5SIDL);
+[e ( _convertCANid2Reg (4 , , , , , -> -> << -> 5 `i -> 4 `i `l `ul -> -> 1 `i `uc &U _RXF5EIDH &U _RXF5EIDL &U _RXF5SIDH &U _RXF5SIDL ]
 "112
 [; ;mcc_generated_files/ecan.c: 112:     BRGCON1 = 0x0F;
 [e = _BRGCON1 -> -> 15 `i `uc ]

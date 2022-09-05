@@ -36804,8 +36804,8 @@ typedef struct Timer_
 # 38 "driveControl/../xf/xf.h"
 typedef struct XF
 {
-    Timer timerList[8];
-    Event eventQueue[12];
+    Timer timerList[12];
+    Event eventQueue[20];
     uint8_t in;
     uint8_t out;
 } XF;
@@ -36831,7 +36831,7 @@ uint8_t POST(void* target, processEventT processEvent, uint8_t id, uint16_t dela
 
 void XF_executeOnce();
 # 17 "driveControl/commControl.h" 2
-# 43 "driveControl/commControl.h"
+# 44 "driveControl/commControl.h"
     typedef struct CanId_ {
         unsigned msgNbr : 4;
         unsigned dest : 3;
@@ -37034,53 +37034,44 @@ uint8_t store_read(Store* me, EEITEMID item);
 void store_write(Store* me, EEITEMID item, uint8_t value);
 # 16 "driveControl/../factory/factory.h" 2
 # 1 "driveControl/../factory/../sepos/sepos_RS232.h" 1
-# 24 "driveControl/../factory/../sepos/sepos_RS232.h"
-typedef struct bits32_
-{
-    unsigned byte1:8;
-    unsigned byte2:8;
-    unsigned byte3:8;
-    unsigned byte4:8;
-}bits32;
+# 22 "driveControl/../factory/../sepos/sepos_RS232.h"
+    typedef struct bits32_ {
+        unsigned byte1 : 8;
+        unsigned byte2 : 8;
+        unsigned byte3 : 8;
+        unsigned byte4 : 8;
+    } bits32;
 
-typedef struct bits16_
-{
-    unsigned byte1:8;
-    unsigned byte2:8;
-}bits16;
+    typedef struct bits16_ {
+        unsigned byte1 : 8;
+        unsigned byte2 : 8;
+    } bits16;
 
-typedef union b8to32_
-{
-    bits32 b;
-    int32_t i32;
-}b8to32;
+    typedef union b8to32_ {
+        bits32 b;
+        int32_t i32;
+    } b8to32;
 
-typedef union b8to16_
-{
-    bits16 b;
-    int16_t i16;
-}b8to16;
+    typedef union b8to16_ {
+        bits16 b;
+        int16_t i16;
+    } b8to16;
 
-typedef struct Sepos_ {
-    uint8_t txbuf[50];
-    uint16_t txdata[25];
-    uint8_t rxbuf[50];
-    uint16_t rxdata[25];
-} Sepos;
+    typedef struct Sepos_ {
+        uint8_t txbuf[50];
+        uint16_t txdata[25];
+        uint8_t rxbuf[50];
+        uint16_t rxdata[25];
+    } Sepos;
 
-void sepos_init(Sepos* me);
 
-void sepos_send_modOfOpp(Sepos* me, int8_t mode);
-
-void sepos_send_controlword(Sepos* me,uint16_t controlword);
-
-void sepos_send_positionValue(Sepos* me,int32_t position);
-
-int32_t sepos_receive_positionValue(Sepos* me);
-
-uint16_t sepos_receive_digitalInput(Sepos* me);
-
-uint16_t sepos_receive_statusword(Sepos* me);
+    void sepos_init(Sepos* me);
+    void sepos_send_modOfOpp(Sepos* me, int8_t mode);
+    void sepos_send_controlword(Sepos* me, uint16_t controlword);
+    void sepos_send_positionValue(Sepos* me, int32_t position);
+    int32_t sepos_receive_positionValue(Sepos* me);
+    uint16_t sepos_receive_digitalInput(Sepos* me);
+    uint16_t sepos_receive_statusword(Sepos* me);
 # 17 "driveControl/../factory/factory.h" 2
 
 
@@ -37163,6 +37154,8 @@ _Bool commControl_processEvent(Event* ev) {
     CommSMState oldCSMState = me->commSM_State;
     AliveSMState oldASMState = me->aliveSM_State;
 
+    uint16_t aliveTM = store_read(st(), EE_ALIVE_TIME);
+
 
 
 
@@ -37192,10 +37185,12 @@ _Bool commControl_processEvent(Event* ev) {
 
                 break;
             case ST_ASMWAIT:
-                POST(me, &commControl_processEvent, evATM, 50, 0);
+                POST(me, &commControl_processEvent, evATM, aliveTM*10, 0);
                 break;
             case ST_ASMALIVE:
+                if(aliveTM != 0){
                 sendAliveFrame(me);
+                }
                 POST(me, &commControl_processEvent, evADefault, 50, 0);
                 break;
             default:
@@ -37260,7 +37255,10 @@ _Bool commControl_processEvent(Event* ev) {
                 }
                 break;
             case ST_CSMSETCENTER:
-                if (Event_getId(ev) == evCDefault) {
+                if (Event_getId(ev) == evGetCenter) {
+                    me->commSM_State = ST_CSMGETCENTER;
+                }
+                else if(Event_getId(ev) == evCDefault) {
                     me->commSM_State = ST_CSMWAIT;
                 }
                 break;
@@ -37279,7 +37277,7 @@ _Bool commControl_processEvent(Event* ev) {
 
                     break;
                 case ST_CSMWAIT:
-                    POST(me, &commControl_processEvent, evCTM, 50, 0);
+                    POST(me, &commControl_processEvent, evCTM, 20, 0);
                     break;
                 case ST_CSMPROCESS:
                     readCANFrame(me, &(me->msg));
@@ -37300,6 +37298,7 @@ _Bool commControl_processEvent(Event* ev) {
                 case ST_CSMSETUP:
                     steeringSetup(me, &(me->msg));
                     POST(me, &commControl_processEvent, evCDefault, 0, 0);
+                    break;
                 case ST_CSMSETCENTER:
                     if(me->msg.frame.rtr == 1){
                         POST(me, &commControl_processEvent, evGetCenter, 0, 0);
@@ -37320,7 +37319,12 @@ _Bool commControl_processEvent(Event* ev) {
     }
     return processed;
 }
-# 214 "driveControl/commControl.c"
+
+
+
+
+
+
 void readCANFrame(CommControl* me, uCAN_MSG* msg) {
     if (CAN_receive(msg) != 0) {
         switch(msg->frame.id){
@@ -37343,6 +37347,7 @@ void readCANFrame(CommControl* me, uCAN_MSG* msg) {
     }
 
 }
+uint8_t toto = 0;
 
 
 
@@ -37350,64 +37355,96 @@ void readCANFrame(CommControl* me, uCAN_MSG* msg) {
 
 
 void steeringSetup(CommControl* me, uCAN_MSG* msg) {
-    uint8_t aliveTime;
-
     uCAN_MSG msgs;
     msgs.frame.idType = 1;
     msgs.frame.id = 0x510;
     msgs.frame.dlc = 2;
     msgs.frame.data0 = 99;
     msgs.frame.data1 = 99;
+    msgs.frame.rtr = 0;
 
 
     if(msg->frame.data0 != 0){
 
+
         sepos_send_controlword(sepos(), 0);
-        _delay((unsigned long)((10)*(64000000/4000.0)));
+        _delay((unsigned long)((200)*(64000000/4000.0)));
+         sepos_send_controlword(sepos(), 0b10000000);
+        _delay((unsigned long)((200)*(64000000/4000.0)));
 
         sepos_send_controlword(sepos(), 6);
-        _delay((unsigned long)((10)*(64000000/4000.0)));
+        _delay((unsigned long)((200)*(64000000/4000.0)));
         sepos_send_controlword(sepos(), 7);
-        _delay((unsigned long)((10)*(64000000/4000.0)));
+        _delay((unsigned long)((1000)*(64000000/4000.0)));
         sepos_send_controlword(sepos(), 15);
 
+        _delay((unsigned long)((800)*(64000000/4000.0)));
     }
+
+
+
     if(msg->frame.data1 != 0){
 
         sepos_send_modOfOpp(sepos(), 6);
-        msgs.frame.data0 = 1;
-        msgs.frame.data1 = 1;
-        CAN_transmit(&msgs);
-        sepos_send_controlword(sepos(), 4);
-        while(sepos_receive_statusword(sepos()) != 0x700 ){
-            _delay((unsigned long)((10)*(64000000/4000.0)));
+        _delay((unsigned long)((600)*(64000000/4000.0)));
+
+
+
+        sepos_send_controlword(sepos(), 31);
+        _delay((unsigned long)((600)*(64000000/4000.0)));
+        while((sepos_receive_statusword(sepos())&0b1000000000000) != 0b1000000000000 ){
+            _delay((unsigned long)((40)*(64000000/4000.0)));
         }
+
+        sepos_send_controlword(sepos(), 15);
+        _delay((unsigned long)((600)*(64000000/4000.0)));
+        sepos_send_modOfOpp(sepos(), -1);
+        _delay((unsigned long)((200)*(64000000/4000.0)));
+
         msgs.frame.data0 = 2;
         msgs.frame.data1 = 0;
-        _delay((unsigned long)((10)*(64000000/4000.0)));
+        _delay((unsigned long)((40)*(64000000/4000.0)));
         CAN_transmit(&msgs);
     }else{
+
         msgs.frame.data0 = 0;
         msgs.frame.data1 = 2;
-        _delay((unsigned long)((10)*(64000000/4000.0)));
+        _delay((unsigned long)((40)*(64000000/4000.0)));
         CAN_transmit(&msgs);
     }
+
+
     if(msg->frame.data2 != 0){
+       _delay((unsigned long)((100)*(64000000/4000.0)));
 
-        sepos_send_positionValue(sepos(), 218000);
-        while(sepos_receive_statusword(sepos()) != 0x200 ){
-            _delay((unsigned long)((10)*(64000000/4000.0)));
-        }
+       uCAN_MSG msgh;
+       msgh.frame.idType = 1;
+       msgh.frame.id = 0x511;
+       msgh.frame.dlc = 4;
+
+       msgh.frame.data0 = store_read(st(), EE_CENTER_HH);
+       msgh.frame.data1 = store_read(st(), EE_CENTER_H);
+       msgh.frame.data2 = store_read(st(), EE_CENTER_L);
+       msgh.frame.data3 = store_read(st(), EE_CENTER_LL);
+
+       msgh.frame.rtr = 0;
+
+       CAN_transmit(&msgh);
+
+       _delay((unsigned long)((200)*(64000000/4000.0)));
+
+       uint32_t position;
+       position = (((uint32_t)store_read(st(), EE_CENTER_HH))<<24) + (((uint32_t)store_read(st(), EE_CENTER_H))<<16)
+               + ((uint32_t)store_read(st(), EE_CENTER_L)<<8) + (uint32_t)store_read(st(), EE_CENTER_LL);
+
+       sepos_send_positionValue(sepos(), position);
+
+       _delay((unsigned long)((500)*(64000000/4000.0)));
+# 349 "driveControl/commControl.c"
     }
-    aliveTime = msg->frame.data3;
 
+    store_write(st(), EE_ALIVE_TIME, msg->frame.data3);
 
-
-    store_write(st(), EE_ALIVE_TIME, aliveTime);
-    if(aliveTime != 0){
-
-        sendAliveFrame(me);
-    }
 }
 
 
@@ -37417,20 +37454,20 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
 void sendAliveFrame(CommControl* me) {
 
 
+    uint16_t statusWord = sepos_receive_statusword(sepos());
+    uint8_t statusWordL = (uint8_t) statusWord;
+    uint8_t statusWordH = ((uint8_t) statusWord) >> 8;
 
-
-
-
-    uCAN_MSG msg;
     if(store_read(st(), EE_ALIVE_TIME) > 0){
-        msg.frame.id = 0x51F;
-        msg.frame.dlc = 2;
+        me->msg.frame.id = 0x51F;
+        me->msg.frame.dlc = 2;
+        me->msg.frame.data0 = statusWordH;
+        me->msg.frame.data1 = statusWordL;
 
 
 
-        msg.frame.data0 = 0xaa;
-        msg.frame.data1 = 0xbb;
-        CAN_transmit(&msg);
+        me->msg.frame.rtr = 0;
+        CAN_transmit(&(me->msg));
     }
 }
 
@@ -37440,36 +37477,34 @@ void sendAliveFrame(CommControl* me) {
 
 
 void setCenter(CommControl* me, uCAN_MSG* msg){
-    uint32_t position;
-    position = (((uint32_t)msg->frame.data0)<<24) + (((uint32_t)msg->frame.data1)<<16) + ((uint32_t)(msg->frame.data2)<<8) + (uint32_t)(msg->frame.data3);
+
+
+
 
     store_write(st(), EE_CENTER_LL, msg->frame.data3);
     store_write(st(), EE_CENTER_L, msg->frame.data2);
     store_write(st(), EE_CENTER_H, msg->frame.data1);
     store_write(st(), EE_CENTER_HH, msg->frame.data0);
-
-
-
-
-
-
+# 404 "driveControl/commControl.c"
 }
 
 
 
 
 void getCenterFrame(CommControl* me){
-    uCAN_MSG msg;
-    msg.frame.idType = 1;
-    msg.frame.id = 0x511;
-    msg.frame.dlc = 4;
+    uCAN_MSG msgs;
+    msgs.frame.idType = 1;
+    msgs.frame.id = 0x511;
+    msgs.frame.dlc = 4;
 
-    msg.frame.data0 = store_read(st(), EE_CENTER_HH);
-    msg.frame.data1 = store_read(st(), EE_CENTER_H);
-    msg.frame.data2 = store_read(st(), EE_CENTER_L);
-    msg.frame.data3 = store_read(st(), EE_CENTER_LL);
+    msgs.frame.data0 = store_read(st(), EE_CENTER_HH);
+    msgs.frame.data1 = store_read(st(), EE_CENTER_H);
+    msgs.frame.data2 = store_read(st(), EE_CENTER_L);
+    msgs.frame.data3 = store_read(st(), EE_CENTER_LL);
 
-    msg.frame.rtr = 0;
+    msgs.frame.rtr = 0;
+
+    CAN_transmit(&msgs);
 }
 
 
@@ -37481,10 +37516,9 @@ void setPosition(CommControl* me, uCAN_MSG* msg) {
 
     uint32_t position;
     position = (((uint32_t)msg->frame.data0)<<24) + (((uint32_t)msg->frame.data1)<<16) + ((uint32_t)(msg->frame.data2)<<8) + (uint32_t)(msg->frame.data3);
+
     sepos_send_positionValue(sepos(), position);
-    while(sepos_receive_statusword(sepos()) != 0x200 ){
-            _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
+
 }
 
 
@@ -37499,9 +37533,9 @@ void getPositionFrame(CommControl* me) {
     msg.frame.id = 0x512;
     msg.frame.dlc = 4;
     msg.frame.data3 = (uint8_t)(position);
-    msg.frame.data2 = (uint8_t)(position<<8);
-    msg.frame.data1 = (uint8_t)(position<<16);
-    msg.frame.data0 = (uint8_t)(position<<24);
+    msg.frame.data2 = (uint8_t)(position>>8);
+    msg.frame.data1 = (uint8_t)(position>>16);
+    msg.frame.data0 = (uint8_t)(position>>24);
     msg.frame.rtr = 0;
     CAN_transmit(&msg);
 }

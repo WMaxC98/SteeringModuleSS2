@@ -7,10 +7,10 @@ void store_init(Store* me) {
         // those are random values that will be changed when receiving
         // the SETUP frame from the CONTROL MODULE
         DATAEE_WriteByte(EE_ALIVE_TIME, 10); // alive each 100ms
-        DATAEE_WriteByte(EE_CENTER_LL, 5); // speed each 50ms
-        DATAEE_WriteByte(EE_CENTER_L, 5); // speed each 50ms
-        DATAEE_WriteByte(EE_CENTER_H, 5); // speed each 50ms
-        DATAEE_WriteByte(EE_CENTER_HH, 5); // speed each 50ms
+        DATAEE_WriteByte(EE_CENTER_LL, 0x90); // speed each 50ms
+        DATAEE_WriteByte(EE_CENTER_L, 0x53); // speed each 50ms
+        DATAEE_WriteByte(EE_CENTER_H, 0x03); // speed each 50ms
+        DATAEE_WriteByte(EE_CENTER_HH, 0x00); // speed each 50ms
         
         
     }

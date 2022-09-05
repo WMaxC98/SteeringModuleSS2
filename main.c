@@ -9,6 +9,8 @@ void main(void)
 {
     // Initialize the device
     SYSTEM_Initialize();
+    //necessary for the store initialization
+    __delay_ms(1000);
     
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();

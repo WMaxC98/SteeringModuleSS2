@@ -36804,8 +36804,8 @@ typedef struct Timer_
 # 38 "app/../xf/xf.h"
 typedef struct XF
 {
-    Timer timerList[8];
-    Event eventQueue[12];
+    Timer timerList[12];
+    Event eventQueue[20];
     uint8_t in;
     uint8_t out;
 } XF;
@@ -36945,7 +36945,7 @@ void LED_setState(LED* me,uint8_t state);
 
 
 # 1 "app/../factory/../driveControl/commControl.h" 1
-# 43 "app/../factory/../driveControl/commControl.h"
+# 44 "app/../factory/../driveControl/commControl.h"
     typedef struct CanId_ {
         unsigned msgNbr : 4;
         unsigned dest : 3;
@@ -37041,53 +37041,44 @@ uint8_t store_read(Store* me, EEITEMID item);
 void store_write(Store* me, EEITEMID item, uint8_t value);
 # 16 "app/../factory/factory.h" 2
 # 1 "app/../factory/../sepos/sepos_RS232.h" 1
-# 24 "app/../factory/../sepos/sepos_RS232.h"
-typedef struct bits32_
-{
-    unsigned byte1:8;
-    unsigned byte2:8;
-    unsigned byte3:8;
-    unsigned byte4:8;
-}bits32;
+# 22 "app/../factory/../sepos/sepos_RS232.h"
+    typedef struct bits32_ {
+        unsigned byte1 : 8;
+        unsigned byte2 : 8;
+        unsigned byte3 : 8;
+        unsigned byte4 : 8;
+    } bits32;
 
-typedef struct bits16_
-{
-    unsigned byte1:8;
-    unsigned byte2:8;
-}bits16;
+    typedef struct bits16_ {
+        unsigned byte1 : 8;
+        unsigned byte2 : 8;
+    } bits16;
 
-typedef union b8to32_
-{
-    bits32 b;
-    int32_t i32;
-}b8to32;
+    typedef union b8to32_ {
+        bits32 b;
+        int32_t i32;
+    } b8to32;
 
-typedef union b8to16_
-{
-    bits16 b;
-    int16_t i16;
-}b8to16;
+    typedef union b8to16_ {
+        bits16 b;
+        int16_t i16;
+    } b8to16;
 
-typedef struct Sepos_ {
-    uint8_t txbuf[50];
-    uint16_t txdata[25];
-    uint8_t rxbuf[50];
-    uint16_t rxdata[25];
-} Sepos;
+    typedef struct Sepos_ {
+        uint8_t txbuf[50];
+        uint16_t txdata[25];
+        uint8_t rxbuf[50];
+        uint16_t rxdata[25];
+    } Sepos;
 
-void sepos_init(Sepos* me);
 
-void sepos_send_modOfOpp(Sepos* me, int8_t mode);
-
-void sepos_send_controlword(Sepos* me,uint16_t controlword);
-
-void sepos_send_positionValue(Sepos* me,int32_t position);
-
-int32_t sepos_receive_positionValue(Sepos* me);
-
-uint16_t sepos_receive_digitalInput(Sepos* me);
-
-uint16_t sepos_receive_statusword(Sepos* me);
+    void sepos_init(Sepos* me);
+    void sepos_send_modOfOpp(Sepos* me, int8_t mode);
+    void sepos_send_controlword(Sepos* me, uint16_t controlword);
+    void sepos_send_positionValue(Sepos* me, int32_t position);
+    int32_t sepos_receive_positionValue(Sepos* me);
+    uint16_t sepos_receive_digitalInput(Sepos* me);
+    uint16_t sepos_receive_statusword(Sepos* me);
 # 17 "app/../factory/factory.h" 2
 
 

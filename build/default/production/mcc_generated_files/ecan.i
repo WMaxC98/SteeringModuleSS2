@@ -36805,8 +36805,8 @@ typedef struct Timer_
 # 38 "mcc_generated_files/../driveControl/../xf/xf.h"
 typedef struct XF
 {
-    Timer timerList[8];
-    Event eventQueue[12];
+    Timer timerList[12];
+    Event eventQueue[20];
     uint8_t in;
     uint8_t out;
 } XF;
@@ -36832,7 +36832,7 @@ uint8_t POST(void* target, processEventT processEvent, uint8_t id, uint16_t dela
 
 void XF_executeOnce();
 # 17 "mcc_generated_files/../driveControl/commControl.h" 2
-# 43 "mcc_generated_files/../driveControl/commControl.h"
+# 44 "mcc_generated_files/../driveControl/commControl.h"
     typedef struct CanId_ {
         unsigned msgNbr : 4;
         unsigned dest : 3;
@@ -36933,15 +36933,15 @@ void ECAN_Initialize(void)
     convertCANid2Reg(0x0F0, 1, &RXM0EIDH, &RXM0EIDL, &RXM0SIDH, &RXM0SIDL);
 
     convertCANid2Reg(0x000, 1, &RXF0EIDH, &RXF0EIDL, &RXF0SIDH, &RXF0SIDL);
-    convertCANid2Reg(0x5, 1, &RXF1EIDH, &RXF1EIDL, &RXF1SIDH, &RXF1SIDL);
+    convertCANid2Reg(0x5 << 4, 1, &RXF1EIDH, &RXF1EIDL, &RXF1SIDH, &RXF1SIDL);
 
 
     convertCANid2Reg(0x0F0, 1, &RXM1EIDH, &RXM1EIDL, &RXM1SIDH, &RXM1SIDL);
 
-    convertCANid2Reg(0x5, 1, &RXF2EIDH, &RXF2EIDL, &RXF2SIDH, &RXF2SIDL);
-    convertCANid2Reg(0x5, 1, &RXF3EIDH, &RXF3EIDL, &RXF3SIDH, &RXF3SIDL);
-    convertCANid2Reg(0x5, 1, &RXF4EIDH, &RXF4EIDL, &RXF4SIDH, &RXF4SIDL);
-    convertCANid2Reg(0x5, 1, &RXF5EIDH, &RXF5EIDL, &RXF5SIDH, &RXF5SIDL);
+    convertCANid2Reg(0x5 << 4, 1, &RXF2EIDH, &RXF2EIDL, &RXF2SIDH, &RXF2SIDL);
+    convertCANid2Reg(0x5 << 4, 1, &RXF3EIDH, &RXF3EIDL, &RXF3SIDH, &RXF3SIDL);
+    convertCANid2Reg(0x5 << 4, 1, &RXF4EIDH, &RXF4EIDL, &RXF4SIDH, &RXF4SIDL);
+    convertCANid2Reg(0x5 << 4, 1, &RXF5EIDH, &RXF5EIDL, &RXF5SIDH, &RXF5SIDL);
 # 112 "mcc_generated_files/ecan.c"
     BRGCON1 = 0x0F;
     BRGCON2 = 0x98;

@@ -36804,8 +36804,8 @@ typedef struct Timer_
 # 38 "board/button/../../xf/xf.h"
 typedef struct XF
 {
-    Timer timerList[8];
-    Event eventQueue[12];
+    Timer timerList[12];
+    Event eventQueue[20];
     uint8_t in;
     uint8_t out;
 } XF;

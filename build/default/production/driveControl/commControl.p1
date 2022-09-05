@@ -13,7 +13,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;driveControl/../mcc_generated_files/ecan.h: 62: typedef union {
 [u S3211 `S3212 1 `uc -> 15 `i ]
 [n S3211 . frame array ]
-"103 driveControl/../factory/../driveControl/commControl.h
+"104 driveControl/../factory/../driveControl/commControl.h
 [s S3220 `E23113 1 `E23123 1 `S3211 1 ]
 [n S3220 CommControl_ commSM_State aliveSM_State msg ]
 [v F23025 `(a ~T0 @X0 0 tf1`*S3214 ]
@@ -24,12 +24,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v F23090 `(a ~T0 @X0 0 tf1`*S3214 ]
 "80 driveControl/../factory/../app/../xf/xf.h
 [v _POST `(uc ~T0 @X0 0 ef5`*v`*F23090`uc`us`o ]
-"114 driveControl/../factory/../driveControl/commControl.h
+"115 driveControl/../factory/../driveControl/commControl.h
 [v _commControl_processEvent `(a ~T0 @X0 0 ef1`*S3214 ]
 "33 driveControl/commControl.c
 [; ;driveControl/commControl.c: 33:     POST(me, &commControl_processEvent, evAInit, 0, 0);
 [c E23128 40 41 42 43 44 45 46 47 48 49 .. ]
 [n E23128 CommEvents_ evCInit evCTM evCMsg evCSetup evCDefault evGetSteering evGetCenter evAInit evATM evADefault  ]
+"30 driveControl/../factory/../driveControl/store.h
+[; ;driveControl/../factory/../driveControl/store.h: 30: typedef struct Store_ {
+[s S3225 `uc -> 5 `i ]
+[n S3225 Store_ eeValues ]
+"49 driveControl/commControl.c
+[; ;driveControl/commControl.c: 49:     uint16_t aliveTM = store_read(st(), EE_ALIVE_TIME);
+[c E23238 0 1 2 3 4 5 .. ]
+[n E23238 EEITEMID_ EE_INIT EE_ALIVE_TIME EE_CENTER_LL EE_CENTER_L EE_CENTER_H EE_CENTER_HH  ]
+"36 driveControl/../factory/../driveControl/store.h
+[; ;driveControl/../factory/../driveControl/store.h: 36: uint8_t store_read(Store* me, EEITEMID item);
+[v _store_read `(uc ~T0 @X0 0 ef2`*S3225`E23238 ]
+"48 driveControl/../factory/factory.h
+[; ;driveControl/../factory/factory.h: 48: Store* st();
+[v _st `(*S3225 ~T0 @X0 0 e? ]
 "29 driveControl/../xf/event.h
 [; ;driveControl/../xf/event.h: 29: evIDT Event_getId(Event* me);
 [v _Event_getId `(uc ~T0 @X0 0 ef1`*S3214 ]
@@ -60,10 +74,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "181 driveControl/../mcc_generated_files/ecan.h
 [; ;driveControl/../mcc_generated_files/ecan.h: 181: uint8_t CAN_receive(uCAN_MSG *tempCanMsg);
 [v _CAN_receive `(uc ~T0 @X0 0 ef1`*S3211 ]
-"50 driveControl/../sepos/sepos_RS232.h
+"44 driveControl/../sepos/sepos_RS232.h
 [s S3230 `uc -> 50 `i `us -> 25 `i `uc -> 50 `i `us -> 25 `i ]
 [n S3230 Sepos_ txbuf txdata rxbuf rxdata ]
-"61
+"54
 [v _sepos_send_controlword `(v ~T0 @X0 0 ef2`*S3230`us ]
 "49 driveControl/../factory/factory.h
 [; ;driveControl/../factory/factory.h: 49: Sepos* sepos();
@@ -72,33 +86,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "203 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\pic18.h
 [v __delay `JF22596 ~T0 @X0 0 e ]
 [p i __delay ]
-"59 driveControl/../sepos/sepos_RS232.h
+"53 driveControl/../sepos/sepos_RS232.h
 [v _sepos_send_modOfOpp `(v ~T0 @X0 0 ef2`*S3230`c ]
+"58
+[v _sepos_receive_statusword `(us ~T0 @X0 0 ef1`*S3230 ]
 "157 driveControl/../mcc_generated_files/ecan.h
 [; ;driveControl/../mcc_generated_files/ecan.h: 157: uint8_t CAN_transmit(uCAN_MSG *tempCanMsg);
 [v _CAN_transmit `(uc ~T0 @X0 0 ef1`*S3211 ]
-"69 driveControl/../sepos/sepos_RS232.h
-[v _sepos_receive_statusword `(us ~T0 @X0 0 ef1`*S3230 ]
-"63
+"55 driveControl/../sepos/sepos_RS232.h
 [v _sepos_send_positionValue `(v ~T0 @X0 0 ef2`*S3230`l ]
-"30 driveControl/../factory/../driveControl/store.h
-[; ;driveControl/../factory/../driveControl/store.h: 30: typedef struct Store_ {
-[s S3225 `uc -> 5 `i ]
-[n S3225 Store_ eeValues ]
-"296 driveControl/commControl.c
-[; ;driveControl/commControl.c: 296:     store_write(st(), EE_ALIVE_TIME, aliveTime);
-[c E23238 0 1 2 3 4 5 .. ]
-[n E23238 EEITEMID_ EE_INIT EE_ALIVE_TIME EE_CENTER_LL EE_CENTER_L EE_CENTER_H EE_CENTER_HH  ]
 "37 driveControl/../factory/../driveControl/store.h
 [; ;driveControl/../factory/../driveControl/store.h: 37: void store_write(Store* me, EEITEMID item, uint8_t value);
 [v _store_write `(v ~T0 @X0 0 ef3`*S3225`E23238`uc ]
-"48 driveControl/../factory/factory.h
-[; ;driveControl/../factory/factory.h: 48: Store* st();
-[v _st `(*S3225 ~T0 @X0 0 e? ]
-"36 driveControl/../factory/../driveControl/store.h
-[; ;driveControl/../factory/../driveControl/store.h: 36: uint8_t store_read(Store* me, EEITEMID item);
-[v _store_read `(uc ~T0 @X0 0 ef2`*S3225`E23238 ]
-"65 driveControl/../sepos/sepos_RS232.h
+"56 driveControl/../sepos/sepos_RS232.h
 [v _sepos_receive_positionValue `(l ~T0 @X0 0 ef1`*S3230 ]
 "272 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k83.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\pic\include\proc\pic18f26k83.h: 272: __asm("CIOCON equ 03700h");
@@ -3187,69 +3187,73 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;driveControl/commControl.c: 47:     AliveSMState oldASMState = me->aliveSM_State;
 [v _oldASMState `E23123 ~T0 @X0 1 a ]
 [e = _oldASMState . *U _me 1 ]
-"52
-[; ;driveControl/commControl.c: 52:     switch (me->aliveSM_State) {
+"49
+[; ;driveControl/commControl.c: 49:     uint16_t aliveTM = store_read(st(), EE_ALIVE_TIME);
+[v _aliveTM `us ~T0 @X0 1 a ]
+[e = _aliveTM -> ( _store_read (2 , ( _st ..  . `E23238 1 `us ]
+"54
+[; ;driveControl/commControl.c: 54:     switch (me->aliveSM_State) {
 [e $U 3236  ]
 {
-"53
-[; ;driveControl/commControl.c: 53:         case ST_ASMINIT:
+"55
+[; ;driveControl/commControl.c: 55:         case ST_ASMINIT:
 [e :U 3237 ]
-"54
-[; ;driveControl/commControl.c: 54:             if (Event_getId(ev) == evAInit) {
+"56
+[; ;driveControl/commControl.c: 56:             if (Event_getId(ev) == evAInit) {
 [e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 7 `i 3238  ]
 {
-"55
-[; ;driveControl/commControl.c: 55:                 me->aliveSM_State = ST_ASMWAIT;
+"57
+[; ;driveControl/commControl.c: 57:                 me->aliveSM_State = ST_ASMWAIT;
 [e = . *U _me 1 . `E23123 1 ]
-"56
-[; ;driveControl/commControl.c: 56:             }
+"58
+[; ;driveControl/commControl.c: 58:             }
 }
 [e :U 3238 ]
-"57
-[; ;driveControl/commControl.c: 57:             break;
-[e $U 3235  ]
-"58
-[; ;driveControl/commControl.c: 58:         case ST_ASMWAIT:
-[e :U 3239 ]
 "59
-[; ;driveControl/commControl.c: 59:             if (Event_getId(ev) == evATM) {
+[; ;driveControl/commControl.c: 59:             break;
+[e $U 3235  ]
+"60
+[; ;driveControl/commControl.c: 60:         case ST_ASMWAIT:
+[e :U 3239 ]
+"61
+[; ;driveControl/commControl.c: 61:             if (Event_getId(ev) == evATM) {
 [e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 8 `i 3240  ]
 {
-"60
-[; ;driveControl/commControl.c: 60:                 me->aliveSM_State = ST_ASMALIVE;
+"62
+[; ;driveControl/commControl.c: 62:                 me->aliveSM_State = ST_ASMALIVE;
 [e = . *U _me 1 . `E23123 2 ]
-"61
-[; ;driveControl/commControl.c: 61:             }
+"63
+[; ;driveControl/commControl.c: 63:             }
 }
 [e :U 3240 ]
-"62
-[; ;driveControl/commControl.c: 62:             break;
-[e $U 3235  ]
-"63
-[; ;driveControl/commControl.c: 63:         case ST_ASMALIVE:
-[e :U 3241 ]
 "64
-[; ;driveControl/commControl.c: 64:             if (Event_getId(ev) == evADefault) {
+[; ;driveControl/commControl.c: 64:             break;
+[e $U 3235  ]
+"65
+[; ;driveControl/commControl.c: 65:         case ST_ASMALIVE:
+[e :U 3241 ]
+"66
+[; ;driveControl/commControl.c: 66:             if (Event_getId(ev) == evADefault) {
 [e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 9 `i 3242  ]
 {
-"65
-[; ;driveControl/commControl.c: 65:                 me->aliveSM_State = ST_ASMWAIT;
+"67
+[; ;driveControl/commControl.c: 67:                 me->aliveSM_State = ST_ASMWAIT;
 [e = . *U _me 1 . `E23123 1 ]
-"66
-[; ;driveControl/commControl.c: 66:             }
+"68
+[; ;driveControl/commControl.c: 68:             }
 }
 [e :U 3242 ]
-"67
-[; ;driveControl/commControl.c: 67:             break;
-[e $U 3235  ]
-"68
-[; ;driveControl/commControl.c: 68:         default:
-[e :U 3243 ]
 "69
 [; ;driveControl/commControl.c: 69:             break;
 [e $U 3235  ]
 "70
-[; ;driveControl/commControl.c: 70:     }
+[; ;driveControl/commControl.c: 70:         default:
+[e :U 3243 ]
+"71
+[; ;driveControl/commControl.c: 71:             break;
+[e $U 3235  ]
+"72
+[; ;driveControl/commControl.c: 72:     }
 }
 [e $U 3235  ]
 [e :U 3236 ]
@@ -3258,913 +3262,969 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E23123 2 `ui 3241
  3243 ]
 [e :U 3235 ]
-"71
-[; ;driveControl/commControl.c: 71:     if (oldASMState != me->aliveSM_State) {
+"73
+[; ;driveControl/commControl.c: 73:     if (oldASMState != me->aliveSM_State) {
 [e $ ! != -> _oldASMState `ui -> . *U _me 1 `ui 3244  ]
 {
-"72
-[; ;driveControl/commControl.c: 72:         processed = 1;
+"74
+[; ;driveControl/commControl.c: 74:         processed = 1;
 [e = _processed -> -> 1 `i `a ]
-"73
-[; ;driveControl/commControl.c: 73:         switch (me->aliveSM_State) {
+"75
+[; ;driveControl/commControl.c: 75:         switch (me->aliveSM_State) {
 [e $U 3246  ]
 {
-"74
-[; ;driveControl/commControl.c: 74:             case ST_ASMINIT:
-[e :U 3247 ]
 "76
-[; ;driveControl/commControl.c: 76:                 break;
-[e $U 3245  ]
-"77
-[; ;driveControl/commControl.c: 77:             case ST_ASMWAIT:
-[e :U 3248 ]
+[; ;driveControl/commControl.c: 76:             case ST_ASMINIT:
+[e :U 3247 ]
 "78
-[; ;driveControl/commControl.c: 78:                 POST(me, &commControl_processEvent, evATM, 50, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 8 `uc -> -> 50 `i `us -> -> 0 `i `o ]
+[; ;driveControl/commControl.c: 78:                 break;
+[e $U 3245  ]
 "79
-[; ;driveControl/commControl.c: 79:                 break;
-[e $U 3245  ]
+[; ;driveControl/commControl.c: 79:             case ST_ASMWAIT:
+[e :U 3248 ]
 "80
-[; ;driveControl/commControl.c: 80:             case ST_ASMALIVE:
-[e :U 3249 ]
+[; ;driveControl/commControl.c: 80:                 POST(me, &commControl_processEvent, evATM, aliveTM*10, 0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 8 `uc -> * -> _aliveTM `ui -> -> 10 `i `ui `us -> -> 0 `i `o ]
 "81
-[; ;driveControl/commControl.c: 81:                 sendAliveFrame(me);
-[e ( _sendAliveFrame (1 _me ]
+[; ;driveControl/commControl.c: 81:                 break;
+[e $U 3245  ]
 "82
-[; ;driveControl/commControl.c: 82:                 POST(me, &commControl_processEvent, evADefault, 50, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 9 `uc -> -> 50 `i `us -> -> 0 `i `o ]
+[; ;driveControl/commControl.c: 82:             case ST_ASMALIVE:
+[e :U 3249 ]
 "83
-[; ;driveControl/commControl.c: 83:                 break;
-[e $U 3245  ]
+[; ;driveControl/commControl.c: 83:                 if(aliveTM != 0){
+[e $ ! != -> _aliveTM `ui -> -> 0 `i `ui 3250  ]
+{
 "84
-[; ;driveControl/commControl.c: 84:             default:
-[e :U 3250 ]
+[; ;driveControl/commControl.c: 84:                 sendAliveFrame(me);
+[e ( _sendAliveFrame (1 _me ]
 "85
-[; ;driveControl/commControl.c: 85:                 break;
-[e $U 3245  ]
+[; ;driveControl/commControl.c: 85:                 }
+}
+[e :U 3250 ]
 "86
-[; ;driveControl/commControl.c: 86:         }
+[; ;driveControl/commControl.c: 86:                 POST(me, &commControl_processEvent, evADefault, 50, 0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 9 `uc -> -> 50 `i `us -> -> 0 `i `o ]
+"87
+[; ;driveControl/commControl.c: 87:                 break;
+[e $U 3245  ]
+"88
+[; ;driveControl/commControl.c: 88:             default:
+[e :U 3251 ]
+"89
+[; ;driveControl/commControl.c: 89:                 break;
+[e $U 3245  ]
+"90
+[; ;driveControl/commControl.c: 90:         }
 }
 [e $U 3245  ]
 [e :U 3246 ]
 [e [\ -> . *U _me 1 `ui , $ -> . `E23123 0 `ui 3247
  , $ -> . `E23123 1 `ui 3248
  , $ -> . `E23123 2 `ui 3249
- 3250 ]
+ 3251 ]
 [e :U 3245 ]
-"87
-[; ;driveControl/commControl.c: 87:     }
+"91
+[; ;driveControl/commControl.c: 91:     }
 }
 [e :U 3244 ]
-"92
-[; ;driveControl/commControl.c: 92:     if (processed == 0)
-[e $ ! == -> _processed `i -> 0 `i 3251  ]
-"93
-[; ;driveControl/commControl.c: 93:     {
-{
-"94
-[; ;driveControl/commControl.c: 94:         switch (me->commSM_State) {
-[e $U 3253  ]
-{
-"95
-[; ;driveControl/commControl.c: 95:             case ST_CSMINIT:
-[e :U 3254 ]
 "96
-[; ;driveControl/commControl.c: 96:                 if (Event_getId(ev) == evCInit) {
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 0 `i 3255  ]
-{
+[; ;driveControl/commControl.c: 96:     if (processed == 0)
+[e $ ! == -> _processed `i -> 0 `i 3252  ]
 "97
-[; ;driveControl/commControl.c: 97:                     me->commSM_State = ST_CSMWAIT;
-[e = . *U _me 0 . `E23113 2 ]
+[; ;driveControl/commControl.c: 97:     {
+{
 "98
-[; ;driveControl/commControl.c: 98:                 }
-}
-[e :U 3255 ]
+[; ;driveControl/commControl.c: 98:         switch (me->commSM_State) {
+[e $U 3254  ]
+{
 "99
-[; ;driveControl/commControl.c: 99:                 break;
-[e $U 3252  ]
+[; ;driveControl/commControl.c: 99:             case ST_CSMINIT:
+[e :U 3255 ]
 "100
-[; ;driveControl/commControl.c: 100:             case ST_CSMWAIT:
-[e :U 3256 ]
+[; ;driveControl/commControl.c: 100:                 if (Event_getId(ev) == evCInit) {
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 0 `i 3256  ]
+{
 "101
-[; ;driveControl/commControl.c: 101:                 if (Event_getId(ev) == evCTM) {
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 1 `i 3257  ]
-{
+[; ;driveControl/commControl.c: 101:                     me->commSM_State = ST_CSMWAIT;
+[e = . *U _me 0 . `E23113 2 ]
 "102
-[; ;driveControl/commControl.c: 102:                     me->commSM_State = ST_CSMPROCESS;
-[e = . *U _me 0 . `E23113 3 ]
+[; ;driveControl/commControl.c: 102:                 }
+}
+[e :U 3256 ]
 "103
-[; ;driveControl/commControl.c: 103:                 }
-}
-[e :U 3257 ]
+[; ;driveControl/commControl.c: 103:                 break;
+[e $U 3253  ]
 "104
-[; ;driveControl/commControl.c: 104:                 break;
-[e $U 3252  ]
+[; ;driveControl/commControl.c: 104:             case ST_CSMWAIT:
+[e :U 3257 ]
 "105
-[; ;driveControl/commControl.c: 105:             case ST_CSMPROCESS:
-[e :U 3258 ]
+[; ;driveControl/commControl.c: 105:                 if (Event_getId(ev) == evCTM) {
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 1 `i 3258  ]
+{
 "106
-[; ;driveControl/commControl.c: 106:                 if (Event_getId(ev) == evCMsg) {
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 2 `i 3259  ]
-{
+[; ;driveControl/commControl.c: 106:                     me->commSM_State = ST_CSMPROCESS;
+[e = . *U _me 0 . `E23113 3 ]
+"107
+[; ;driveControl/commControl.c: 107:                 }
+}
+[e :U 3258 ]
 "108
-[; ;driveControl/commControl.c: 108:                     switch (Event_getData(ev)) {
-[e $U 3261  ]
-{
+[; ;driveControl/commControl.c: 108:                 break;
+[e $U 3253  ]
 "109
-[; ;driveControl/commControl.c: 109:                         case 0x150:
-[e :U 3262 ]
-"110
-[; ;driveControl/commControl.c: 110:                             me->commSM_State = ST_CSMSETUP;
-[e = . *U _me 0 . `E23113 1 ]
-"111
-[; ;driveControl/commControl.c: 111:                             break;
-[e $U 3260  ]
-"112
-[; ;driveControl/commControl.c: 112:                         case 0x151:
-[e :U 3263 ]
-"113
-[; ;driveControl/commControl.c: 113:                             me->commSM_State = ST_CSMSET;
-[e = . *U _me 0 . `E23113 4 ]
-"114
-[; ;driveControl/commControl.c: 114:                             break;
-[e $U 3260  ]
-"115
-[; ;driveControl/commControl.c: 115:                         case 0x052:
-[e :U 3264 ]
-"116
-[; ;driveControl/commControl.c: 116:                             me->commSM_State = ST_CSMSETCENTER;
-[e = . *U _me 0 . `E23113 6 ]
-"117
-[; ;driveControl/commControl.c: 117:                             break;
-[e $U 3260  ]
-"118
-[; ;driveControl/commControl.c: 118:                         default:
-[e :U 3265 ]
-"119
-[; ;driveControl/commControl.c: 119:                             me->commSM_State = ST_CSMWAIT;
-[e = . *U _me 0 . `E23113 2 ]
-"120
-[; ;driveControl/commControl.c: 120:                             break;
-[e $U 3260  ]
-"121
-[; ;driveControl/commControl.c: 121:                     }
-}
-[e $U 3260  ]
-[e :U 3261 ]
-[e [\ ( _Event_getData (1 _ev , $ -> -> 336 `i `o 3262
- , $ -> -> 337 `i `o 3263
- , $ -> -> 82 `i `o 3264
- 3265 ]
-[e :U 3260 ]
-"122
-[; ;driveControl/commControl.c: 122:                 }
-}
-[e $U 3266  ]
-"123
-[; ;driveControl/commControl.c: 123:                 else if (Event_getId(ev) == evCDefault){
+[; ;driveControl/commControl.c: 109:             case ST_CSMPROCESS:
 [e :U 3259 ]
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3267  ]
+"110
+[; ;driveControl/commControl.c: 110:                 if (Event_getId(ev) == evCMsg) {
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 2 `i 3260  ]
 {
-"124
-[; ;driveControl/commControl.c: 124:                     me->commSM_State = ST_CSMWAIT;
-[e = . *U _me 0 . `E23113 2 ]
-"125
-[; ;driveControl/commControl.c: 125:                 }
-}
-[e :U 3267 ]
+"112
+[; ;driveControl/commControl.c: 112:                     switch (Event_getData(ev)) {
+[e $U 3262  ]
+{
+"113
+[; ;driveControl/commControl.c: 113:                         case 0x150:
+[e :U 3263 ]
+"114
+[; ;driveControl/commControl.c: 114:                             me->commSM_State = ST_CSMSETUP;
+[e = . *U _me 0 . `E23113 1 ]
+"115
+[; ;driveControl/commControl.c: 115:                             break;
+[e $U 3261  ]
+"116
+[; ;driveControl/commControl.c: 116:                         case 0x151:
+[e :U 3264 ]
+"117
+[; ;driveControl/commControl.c: 117:                             me->commSM_State = ST_CSMSET;
+[e = . *U _me 0 . `E23113 4 ]
+"118
+[; ;driveControl/commControl.c: 118:                             break;
+[e $U 3261  ]
+"119
+[; ;driveControl/commControl.c: 119:                         case 0x052:
+[e :U 3265 ]
+"120
+[; ;driveControl/commControl.c: 120:                             me->commSM_State = ST_CSMSETCENTER;
+[e = . *U _me 0 . `E23113 6 ]
+"121
+[; ;driveControl/commControl.c: 121:                             break;
+[e $U 3261  ]
+"122
+[; ;driveControl/commControl.c: 122:                         default:
 [e :U 3266 ]
+"123
+[; ;driveControl/commControl.c: 123:                             me->commSM_State = ST_CSMWAIT;
+[e = . *U _me 0 . `E23113 2 ]
+"124
+[; ;driveControl/commControl.c: 124:                             break;
+[e $U 3261  ]
+"125
+[; ;driveControl/commControl.c: 125:                     }
+}
+[e $U 3261  ]
+[e :U 3262 ]
+[e [\ ( _Event_getData (1 _ev , $ -> -> 336 `i `o 3263
+ , $ -> -> 337 `i `o 3264
+ , $ -> -> 82 `i `o 3265
+ 3266 ]
+[e :U 3261 ]
 "126
-[; ;driveControl/commControl.c: 126:                 break;
-[e $U 3252  ]
+[; ;driveControl/commControl.c: 126:                 }
+}
+[e $U 3267  ]
 "127
-[; ;driveControl/commControl.c: 127:             case ST_CSMSET:
-[e :U 3268 ]
+[; ;driveControl/commControl.c: 127:                 else if (Event_getId(ev) == evCDefault){
+[e :U 3260 ]
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3268  ]
+{
 "128
-[; ;driveControl/commControl.c: 128:                 if(Event_getId(ev) == evGetSteering){
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 5 `i 3269  ]
-{
+[; ;driveControl/commControl.c: 128:                     me->commSM_State = ST_CSMWAIT;
+[e = . *U _me 0 . `E23113 2 ]
 "129
-[; ;driveControl/commControl.c: 129:                     me->commSM_State = ST_CSMGET;
-[e = . *U _me 0 . `E23113 5 ]
+[; ;driveControl/commControl.c: 129:                 }
+}
+[e :U 3268 ]
+[e :U 3267 ]
 "130
-[; ;driveControl/commControl.c: 130:                 }
-}
-[e $U 3270  ]
+[; ;driveControl/commControl.c: 130:                 break;
+[e $U 3253  ]
 "131
-[; ;driveControl/commControl.c: 131:                 else if (Event_getId(ev) == evCDefault) {
+[; ;driveControl/commControl.c: 131:             case ST_CSMSET:
 [e :U 3269 ]
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3271  ]
-{
 "132
-[; ;driveControl/commControl.c: 132:                     me->commSM_State = ST_CSMWAIT;
-[e = . *U _me 0 . `E23113 2 ]
+[; ;driveControl/commControl.c: 132:                 if(Event_getId(ev) == evGetSteering){
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 5 `i 3270  ]
+{
 "133
-[; ;driveControl/commControl.c: 133:                 }
-}
-[e :U 3271 ]
-[e :U 3270 ]
+[; ;driveControl/commControl.c: 133:                     me->commSM_State = ST_CSMGET;
+[e = . *U _me 0 . `E23113 5 ]
 "134
-[; ;driveControl/commControl.c: 134:                 break;
-[e $U 3252  ]
+[; ;driveControl/commControl.c: 134:                 }
+}
+[e $U 3271  ]
 "135
-[; ;driveControl/commControl.c: 135:             case ST_CSMGET:
-[e :U 3272 ]
+[; ;driveControl/commControl.c: 135:                 else if (Event_getId(ev) == evCDefault) {
+[e :U 3270 ]
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3272  ]
+{
 "136
-[; ;driveControl/commControl.c: 136:                 if (Event_getId(ev) == evCDefault) {
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3273  ]
-{
+[; ;driveControl/commControl.c: 136:                     me->commSM_State = ST_CSMWAIT;
+[e = . *U _me 0 . `E23113 2 ]
 "137
-[; ;driveControl/commControl.c: 137:                     me->commSM_State = ST_CSMWAIT;
-[e = . *U _me 0 . `E23113 2 ]
+[; ;driveControl/commControl.c: 137:                 }
+}
+[e :U 3272 ]
+[e :U 3271 ]
 "138
-[; ;driveControl/commControl.c: 138:                 }
-}
-[e :U 3273 ]
+[; ;driveControl/commControl.c: 138:                 break;
+[e $U 3253  ]
 "139
-[; ;driveControl/commControl.c: 139:                 break;
-[e $U 3252  ]
+[; ;driveControl/commControl.c: 139:             case ST_CSMGET:
+[e :U 3273 ]
 "140
-[; ;driveControl/commControl.c: 140:             case ST_CSMSETUP:
-[e :U 3274 ]
+[; ;driveControl/commControl.c: 140:                 if (Event_getId(ev) == evCDefault) {
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3274  ]
+{
 "141
-[; ;driveControl/commControl.c: 141:                 if (Event_getId(ev) == evCDefault) {
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3275  ]
-{
+[; ;driveControl/commControl.c: 141:                     me->commSM_State = ST_CSMWAIT;
+[e = . *U _me 0 . `E23113 2 ]
 "142
-[; ;driveControl/commControl.c: 142:                     me->commSM_State = ST_CSMWAIT;
-[e = . *U _me 0 . `E23113 2 ]
+[; ;driveControl/commControl.c: 142:                 }
+}
+[e :U 3274 ]
 "143
-[; ;driveControl/commControl.c: 143:                 }
-}
-[e :U 3275 ]
+[; ;driveControl/commControl.c: 143:                 break;
+[e $U 3253  ]
 "144
-[; ;driveControl/commControl.c: 144:                 break;
-[e $U 3252  ]
+[; ;driveControl/commControl.c: 144:             case ST_CSMSETUP:
+[e :U 3275 ]
 "145
-[; ;driveControl/commControl.c: 145:             case ST_CSMSETCENTER:
-[e :U 3276 ]
+[; ;driveControl/commControl.c: 145:                 if (Event_getId(ev) == evCDefault) {
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3276  ]
+{
 "146
-[; ;driveControl/commControl.c: 146:                 if (Event_getId(ev) == evCDefault) {
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3277  ]
-{
+[; ;driveControl/commControl.c: 146:                     me->commSM_State = ST_CSMWAIT;
+[e = . *U _me 0 . `E23113 2 ]
 "147
-[; ;driveControl/commControl.c: 147:                     me->commSM_State = ST_CSMWAIT;
-[e = . *U _me 0 . `E23113 2 ]
+[; ;driveControl/commControl.c: 147:                 }
+}
+[e :U 3276 ]
 "148
-[; ;driveControl/commControl.c: 148:                 }
-}
-[e :U 3277 ]
+[; ;driveControl/commControl.c: 148:                 break;
+[e $U 3253  ]
 "149
-[; ;driveControl/commControl.c: 149:                 break;
-[e $U 3252  ]
+[; ;driveControl/commControl.c: 149:             case ST_CSMSETCENTER:
+[e :U 3277 ]
 "150
-[; ;driveControl/commControl.c: 150:             case ST_CSMGETCENTER:
-[e :U 3278 ]
-"151
-[; ;driveControl/commControl.c: 151:                 if (Event_getId(ev) == evCDefault) {
-[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3279  ]
+[; ;driveControl/commControl.c: 150:                 if (Event_getId(ev) == evGetCenter) {
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 6 `i 3278  ]
 {
+"151
+[; ;driveControl/commControl.c: 151:                     me->commSM_State = ST_CSMGETCENTER;
+[e = . *U _me 0 . `E23113 7 ]
 "152
-[; ;driveControl/commControl.c: 152:                     me->commSM_State = ST_CSMWAIT;
-[e = . *U _me 0 . `E23113 2 ]
-"153
-[; ;driveControl/commControl.c: 153:                 }
+[; ;driveControl/commControl.c: 152:                 }
 }
-[e :U 3279 ]
+[e $U 3279  ]
+"153
+[; ;driveControl/commControl.c: 153:                 else if(Event_getId(ev) == evCDefault) {
+[e :U 3278 ]
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3280  ]
+{
 "154
-[; ;driveControl/commControl.c: 154:                 break;
-[e $U 3252  ]
+[; ;driveControl/commControl.c: 154:                     me->commSM_State = ST_CSMWAIT;
+[e = . *U _me 0 . `E23113 2 ]
 "155
-[; ;driveControl/commControl.c: 155:             default:
+[; ;driveControl/commControl.c: 155:                 }
+}
 [e :U 3280 ]
+[e :U 3279 ]
 "156
 [; ;driveControl/commControl.c: 156:                 break;
-[e $U 3252  ]
+[e $U 3253  ]
 "157
-[; ;driveControl/commControl.c: 157:         }
-}
-[e $U 3252  ]
-[e :U 3253 ]
-[e [\ -> . *U _me 0 `ui , $ -> . `E23113 0 `ui 3254
- , $ -> . `E23113 2 `ui 3256
- , $ -> . `E23113 3 `ui 3258
- , $ -> . `E23113 4 `ui 3268
- , $ -> . `E23113 5 `ui 3272
- , $ -> . `E23113 1 `ui 3274
- , $ -> . `E23113 6 `ui 3276
- , $ -> . `E23113 7 `ui 3278
- 3280 ]
-[e :U 3252 ]
+[; ;driveControl/commControl.c: 157:             case ST_CSMGETCENTER:
+[e :U 3281 ]
 "158
-[; ;driveControl/commControl.c: 158:         if (oldCSMState != me->commSM_State) {
-[e $ ! != -> _oldCSMState `ui -> . *U _me 0 `ui 3281  ]
+[; ;driveControl/commControl.c: 158:                 if (Event_getId(ev) == evCDefault) {
+[e $ ! == -> ( _Event_getId (1 _ev `i -> . `E23128 4 `i 3282  ]
 {
 "159
-[; ;driveControl/commControl.c: 159:             processed = 1;
-[e = _processed -> -> 1 `i `a ]
+[; ;driveControl/commControl.c: 159:                     me->commSM_State = ST_CSMWAIT;
+[e = . *U _me 0 . `E23113 2 ]
 "160
-[; ;driveControl/commControl.c: 160:             switch (me->commSM_State) {
-[e $U 3283  ]
-{
+[; ;driveControl/commControl.c: 160:                 }
+}
+[e :U 3282 ]
 "161
-[; ;driveControl/commControl.c: 161:                 case ST_CSMINIT:
-[e :U 3284 ]
+[; ;driveControl/commControl.c: 161:                 break;
+[e $U 3253  ]
+"162
+[; ;driveControl/commControl.c: 162:             default:
+[e :U 3283 ]
 "163
-[; ;driveControl/commControl.c: 163:                     break;
-[e $U 3282  ]
+[; ;driveControl/commControl.c: 163:                 break;
+[e $U 3253  ]
 "164
-[; ;driveControl/commControl.c: 164:                 case ST_CSMWAIT:
-[e :U 3285 ]
+[; ;driveControl/commControl.c: 164:         }
+}
+[e $U 3253  ]
+[e :U 3254 ]
+[e [\ -> . *U _me 0 `ui , $ -> . `E23113 0 `ui 3255
+ , $ -> . `E23113 2 `ui 3257
+ , $ -> . `E23113 3 `ui 3259
+ , $ -> . `E23113 4 `ui 3269
+ , $ -> . `E23113 5 `ui 3273
+ , $ -> . `E23113 1 `ui 3275
+ , $ -> . `E23113 6 `ui 3277
+ , $ -> . `E23113 7 `ui 3281
+ 3283 ]
+[e :U 3253 ]
 "165
-[; ;driveControl/commControl.c: 165:                     POST(me, &commControl_processEvent, evCTM, 50, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 1 `uc -> -> 50 `i `us -> -> 0 `i `o ]
+[; ;driveControl/commControl.c: 165:         if (oldCSMState != me->commSM_State) {
+[e $ ! != -> _oldCSMState `ui -> . *U _me 0 `ui 3284  ]
+{
 "166
-[; ;driveControl/commControl.c: 166:                     break;
-[e $U 3282  ]
+[; ;driveControl/commControl.c: 166:             processed = 1;
+[e = _processed -> -> 1 `i `a ]
 "167
-[; ;driveControl/commControl.c: 167:                 case ST_CSMPROCESS:
-[e :U 3286 ]
+[; ;driveControl/commControl.c: 167:             switch (me->commSM_State) {
+[e $U 3286  ]
+{
 "168
-[; ;driveControl/commControl.c: 168:                     readCANFrame(me, &(me->msg));
-[e ( _readCANFrame (2 , _me &U . *U _me 2 ]
-"169
-[; ;driveControl/commControl.c: 169:                     break;
-[e $U 3282  ]
-"170
-[; ;driveControl/commControl.c: 170:                 case ST_CSMSET:
+[; ;driveControl/commControl.c: 168:                 case ST_CSMINIT:
 [e :U 3287 ]
+"170
+[; ;driveControl/commControl.c: 170:                     break;
+[e $U 3285  ]
 "171
-[; ;driveControl/commControl.c: 171:                     if(me->msg.frame.rtr == 1){
-[e $ ! == -> . . . *U _me 2 0 11 `i -> 1 `i 3288  ]
-{
-"172
-[; ;driveControl/commControl.c: 172:                         POST(me, &commControl_processEvent, evGetSteering, 0, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 5 `uc -> -> 0 `i `us -> -> 0 `i `o ]
-"173
-[; ;driveControl/commControl.c: 173:                     }
-}
-[e $U 3289  ]
-"174
-[; ;driveControl/commControl.c: 174:                     else{
+[; ;driveControl/commControl.c: 171:                 case ST_CSMWAIT:
 [e :U 3288 ]
-{
-"175
-[; ;driveControl/commControl.c: 175:                     setPosition(me, &(me->msg));
-[e ( _setPosition (2 , _me &U . *U _me 2 ]
-"176
-[; ;driveControl/commControl.c: 176:                     POST(me, &commControl_processEvent, evCDefault, 0, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
-"177
-[; ;driveControl/commControl.c: 177:                     }
-}
+"172
+[; ;driveControl/commControl.c: 172:                     POST(me, &commControl_processEvent, evCTM, 20, 0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 1 `uc -> -> 20 `i `us -> -> 0 `i `o ]
+"173
+[; ;driveControl/commControl.c: 173:                     break;
+[e $U 3285  ]
+"174
+[; ;driveControl/commControl.c: 174:                 case ST_CSMPROCESS:
 [e :U 3289 ]
-"178
-[; ;driveControl/commControl.c: 178:                     break;
-[e $U 3282  ]
-"179
-[; ;driveControl/commControl.c: 179:                 case ST_CSMGET:
+"175
+[; ;driveControl/commControl.c: 175:                     readCANFrame(me, &(me->msg));
+[e ( _readCANFrame (2 , _me &U . *U _me 2 ]
+"176
+[; ;driveControl/commControl.c: 176:                     break;
+[e $U 3285  ]
+"177
+[; ;driveControl/commControl.c: 177:                 case ST_CSMSET:
 [e :U 3290 ]
+"178
+[; ;driveControl/commControl.c: 178:                     if(me->msg.frame.rtr == 1){
+[e $ ! == -> . . . *U _me 2 0 11 `i -> 1 `i 3291  ]
+{
+"179
+[; ;driveControl/commControl.c: 179:                         POST(me, &commControl_processEvent, evGetSteering, 0, 0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 5 `uc -> -> 0 `i `us -> -> 0 `i `o ]
 "180
-[; ;driveControl/commControl.c: 180:                     getPositionFrame(me);
-[e ( _getPositionFrame (1 _me ]
-"181
-[; ;driveControl/commControl.c: 181:                     POST(me, &commControl_processEvent, evCDefault, 0, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
-"182
-[; ;driveControl/commControl.c: 182:                     break;
-[e $U 3282  ]
-"183
-[; ;driveControl/commControl.c: 183:                 case ST_CSMSETUP:
-[e :U 3291 ]
-"184
-[; ;driveControl/commControl.c: 184:                     steeringSetup(me, &(me->msg));
-[e ( _steeringSetup (2 , _me &U . *U _me 2 ]
-"185
-[; ;driveControl/commControl.c: 185:                     POST(me, &commControl_processEvent, evCDefault, 0, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
-"186
-[; ;driveControl/commControl.c: 186:                 case ST_CSMSETCENTER:
-[e :U 3292 ]
-"187
-[; ;driveControl/commControl.c: 187:                     if(me->msg.frame.rtr == 1){
-[e $ ! == -> . . . *U _me 2 0 11 `i -> 1 `i 3293  ]
-{
-"188
-[; ;driveControl/commControl.c: 188:                         POST(me, &commControl_processEvent, evGetCenter, 0, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 6 `uc -> -> 0 `i `us -> -> 0 `i `o ]
-"189
-[; ;driveControl/commControl.c: 189:                     }
+[; ;driveControl/commControl.c: 180:                     }
 }
-[e $U 3294  ]
-"190
-[; ;driveControl/commControl.c: 190:                     else{
-[e :U 3293 ]
+[e $U 3292  ]
+"181
+[; ;driveControl/commControl.c: 181:                     else{
+[e :U 3291 ]
 {
+"182
+[; ;driveControl/commControl.c: 182:                     setPosition(me, &(me->msg));
+[e ( _setPosition (2 , _me &U . *U _me 2 ]
+"183
+[; ;driveControl/commControl.c: 183:                     POST(me, &commControl_processEvent, evCDefault, 0, 0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
+"184
+[; ;driveControl/commControl.c: 184:                     }
+}
+[e :U 3292 ]
+"185
+[; ;driveControl/commControl.c: 185:                     break;
+[e $U 3285  ]
+"186
+[; ;driveControl/commControl.c: 186:                 case ST_CSMGET:
+[e :U 3293 ]
+"187
+[; ;driveControl/commControl.c: 187:                     getPositionFrame(me);
+[e ( _getPositionFrame (1 _me ]
+"188
+[; ;driveControl/commControl.c: 188:                     POST(me, &commControl_processEvent, evCDefault, 0, 0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
+"189
+[; ;driveControl/commControl.c: 189:                     break;
+[e $U 3285  ]
+"190
+[; ;driveControl/commControl.c: 190:                 case ST_CSMSETUP:
+[e :U 3294 ]
 "191
-[; ;driveControl/commControl.c: 191:                         setCenter(me, &(me->msg));
-[e ( _setCenter (2 , _me &U . *U _me 2 ]
+[; ;driveControl/commControl.c: 191:                     steeringSetup(me, &(me->msg));
+[e ( _steeringSetup (2 , _me &U . *U _me 2 ]
 "192
-[; ;driveControl/commControl.c: 192:                         POST(me, &commControl_processEvent, evCDefault, 0 ,0);
+[; ;driveControl/commControl.c: 192:                     POST(me, &commControl_processEvent, evCDefault, 0, 0);
 [e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
 "193
-[; ;driveControl/commControl.c: 193:                     }
-}
-[e :U 3294 ]
+[; ;driveControl/commControl.c: 193:                     break;
+[e $U 3285  ]
 "194
-[; ;driveControl/commControl.c: 194:                     break;
-[e $U 3282  ]
-"195
-[; ;driveControl/commControl.c: 195:                 case ST_CSMGETCENTER:
+[; ;driveControl/commControl.c: 194:                 case ST_CSMSETCENTER:
 [e :U 3295 ]
+"195
+[; ;driveControl/commControl.c: 195:                     if(me->msg.frame.rtr == 1){
+[e $ ! == -> . . . *U _me 2 0 11 `i -> 1 `i 3296  ]
+{
 "196
-[; ;driveControl/commControl.c: 196:                     getCenterFrame(me);
-[e ( _getCenterFrame (1 _me ]
+[; ;driveControl/commControl.c: 196:                         POST(me, &commControl_processEvent, evGetCenter, 0, 0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 6 `uc -> -> 0 `i `us -> -> 0 `i `o ]
 "197
-[; ;driveControl/commControl.c: 197:                     POST(me, &commControl_processEvent, evCDefault, 0 ,0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
+[; ;driveControl/commControl.c: 197:                     }
+}
+[e $U 3297  ]
 "198
-[; ;driveControl/commControl.c: 198:                     break;
-[e $U 3282  ]
-"199
-[; ;driveControl/commControl.c: 199:                 default:
+[; ;driveControl/commControl.c: 198:                     else{
 [e :U 3296 ]
+{
+"199
+[; ;driveControl/commControl.c: 199:                         setCenter(me, &(me->msg));
+[e ( _setCenter (2 , _me &U . *U _me 2 ]
 "200
-[; ;driveControl/commControl.c: 200:                     break;
-[e $U 3282  ]
+[; ;driveControl/commControl.c: 200:                         POST(me, &commControl_processEvent, evCDefault, 0 ,0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
 "201
-[; ;driveControl/commControl.c: 201:             }
+[; ;driveControl/commControl.c: 201:                     }
 }
-[e $U 3282  ]
-[e :U 3283 ]
-[e [\ -> . *U _me 0 `ui , $ -> . `E23113 0 `ui 3284
- , $ -> . `E23113 2 `ui 3285
- , $ -> . `E23113 3 `ui 3286
- , $ -> . `E23113 4 `ui 3287
- , $ -> . `E23113 5 `ui 3290
- , $ -> . `E23113 1 `ui 3291
- , $ -> . `E23113 6 `ui 3292
- , $ -> . `E23113 7 `ui 3295
- 3296 ]
-[e :U 3282 ]
+[e :U 3297 ]
 "202
-[; ;driveControl/commControl.c: 202:         }
-}
-[e :U 3281 ]
+[; ;driveControl/commControl.c: 202:                     break;
+[e $U 3285  ]
 "203
-[; ;driveControl/commControl.c: 203:     }
-}
-[e :U 3251 ]
+[; ;driveControl/commControl.c: 203:                 case ST_CSMGETCENTER:
+[e :U 3298 ]
 "204
-[; ;driveControl/commControl.c: 204:     return processed;
+[; ;driveControl/commControl.c: 204:                     getCenterFrame(me);
+[e ( _getCenterFrame (1 _me ]
+"205
+[; ;driveControl/commControl.c: 205:                     POST(me, &commControl_processEvent, evCDefault, 0 ,0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
+"206
+[; ;driveControl/commControl.c: 206:                     break;
+[e $U 3285  ]
+"207
+[; ;driveControl/commControl.c: 207:                 default:
+[e :U 3299 ]
+"208
+[; ;driveControl/commControl.c: 208:                     break;
+[e $U 3285  ]
+"209
+[; ;driveControl/commControl.c: 209:             }
+}
+[e $U 3285  ]
+[e :U 3286 ]
+[e [\ -> . *U _me 0 `ui , $ -> . `E23113 0 `ui 3287
+ , $ -> . `E23113 2 `ui 3288
+ , $ -> . `E23113 3 `ui 3289
+ , $ -> . `E23113 4 `ui 3290
+ , $ -> . `E23113 5 `ui 3293
+ , $ -> . `E23113 1 `ui 3294
+ , $ -> . `E23113 6 `ui 3295
+ , $ -> . `E23113 7 `ui 3298
+ 3299 ]
+[e :U 3285 ]
+"210
+[; ;driveControl/commControl.c: 210:         }
+}
+[e :U 3284 ]
+"211
+[; ;driveControl/commControl.c: 211:     }
+}
+[e :U 3252 ]
+"212
+[; ;driveControl/commControl.c: 212:     return processed;
 [e ) _processed ]
 [e $UE 3234  ]
-"205
-[; ;driveControl/commControl.c: 205: }
+"213
+[; ;driveControl/commControl.c: 213: }
 [e :UE 3234 ]
 }
-"214
-[; ;driveControl/commControl.c: 214: void readCANFrame(CommControl* me, uCAN_MSG* msg) {
+"220
+[; ;driveControl/commControl.c: 220: void readCANFrame(CommControl* me, uCAN_MSG* msg) {
 [v _readCANFrame `(v ~T0 @X0 1 ef2`*S3220`*S3211 ]
 {
 [e :U _readCANFrame ]
 [v _me `*S3220 ~T0 @X0 1 r1 ]
 [v _msg `*S3211 ~T0 @X0 1 r2 ]
 [f ]
-"215
-[; ;driveControl/commControl.c: 215:     if (CAN_receive(msg) != 0) {
-[e $ ! != -> ( _CAN_receive (1 _msg `i -> 0 `i 3298  ]
-{
-"216
-[; ;driveControl/commControl.c: 216:         switch(msg->frame.id){
-[e $U 3300  ]
-{
-"217
-[; ;driveControl/commControl.c: 217:             case 0x150:
-[e :U 3301 ]
-"218
-[; ;driveControl/commControl.c: 218:                 POST(me, &commControl_processEvent, evCMsg, 0, 0x150);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 2 `uc -> -> 0 `i `us -> -> 336 `i `o ]
-"219
-[; ;driveControl/commControl.c: 219:                 break;
-[e $U 3299  ]
-"220
-[; ;driveControl/commControl.c: 220:             case 0x151:
-[e :U 3302 ]
 "221
-[; ;driveControl/commControl.c: 221:                 POST(me, &commControl_processEvent, evCMsg, 0, 0x151);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 2 `uc -> -> 0 `i `us -> -> 337 `i `o ]
+[; ;driveControl/commControl.c: 221:     if (CAN_receive(msg) != 0) {
+[e $ ! != -> ( _CAN_receive (1 _msg `i -> 0 `i 3301  ]
+{
 "222
-[; ;driveControl/commControl.c: 222:                 break;
-[e $U 3299  ]
+[; ;driveControl/commControl.c: 222:         switch(msg->frame.id){
+[e $U 3303  ]
+{
 "223
-[; ;driveControl/commControl.c: 223:             case 0x052:
-[e :U 3303 ]
+[; ;driveControl/commControl.c: 223:             case 0x150:
+[e :U 3304 ]
 "224
-[; ;driveControl/commControl.c: 224:                 POST(me, &commControl_processEvent, evCMsg, 0, 0x052);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 2 `uc -> -> 0 `i `us -> -> 82 `i `o ]
+[; ;driveControl/commControl.c: 224:                 POST(me, &commControl_processEvent, evCMsg, 0, 0x150);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 2 `uc -> -> 0 `i `us -> -> 336 `i `o ]
 "225
 [; ;driveControl/commControl.c: 225:                 break;
-[e $U 3299  ]
+[e $U 3302  ]
 "226
-[; ;driveControl/commControl.c: 226:             default:
-[e :U 3304 ]
+[; ;driveControl/commControl.c: 226:             case 0x151:
+[e :U 3305 ]
 "227
-[; ;driveControl/commControl.c: 227:                 POST(me, &commControl_processEvent, evCDefault, 0, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
+[; ;driveControl/commControl.c: 227:                 POST(me, &commControl_processEvent, evCMsg, 0, 0x151);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 2 `uc -> -> 0 `i `us -> -> 337 `i `o ]
 "228
 [; ;driveControl/commControl.c: 228:                 break;
-[e $U 3299  ]
+[e $U 3302  ]
 "229
-[; ;driveControl/commControl.c: 229:         }
-}
-[e $U 3299  ]
-[e :U 3300 ]
-[e [\ . . *U _msg 0 1 , $ -> -> -> 336 `i `l `ul 3301
- , $ -> -> -> 337 `i `l `ul 3302
- , $ -> -> -> 82 `i `l `ul 3303
- 3304 ]
-[e :U 3299 ]
+[; ;driveControl/commControl.c: 229:             case 0x052:
+[e :U 3306 ]
 "230
-[; ;driveControl/commControl.c: 230:     }
-}
-[e $U 3305  ]
+[; ;driveControl/commControl.c: 230:                 POST(me, &commControl_processEvent, evCMsg, 0, 0x052);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 2 `uc -> -> 0 `i `us -> -> 82 `i `o ]
 "231
-[; ;driveControl/commControl.c: 231:     else{
-[e :U 3298 ]
-{
+[; ;driveControl/commControl.c: 231:                 break;
+[e $U 3302  ]
 "232
-[; ;driveControl/commControl.c: 232:         POST(me, &commControl_processEvent, evCDefault, 0, 0);
-[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
+[; ;driveControl/commControl.c: 232:             default:
+[e :U 3307 ]
 "233
-[; ;driveControl/commControl.c: 233:     }
-}
-[e :U 3305 ]
+[; ;driveControl/commControl.c: 233:                 POST(me, &commControl_processEvent, evCDefault, 0, 0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
+"234
+[; ;driveControl/commControl.c: 234:                 break;
+[e $U 3302  ]
 "235
-[; ;driveControl/commControl.c: 235: }
-[e :UE 3297 ]
+[; ;driveControl/commControl.c: 235:         }
+}
+[e $U 3302  ]
+[e :U 3303 ]
+[e [\ . . *U _msg 0 1 , $ -> -> -> 336 `i `l `ul 3304
+ , $ -> -> -> 337 `i `l `ul 3305
+ , $ -> -> -> 82 `i `l `ul 3306
+ 3307 ]
+[e :U 3302 ]
+"236
+[; ;driveControl/commControl.c: 236:     }
+}
+[e $U 3308  ]
+"237
+[; ;driveControl/commControl.c: 237:     else{
+[e :U 3301 ]
+{
+"238
+[; ;driveControl/commControl.c: 238:         POST(me, &commControl_processEvent, evCDefault, 0, 0);
+[e ( _POST (4 , , , , -> _me `*v &U _commControl_processEvent -> . `E23128 4 `uc -> -> 0 `i `us -> -> 0 `i `o ]
+"239
+[; ;driveControl/commControl.c: 239:     }
+}
+[e :U 3308 ]
+"241
+[; ;driveControl/commControl.c: 241: }
+[e :UE 3300 ]
 }
 "242
-[; ;driveControl/commControl.c: 242: void steeringSetup(CommControl* me, uCAN_MSG* msg) {
+[; ;driveControl/commControl.c: 242: uint8_t toto = 0;
+[v _toto `uc ~T0 @X0 1 e ]
+[i _toto
+-> -> 0 `i `uc
+]
+"249
+[; ;driveControl/commControl.c: 249: void steeringSetup(CommControl* me, uCAN_MSG* msg) {
 [v _steeringSetup `(v ~T0 @X0 1 ef2`*S3220`*S3211 ]
 {
 [e :U _steeringSetup ]
 [v _me `*S3220 ~T0 @X0 1 r1 ]
 [v _msg `*S3211 ~T0 @X0 1 r2 ]
 [f ]
-"243
-[; ;driveControl/commControl.c: 243:     uint8_t aliveTime;
-[v _aliveTime `uc ~T0 @X0 1 a ]
-"245
-[; ;driveControl/commControl.c: 245:     uCAN_MSG msgs;
-[v _msgs `S3211 ~T0 @X0 1 a ]
-"246
-[; ;driveControl/commControl.c: 246:     msgs.frame.idType = 1;
-[e = . . _msgs 0 0 -> -> 1 `i `uc ]
-"247
-[; ;driveControl/commControl.c: 247:     msgs.frame.id = 0x510;
-[e = . . _msgs 0 1 -> -> -> 1296 `i `l `ul ]
-"248
-[; ;driveControl/commControl.c: 248:     msgs.frame.dlc = 2;
-[e = . . _msgs 0 2 -> -> 2 `i `uc ]
-"249
-[; ;driveControl/commControl.c: 249:     msgs.frame.data0 = 99;
-[e = . . _msgs 0 3 -> -> 99 `i `uc ]
 "250
-[; ;driveControl/commControl.c: 250:     msgs.frame.data1 = 99;
-[e = . . _msgs 0 4 -> -> 99 `i `uc ]
+[; ;driveControl/commControl.c: 250:     uCAN_MSG msgs;
+[v _msgs `S3211 ~T0 @X0 1 a ]
+"251
+[; ;driveControl/commControl.c: 251:     msgs.frame.idType = 1;
+[e = . . _msgs 0 0 -> -> 1 `i `uc ]
+"252
+[; ;driveControl/commControl.c: 252:     msgs.frame.id = 0x510;
+[e = . . _msgs 0 1 -> -> -> 1296 `i `l `ul ]
 "253
-[; ;driveControl/commControl.c: 253:     if(msg->frame.data0 != 0){
-[e $ ! != -> . . *U _msg 0 3 `i -> 0 `i 3307  ]
-{
+[; ;driveControl/commControl.c: 253:     msgs.frame.dlc = 2;
+[e = . . _msgs 0 2 -> -> 2 `i `uc ]
+"254
+[; ;driveControl/commControl.c: 254:     msgs.frame.data0 = 99;
+[e = . . _msgs 0 3 -> -> 99 `i `uc ]
 "255
-[; ;driveControl/commControl.c: 255:         sepos_send_controlword(sepos(), 0);
-[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 0 `i `us ]
+[; ;driveControl/commControl.c: 255:     msgs.frame.data1 = 99;
+[e = . . _msgs 0 4 -> -> 99 `i `uc ]
 "256
-[; ;driveControl/commControl.c: 256:         _delay((unsigned long)((10)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"258
-[; ;driveControl/commControl.c: 258:         sepos_send_controlword(sepos(), 6);
-[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 6 `i `us ]
+[; ;driveControl/commControl.c: 256:     msgs.frame.rtr = 0;
+[e = . . _msgs 0 11 -> -> 0 `i `uc ]
 "259
-[; ;driveControl/commControl.c: 259:         _delay((unsigned long)((10)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"260
-[; ;driveControl/commControl.c: 260:         sepos_send_controlword(sepos(), 7);
-[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 7 `i `us ]
-"261
-[; ;driveControl/commControl.c: 261:         _delay((unsigned long)((10)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;driveControl/commControl.c: 259:     if(msg->frame.data0 != 0){
+[e $ ! != -> . . *U _msg 0 3 `i -> 0 `i 3310  ]
+{
 "262
-[; ;driveControl/commControl.c: 262:         sepos_send_controlword(sepos(), 15);
-[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 15 `i `us ]
+[; ;driveControl/commControl.c: 262:         sepos_send_controlword(sepos(), 0);
+[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 0 `i `us ]
+"263
+[; ;driveControl/commControl.c: 263:         _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "264
-[; ;driveControl/commControl.c: 264:     }
-}
-[e :U 3307 ]
+[; ;driveControl/commControl.c: 264:          sepos_send_controlword(sepos(), 0b10000000);
+[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 128 `i `us ]
 "265
-[; ;driveControl/commControl.c: 265:     if(msg->frame.data1 != 0){
-[e $ ! != -> . . *U _msg 0 4 `i -> 0 `i 3308  ]
-{
+[; ;driveControl/commControl.c: 265:         _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "267
-[; ;driveControl/commControl.c: 267:         sepos_send_modOfOpp(sepos(), 6);
-[e ( _sepos_send_modOfOpp (2 , ( _sepos ..  -> -> 6 `i `c ]
+[; ;driveControl/commControl.c: 267:         sepos_send_controlword(sepos(), 6);
+[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 6 `i `us ]
 "268
-[; ;driveControl/commControl.c: 268:         msgs.frame.data0 = 1;
-[e = . . _msgs 0 3 -> -> 1 `i `uc ]
+[; ;driveControl/commControl.c: 268:         _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "269
-[; ;driveControl/commControl.c: 269:         msgs.frame.data1 = 1;
-[e = . . _msgs 0 4 -> -> 1 `i `uc ]
+[; ;driveControl/commControl.c: 269:         sepos_send_controlword(sepos(), 7);
+[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 7 `i `us ]
 "270
-[; ;driveControl/commControl.c: 270:         CAN_transmit(&msgs);
-[e ( _CAN_transmit (1 &U _msgs ]
+[; ;driveControl/commControl.c: 270:         _delay((unsigned long)((1000)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "271
-[; ;driveControl/commControl.c: 271:         sepos_send_controlword(sepos(), 4);
-[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 4 `i `us ]
-"272
-[; ;driveControl/commControl.c: 272:         while(sepos_receive_statusword(sepos()) != 0x700 ){
-[e $U 3309  ]
-[e :U 3310 ]
-{
+[; ;driveControl/commControl.c: 271:         sepos_send_controlword(sepos(), 15);
+[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 15 `i `us ]
 "273
-[; ;driveControl/commControl.c: 273:             _delay((unsigned long)((10)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;driveControl/commControl.c: 273:         _delay((unsigned long)((800)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 800 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "274
-[; ;driveControl/commControl.c: 274:         }
+[; ;driveControl/commControl.c: 274:     }
 }
-[e :U 3309 ]
-"272
-[; ;driveControl/commControl.c: 272:         while(sepos_receive_statusword(sepos()) != 0x700 ){
-[e $ != -> ( _sepos_receive_statusword (1 ( _sepos ..  `ui -> -> 1792 `i `ui 3310  ]
-[e :U 3311 ]
-"275
-[; ;driveControl/commControl.c: 275:         msgs.frame.data0 = 2;
-[e = . . _msgs 0 3 -> -> 2 `i `uc ]
-"276
-[; ;driveControl/commControl.c: 276:         msgs.frame.data1 = 0;
-[e = . . _msgs 0 4 -> -> 0 `i `uc ]
-"277
-[; ;driveControl/commControl.c: 277:         _delay((unsigned long)((10)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[e :U 3310 ]
 "278
-[; ;driveControl/commControl.c: 278:         CAN_transmit(&msgs);
-[e ( _CAN_transmit (1 &U _msgs ]
-"279
-[; ;driveControl/commControl.c: 279:     }else{
-}
-[e $U 3312  ]
-[e :U 3308 ]
+[; ;driveControl/commControl.c: 278:     if(msg->frame.data1 != 0){
+[e $ ! != -> . . *U _msg 0 4 `i -> 0 `i 3311  ]
 {
 "280
-[; ;driveControl/commControl.c: 280:         msgs.frame.data0 = 0;
-[e = . . _msgs 0 3 -> -> 0 `i `uc ]
+[; ;driveControl/commControl.c: 280:         sepos_send_modOfOpp(sepos(), 6);
+[e ( _sepos_send_modOfOpp (2 , ( _sepos ..  -> -> 6 `i `c ]
 "281
-[; ;driveControl/commControl.c: 281:         msgs.frame.data1 = 2;
-[e = . . _msgs 0 4 -> -> 2 `i `uc ]
-"282
-[; ;driveControl/commControl.c: 282:         _delay((unsigned long)((10)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"283
-[; ;driveControl/commControl.c: 283:         CAN_transmit(&msgs);
-[e ( _CAN_transmit (1 &U _msgs ]
-"284
-[; ;driveControl/commControl.c: 284:     }
+[; ;driveControl/commControl.c: 281:         _delay((unsigned long)((600)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 600 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"285
+[; ;driveControl/commControl.c: 285:         sepos_send_controlword(sepos(), 31);
+[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 31 `i `us ]
+"286
+[; ;driveControl/commControl.c: 286:         _delay((unsigned long)((600)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 600 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"287
+[; ;driveControl/commControl.c: 287:         while((sepos_receive_statusword(sepos())&0b1000000000000) != 0b1000000000000 ){
+[e $U 3312  ]
+[e :U 3313 ]
+{
+"288
+[; ;driveControl/commControl.c: 288:             _delay((unsigned long)((40)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"289
+[; ;driveControl/commControl.c: 289:         }
 }
 [e :U 3312 ]
-"285
-[; ;driveControl/commControl.c: 285:     if(msg->frame.data2 != 0){
-[e $ ! != -> . . *U _msg 0 5 `i -> 0 `i 3313  ]
-{
 "287
-[; ;driveControl/commControl.c: 287:         sepos_send_positionValue(sepos(), 218000);
-[e ( _sepos_send_positionValue (2 , ( _sepos ..  -> 218000 `l ]
-"288
-[; ;driveControl/commControl.c: 288:         while(sepos_receive_statusword(sepos()) != 0x200 ){
-[e $U 3314  ]
-[e :U 3315 ]
-{
-"289
-[; ;driveControl/commControl.c: 289:             _delay((unsigned long)((10)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"290
-[; ;driveControl/commControl.c: 290:         }
-}
+[; ;driveControl/commControl.c: 287:         while((sepos_receive_statusword(sepos())&0b1000000000000) != 0b1000000000000 ){
+[e $ != & -> ( _sepos_receive_statusword (1 ( _sepos ..  `ui -> -> 4096 `i `ui -> -> 4096 `i `ui 3313  ]
 [e :U 3314 ]
-"288
-[; ;driveControl/commControl.c: 288:         while(sepos_receive_statusword(sepos()) != 0x200 ){
-[e $ != -> ( _sepos_receive_statusword (1 ( _sepos ..  `ui -> -> 512 `i `ui 3315  ]
-[e :U 3316 ]
 "291
-[; ;driveControl/commControl.c: 291:     }
-}
-[e :U 3313 ]
+[; ;driveControl/commControl.c: 291:         sepos_send_controlword(sepos(), 15);
+[e ( _sepos_send_controlword (2 , ( _sepos ..  -> -> 15 `i `us ]
 "292
-[; ;driveControl/commControl.c: 292:     aliveTime = msg->frame.data3;
-[e = _aliveTime . . *U _msg 0 6 ]
+[; ;driveControl/commControl.c: 292:         _delay((unsigned long)((600)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 600 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"293
+[; ;driveControl/commControl.c: 293:         sepos_send_modOfOpp(sepos(), -1);
+[e ( _sepos_send_modOfOpp (2 , ( _sepos ..  -> -U -> 1 `i `c ]
+"294
+[; ;driveControl/commControl.c: 294:         _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "296
-[; ;driveControl/commControl.c: 296:     store_write(st(), EE_ALIVE_TIME, aliveTime);
-[e ( _store_write (3 , , ( _st ..  . `E23238 1 _aliveTime ]
+[; ;driveControl/commControl.c: 296:         msgs.frame.data0 = 2;
+[e = . . _msgs 0 3 -> -> 2 `i `uc ]
 "297
-[; ;driveControl/commControl.c: 297:     if(aliveTime != 0){
-[e $ ! != -> _aliveTime `i -> 0 `i 3317  ]
-{
+[; ;driveControl/commControl.c: 297:         msgs.frame.data1 = 0;
+[e = . . _msgs 0 4 -> -> 0 `i `uc ]
+"298
+[; ;driveControl/commControl.c: 298:         _delay((unsigned long)((40)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "299
-[; ;driveControl/commControl.c: 299:         sendAliveFrame(me);
-[e ( _sendAliveFrame (1 _me ]
+[; ;driveControl/commControl.c: 299:         CAN_transmit(&msgs);
+[e ( _CAN_transmit (1 &U _msgs ]
 "300
-[; ;driveControl/commControl.c: 300:     }
+[; ;driveControl/commControl.c: 300:     }else{
 }
-[e :U 3317 ]
-"301
-[; ;driveControl/commControl.c: 301: }
-[e :UE 3306 ]
+[e $U 3315  ]
+[e :U 3311 ]
+{
+"302
+[; ;driveControl/commControl.c: 302:         msgs.frame.data0 = 0;
+[e = . . _msgs 0 3 -> -> 0 `i `uc ]
+"303
+[; ;driveControl/commControl.c: 303:         msgs.frame.data1 = 2;
+[e = . . _msgs 0 4 -> -> 2 `i `uc ]
+"304
+[; ;driveControl/commControl.c: 304:         _delay((unsigned long)((40)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"305
+[; ;driveControl/commControl.c: 305:         CAN_transmit(&msgs);
+[e ( _CAN_transmit (1 &U _msgs ]
+"306
+[; ;driveControl/commControl.c: 306:     }
 }
-"307
-[; ;driveControl/commControl.c: 307: void sendAliveFrame(CommControl* me) {
+[e :U 3315 ]
+"309
+[; ;driveControl/commControl.c: 309:     if(msg->frame.data2 != 0){
+[e $ ! != -> . . *U _msg 0 5 `i -> 0 `i 3316  ]
+{
+"310
+[; ;driveControl/commControl.c: 310:        _delay((unsigned long)((100)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"312
+[; ;driveControl/commControl.c: 312:        uCAN_MSG msgh;
+[v _msgh `S3211 ~T0 @X0 1 a ]
+"313
+[; ;driveControl/commControl.c: 313:        msgh.frame.idType = 1;
+[e = . . _msgh 0 0 -> -> 1 `i `uc ]
+"314
+[; ;driveControl/commControl.c: 314:        msgh.frame.id = 0x511;
+[e = . . _msgh 0 1 -> -> -> 1297 `i `l `ul ]
+"315
+[; ;driveControl/commControl.c: 315:        msgh.frame.dlc = 4;
+[e = . . _msgh 0 2 -> -> 4 `i `uc ]
+"317
+[; ;driveControl/commControl.c: 317:        msgh.frame.data0 = store_read(st(), EE_CENTER_HH);
+[e = . . _msgh 0 3 ( _store_read (2 , ( _st ..  . `E23238 5 ]
+"318
+[; ;driveControl/commControl.c: 318:        msgh.frame.data1 = store_read(st(), EE_CENTER_H);
+[e = . . _msgh 0 4 ( _store_read (2 , ( _st ..  . `E23238 4 ]
+"319
+[; ;driveControl/commControl.c: 319:        msgh.frame.data2 = store_read(st(), EE_CENTER_L);
+[e = . . _msgh 0 5 ( _store_read (2 , ( _st ..  . `E23238 3 ]
+"320
+[; ;driveControl/commControl.c: 320:        msgh.frame.data3 = store_read(st(), EE_CENTER_LL);
+[e = . . _msgh 0 6 ( _store_read (2 , ( _st ..  . `E23238 2 ]
+"322
+[; ;driveControl/commControl.c: 322:        msgh.frame.rtr = 0;
+[e = . . _msgh 0 11 -> -> 0 `i `uc ]
+"324
+[; ;driveControl/commControl.c: 324:        CAN_transmit(&msgh);
+[e ( _CAN_transmit (1 &U _msgh ]
+"326
+[; ;driveControl/commControl.c: 326:        _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"328
+[; ;driveControl/commControl.c: 328:        uint32_t position;
+[v _position `ul ~T0 @X0 1 a ]
+"329
+[; ;driveControl/commControl.c: 329:        position = (((uint32_t)store_read(st(), EE_CENTER_HH))<<24) + (((uint32_t)store_read(st(), EE_CENTER_H))<<16)
+[e = _position + + + << -> ( _store_read (2 , ( _st ..  . `E23238 5 `ul -> 24 `i << -> ( _store_read (2 , ( _st ..  . `E23238 4 `ul -> 16 `i << -> ( _store_read (2 , ( _st ..  . `E23238 3 `ul -> 8 `i -> ( _store_read (2 , ( _st ..  . `E23238 2 `ul ]
+"332
+[; ;driveControl/commControl.c: 332:        sepos_send_positionValue(sepos(), position);
+[e ( _sepos_send_positionValue (2 , ( _sepos ..  -> _position `l ]
+"334
+[; ;driveControl/commControl.c: 334:        _delay((unsigned long)((500)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"349
+[; ;driveControl/commControl.c: 349:     }
+}
+[e :U 3316 ]
+"351
+[; ;driveControl/commControl.c: 351:     store_write(st(), EE_ALIVE_TIME, msg->frame.data3);
+[e ( _store_write (3 , , ( _st ..  . `E23238 1 . . *U _msg 0 6 ]
+"353
+[; ;driveControl/commControl.c: 353: }
+[e :UE 3309 ]
+}
+"359
+[; ;driveControl/commControl.c: 359: void sendAliveFrame(CommControl* me) {
 [v _sendAliveFrame `(v ~T0 @X0 1 ef1`*S3220 ]
 {
 [e :U _sendAliveFrame ]
 [v _me `*S3220 ~T0 @X0 1 r1 ]
 [f ]
-"314
-[; ;driveControl/commControl.c: 314:     uCAN_MSG msg;
-[v _msg `S3211 ~T0 @X0 1 a ]
-"315
-[; ;driveControl/commControl.c: 315:     if(store_read(st(), EE_ALIVE_TIME) > 0){
-[e $ ! > -> ( _store_read (2 , ( _st ..  . `E23238 1 `i -> 0 `i 3319  ]
+"362
+[; ;driveControl/commControl.c: 362:     uint16_t statusWord = sepos_receive_statusword(sepos());
+[v _statusWord `us ~T0 @X0 1 a ]
+[e = _statusWord ( _sepos_receive_statusword (1 ( _sepos ..  ]
+"363
+[; ;driveControl/commControl.c: 363:     uint8_t statusWordL = (uint8_t) statusWord;
+[v _statusWordL `uc ~T0 @X0 1 a ]
+[e = _statusWordL -> _statusWord `uc ]
+"364
+[; ;driveControl/commControl.c: 364:     uint8_t statusWordH = ((uint8_t) statusWord) >> 8;
+[v _statusWordH `uc ~T0 @X0 1 a ]
+[e = _statusWordH -> >> -> -> _statusWord `uc `i -> 8 `i `uc ]
+"366
+[; ;driveControl/commControl.c: 366:     if(store_read(st(), EE_ALIVE_TIME) > 0){
+[e $ ! > -> ( _store_read (2 , ( _st ..  . `E23238 1 `i -> 0 `i 3318  ]
 {
-"316
-[; ;driveControl/commControl.c: 316:         msg.frame.id = 0x51F;
-[e = . . _msg 0 1 -> -> -> 1311 `i `l `ul ]
-"317
-[; ;driveControl/commControl.c: 317:         msg.frame.dlc = 2;
-[e = . . _msg 0 2 -> -> 2 `i `uc ]
-"321
-[; ;driveControl/commControl.c: 321:         msg.frame.data0 = 0xaa;
-[e = . . _msg 0 3 -> -> 170 `i `uc ]
-"322
-[; ;driveControl/commControl.c: 322:         msg.frame.data1 = 0xbb;
-[e = . . _msg 0 4 -> -> 187 `i `uc ]
-"323
-[; ;driveControl/commControl.c: 323:         CAN_transmit(&msg);
-[e ( _CAN_transmit (1 &U _msg ]
-"324
-[; ;driveControl/commControl.c: 324:     }
+"367
+[; ;driveControl/commControl.c: 367:         me->msg.frame.id = 0x51F;
+[e = . . . *U _me 2 0 1 -> -> -> 1311 `i `l `ul ]
+"368
+[; ;driveControl/commControl.c: 368:         me->msg.frame.dlc = 2;
+[e = . . . *U _me 2 0 2 -> -> 2 `i `uc ]
+"369
+[; ;driveControl/commControl.c: 369:         me->msg.frame.data0 = statusWordH;
+[e = . . . *U _me 2 0 3 _statusWordH ]
+"370
+[; ;driveControl/commControl.c: 370:         me->msg.frame.data1 = statusWordL;
+[e = . . . *U _me 2 0 4 _statusWordL ]
+"374
+[; ;driveControl/commControl.c: 374:         me->msg.frame.rtr = 0;
+[e = . . . *U _me 2 0 11 -> -> 0 `i `uc ]
+"375
+[; ;driveControl/commControl.c: 375:         CAN_transmit(&(me->msg));
+[e ( _CAN_transmit (1 &U . *U _me 2 ]
+"376
+[; ;driveControl/commControl.c: 376:     }
 }
-[e :U 3319 ]
-"325
-[; ;driveControl/commControl.c: 325: }
-[e :UE 3318 ]
+[e :U 3318 ]
+"377
+[; ;driveControl/commControl.c: 377: }
+[e :UE 3317 ]
 }
-"332
-[; ;driveControl/commControl.c: 332: void setCenter(CommControl* me, uCAN_MSG* msg){
+"384
+[; ;driveControl/commControl.c: 384: void setCenter(CommControl* me, uCAN_MSG* msg){
 [v _setCenter `(v ~T0 @X0 1 ef2`*S3220`*S3211 ]
 {
 [e :U _setCenter ]
 [v _me `*S3220 ~T0 @X0 1 r1 ]
 [v _msg `*S3211 ~T0 @X0 1 r2 ]
 [f ]
-"333
-[; ;driveControl/commControl.c: 333:     uint32_t position;
-[v _position `ul ~T0 @X0 1 a ]
-"334
-[; ;driveControl/commControl.c: 334:     position = (((uint32_t)msg->frame.data0)<<24) + (((uint32_t)msg->frame.data1)<<16) + ((uint32_t)(msg->frame.data2)<<8) + (uint32_t)(msg->frame.data3);
-[e = _position + + + << -> . . *U _msg 0 3 `ul -> 24 `i << -> . . *U _msg 0 4 `ul -> 16 `i << -> . . *U _msg 0 5 `ul -> 8 `i -> . . *U _msg 0 6 `ul ]
-"336
-[; ;driveControl/commControl.c: 336:     store_write(st(), EE_CENTER_LL, msg->frame.data3);
+"389
+[; ;driveControl/commControl.c: 389:     store_write(st(), EE_CENTER_LL, msg->frame.data3);
 [e ( _store_write (3 , , ( _st ..  . `E23238 2 . . *U _msg 0 6 ]
-"337
-[; ;driveControl/commControl.c: 337:     store_write(st(), EE_CENTER_L, msg->frame.data2);
+"390
+[; ;driveControl/commControl.c: 390:     store_write(st(), EE_CENTER_L, msg->frame.data2);
 [e ( _store_write (3 , , ( _st ..  . `E23238 3 . . *U _msg 0 5 ]
-"338
-[; ;driveControl/commControl.c: 338:     store_write(st(), EE_CENTER_H, msg->frame.data1);
+"391
+[; ;driveControl/commControl.c: 391:     store_write(st(), EE_CENTER_H, msg->frame.data1);
 [e ( _store_write (3 , , ( _st ..  . `E23238 4 . . *U _msg 0 4 ]
-"339
-[; ;driveControl/commControl.c: 339:     store_write(st(), EE_CENTER_HH, msg->frame.data0);
+"392
+[; ;driveControl/commControl.c: 392:     store_write(st(), EE_CENTER_HH, msg->frame.data0);
 [e ( _store_write (3 , , ( _st ..  . `E23238 5 . . *U _msg 0 3 ]
-"346
-[; ;driveControl/commControl.c: 346: }
-[e :UE 3320 ]
+"404
+[; ;driveControl/commControl.c: 404: }
+[e :UE 3319 ]
 }
-"351
-[; ;driveControl/commControl.c: 351: void getCenterFrame(CommControl* me){
+"409
+[; ;driveControl/commControl.c: 409: void getCenterFrame(CommControl* me){
 [v _getCenterFrame `(v ~T0 @X0 1 ef1`*S3220 ]
 {
 [e :U _getCenterFrame ]
 [v _me `*S3220 ~T0 @X0 1 r1 ]
 [f ]
-"352
-[; ;driveControl/commControl.c: 352:     uCAN_MSG msg;
-[v _msg `S3211 ~T0 @X0 1 a ]
-"353
-[; ;driveControl/commControl.c: 353:     msg.frame.idType = 1;
-[e = . . _msg 0 0 -> -> 1 `i `uc ]
-"354
-[; ;driveControl/commControl.c: 354:     msg.frame.id = 0x511;
-[e = . . _msg 0 1 -> -> -> 1297 `i `l `ul ]
-"355
-[; ;driveControl/commControl.c: 355:     msg.frame.dlc = 4;
-[e = . . _msg 0 2 -> -> 4 `i `uc ]
-"357
-[; ;driveControl/commControl.c: 357:     msg.frame.data0 = store_read(st(), EE_CENTER_HH);
-[e = . . _msg 0 3 ( _store_read (2 , ( _st ..  . `E23238 5 ]
-"358
-[; ;driveControl/commControl.c: 358:     msg.frame.data1 = store_read(st(), EE_CENTER_H);
-[e = . . _msg 0 4 ( _store_read (2 , ( _st ..  . `E23238 4 ]
-"359
-[; ;driveControl/commControl.c: 359:     msg.frame.data2 = store_read(st(), EE_CENTER_L);
-[e = . . _msg 0 5 ( _store_read (2 , ( _st ..  . `E23238 3 ]
-"360
-[; ;driveControl/commControl.c: 360:     msg.frame.data3 = store_read(st(), EE_CENTER_LL);
-[e = . . _msg 0 6 ( _store_read (2 , ( _st ..  . `E23238 2 ]
-"362
-[; ;driveControl/commControl.c: 362:     msg.frame.rtr = 0;
-[e = . . _msg 0 11 -> -> 0 `i `uc ]
-"363
-[; ;driveControl/commControl.c: 363: }
-[e :UE 3321 ]
+"410
+[; ;driveControl/commControl.c: 410:     uCAN_MSG msgs;
+[v _msgs `S3211 ~T0 @X0 1 a ]
+"411
+[; ;driveControl/commControl.c: 411:     msgs.frame.idType = 1;
+[e = . . _msgs 0 0 -> -> 1 `i `uc ]
+"412
+[; ;driveControl/commControl.c: 412:     msgs.frame.id = 0x511;
+[e = . . _msgs 0 1 -> -> -> 1297 `i `l `ul ]
+"413
+[; ;driveControl/commControl.c: 413:     msgs.frame.dlc = 4;
+[e = . . _msgs 0 2 -> -> 4 `i `uc ]
+"415
+[; ;driveControl/commControl.c: 415:     msgs.frame.data0 = store_read(st(), EE_CENTER_HH);
+[e = . . _msgs 0 3 ( _store_read (2 , ( _st ..  . `E23238 5 ]
+"416
+[; ;driveControl/commControl.c: 416:     msgs.frame.data1 = store_read(st(), EE_CENTER_H);
+[e = . . _msgs 0 4 ( _store_read (2 , ( _st ..  . `E23238 4 ]
+"417
+[; ;driveControl/commControl.c: 417:     msgs.frame.data2 = store_read(st(), EE_CENTER_L);
+[e = . . _msgs 0 5 ( _store_read (2 , ( _st ..  . `E23238 3 ]
+"418
+[; ;driveControl/commControl.c: 418:     msgs.frame.data3 = store_read(st(), EE_CENTER_LL);
+[e = . . _msgs 0 6 ( _store_read (2 , ( _st ..  . `E23238 2 ]
+"420
+[; ;driveControl/commControl.c: 420:     msgs.frame.rtr = 0;
+[e = . . _msgs 0 11 -> -> 0 `i `uc ]
+"422
+[; ;driveControl/commControl.c: 422:     CAN_transmit(&msgs);
+[e ( _CAN_transmit (1 &U _msgs ]
+"423
+[; ;driveControl/commControl.c: 423: }
+[e :UE 3320 ]
 }
-"370
-[; ;driveControl/commControl.c: 370: void setPosition(CommControl* me, uCAN_MSG* msg) {
+"430
+[; ;driveControl/commControl.c: 430: void setPosition(CommControl* me, uCAN_MSG* msg) {
 [v _setPosition `(v ~T0 @X0 1 ef2`*S3220`*S3211 ]
 {
 [e :U _setPosition ]
 [v _me `*S3220 ~T0 @X0 1 r1 ]
 [v _msg `*S3211 ~T0 @X0 1 r2 ]
 [f ]
-"372
-[; ;driveControl/commControl.c: 372:     uint32_t position;
+"432
+[; ;driveControl/commControl.c: 432:     uint32_t position;
 [v _position `ul ~T0 @X0 1 a ]
-"373
-[; ;driveControl/commControl.c: 373:     position = (((uint32_t)msg->frame.data0)<<24) + (((uint32_t)msg->frame.data1)<<16) + ((uint32_t)(msg->frame.data2)<<8) + (uint32_t)(msg->frame.data3);
+"433
+[; ;driveControl/commControl.c: 433:     position = (((uint32_t)msg->frame.data0)<<24) + (((uint32_t)msg->frame.data1)<<16) + ((uint32_t)(msg->frame.data2)<<8) + (uint32_t)(msg->frame.data3);
 [e = _position + + + << -> . . *U _msg 0 3 `ul -> 24 `i << -> . . *U _msg 0 4 `ul -> 16 `i << -> . . *U _msg 0 5 `ul -> 8 `i -> . . *U _msg 0 6 `ul ]
-"374
-[; ;driveControl/commControl.c: 374:     sepos_send_positionValue(sepos(), position);
+"435
+[; ;driveControl/commControl.c: 435:     sepos_send_positionValue(sepos(), position);
 [e ( _sepos_send_positionValue (2 , ( _sepos ..  -> _position `l ]
-"375
-[; ;driveControl/commControl.c: 375:     while(sepos_receive_statusword(sepos()) != 0x200 ){
-[e $U 3323  ]
-[e :U 3324 ]
-{
-"376
-[; ;driveControl/commControl.c: 376:             _delay((unsigned long)((10)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"377
-[; ;driveControl/commControl.c: 377:     }
+"437
+[; ;driveControl/commControl.c: 437: }
+[e :UE 3321 ]
 }
-[e :U 3323 ]
-"375
-[; ;driveControl/commControl.c: 375:     while(sepos_receive_statusword(sepos()) != 0x200 ){
-[e $ != -> ( _sepos_receive_statusword (1 ( _sepos ..  `ui -> -> 512 `i `ui 3324  ]
-[e :U 3325 ]
-"378
-[; ;driveControl/commControl.c: 378: }
-[e :UE 3322 ]
-}
-"384
-[; ;driveControl/commControl.c: 384: void getPositionFrame(CommControl* me) {
+"443
+[; ;driveControl/commControl.c: 443: void getPositionFrame(CommControl* me) {
 [v _getPositionFrame `(v ~T0 @X0 1 ef1`*S3220 ]
 {
 [e :U _getPositionFrame ]
 [v _me `*S3220 ~T0 @X0 1 r1 ]
 [f ]
-"385
-[; ;driveControl/commControl.c: 385:     uint32_t position;
+"444
+[; ;driveControl/commControl.c: 444:     uint32_t position;
 [v _position `ul ~T0 @X0 1 a ]
-"386
-[; ;driveControl/commControl.c: 386:     position = sepos_receive_positionValue(sepos());
+"445
+[; ;driveControl/commControl.c: 445:     position = sepos_receive_positionValue(sepos());
 [e = _position -> ( _sepos_receive_positionValue (1 ( _sepos ..  `ul ]
-"387
-[; ;driveControl/commControl.c: 387:     uCAN_MSG msg;
+"446
+[; ;driveControl/commControl.c: 446:     uCAN_MSG msg;
 [v _msg `S3211 ~T0 @X0 1 a ]
-"388
-[; ;driveControl/commControl.c: 388:     msg.frame.idType = 1;
+"447
+[; ;driveControl/commControl.c: 447:     msg.frame.idType = 1;
 [e = . . _msg 0 0 -> -> 1 `i `uc ]
-"389
-[; ;driveControl/commControl.c: 389:     msg.frame.id = 0x512;
+"448
+[; ;driveControl/commControl.c: 448:     msg.frame.id = 0x512;
 [e = . . _msg 0 1 -> -> -> 1298 `i `l `ul ]
-"390
-[; ;driveControl/commControl.c: 390:     msg.frame.dlc = 4;
+"449
+[; ;driveControl/commControl.c: 449:     msg.frame.dlc = 4;
 [e = . . _msg 0 2 -> -> 4 `i `uc ]
-"391
-[; ;driveControl/commControl.c: 391:     msg.frame.data3 = (uint8_t)(position);
+"450
+[; ;driveControl/commControl.c: 450:     msg.frame.data3 = (uint8_t)(position);
 [e = . . _msg 0 6 -> _position `uc ]
-"392
-[; ;driveControl/commControl.c: 392:     msg.frame.data2 = (uint8_t)(position<<8);
-[e = . . _msg 0 5 -> << _position -> 8 `i `uc ]
-"393
-[; ;driveControl/commControl.c: 393:     msg.frame.data1 = (uint8_t)(position<<16);
-[e = . . _msg 0 4 -> << _position -> 16 `i `uc ]
-"394
-[; ;driveControl/commControl.c: 394:     msg.frame.data0 = (uint8_t)(position<<24);
-[e = . . _msg 0 3 -> << _position -> 24 `i `uc ]
-"395
-[; ;driveControl/commControl.c: 395:     msg.frame.rtr = 0;
+"451
+[; ;driveControl/commControl.c: 451:     msg.frame.data2 = (uint8_t)(position>>8);
+[e = . . _msg 0 5 -> >> _position -> 8 `i `uc ]
+"452
+[; ;driveControl/commControl.c: 452:     msg.frame.data1 = (uint8_t)(position>>16);
+[e = . . _msg 0 4 -> >> _position -> 16 `i `uc ]
+"453
+[; ;driveControl/commControl.c: 453:     msg.frame.data0 = (uint8_t)(position>>24);
+[e = . . _msg 0 3 -> >> _position -> 24 `i `uc ]
+"454
+[; ;driveControl/commControl.c: 454:     msg.frame.rtr = 0;
 [e = . . _msg 0 11 -> -> 0 `i `uc ]
-"396
-[; ;driveControl/commControl.c: 396:     CAN_transmit(&msg);
+"455
+[; ;driveControl/commControl.c: 455:     CAN_transmit(&msg);
 [e ( _CAN_transmit (1 &U _msg ]
-"397
-[; ;driveControl/commControl.c: 397: }
-[e :UE 3326 ]
+"456
+[; ;driveControl/commControl.c: 456: }
+[e :UE 3322 ]
 }

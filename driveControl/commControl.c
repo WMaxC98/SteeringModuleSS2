@@ -169,7 +169,7 @@ bool commControl_processEvent(Event* ev) {
                     // init event posted in the start behaviour method
                     break;
                 case ST_CSMWAIT:
-                    POST(me, &commControl_processEvent, evCTM, POLLCTM*TIMEFACTOR, 0); // TODO : change the delay time into the desired time 
+                    POST(me, &commControl_processEvent, evCTM, POLLCTM, 0); // TODO : change the delay time into the desired time 
                     break;
                 case ST_CSMPROCESS:
                     readCANFrame(me, &(me->msg));
@@ -213,12 +213,12 @@ bool commControl_processEvent(Event* ev) {
 }
 
 /**
+ * Read incoming CAN messages and send the state machine in the corresponding state
+ * 
  * 
  * @param me
  * @param msg
  */
-
-// MAX Modify the switch with the correct case for the steering 
 void readCANFrame(CommControl* me, uCAN_MSG* msg) {
     if (CAN_receive(msg) != 0) {
         switch(msg->frame.id){
@@ -241,12 +241,13 @@ void readCANFrame(CommControl* me, uCAN_MSG* msg) {
     }
     
 }
-
 /**
+ * Setup the EPOS2 driver, do the homing sequence and set the motor in center position 
  * 
  * @param me
  * @param msg
  */
+
 void steeringSetup(CommControl* me, uCAN_MSG* msg) {
     uCAN_MSG msgs;
     msgs.frame.idType = dSTANDARD_CAN_MSG_ID_2_0B;
@@ -256,97 +257,129 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
     msgs.frame.data1 = 99;
     msgs.frame.rtr = 0;
    
-    
+    // If reset/init byte is not 0 we need to stop the motor and begin the initializing sequence 
     if(msg->frame.data0 != 0){
-        // TODO : stop the driver
-        //sepos_send_controlword(sepos(), 0); 
-        //__delay_ms(10);
-        // TODO : start the driver sequence
-        //sepos_send_controlword(sepos(), 6);
-        //__delay_ms(10);
-        //sepos_send_controlword(sepos(), 7);
-        //__delay_ms(10);
-        //sepos_send_controlword(sepos(), 15);       
-        // then the driver is ready
+        // Massive delays are needed to let the time to the EPOS2 driver to change is working modes
+        // Each delay as been empirically tested individually  
+        // Stop the driver
+        sepos_send_controlword(sepos(), 0); 
+        __delay_ms(200);
+         sepos_send_controlword(sepos(), 0b10000000); 
+        __delay_ms(200);
+        // Start the driver sequence
+        sepos_send_controlword(sepos(), 6);
+        __delay_ms(200);
+        sepos_send_controlword(sepos(), 7);
+        __delay_ms(1000);
+        sepos_send_controlword(sepos(), 15);       
+        // Then the driver is ready
+        __delay_ms(800);
     }
+    
+    //If homing bit is not 0 we need to initialize the homing sequence
+    //We also need to communicate the homing sequence status with the control throughout the process
     if(msg->frame.data1 != 0){
         // TODO : homing sequence
-        //sepos_send_modOfOpp(sepos(), 6);
-        msgs.frame.data0 = 1;
-        msgs.frame.data1 = 1;
-        CAN_transmit(&msgs);
-        //sepos_send_controlword(sepos(), 4);
-        //while(sepos_receive_statusword(sepos()) != 0x700 ){
-        //    __delay_ms(10);
-        //}   
+        sepos_send_modOfOpp(sepos(), 6);
+        __delay_ms(600);
+//        msgs.frame.data0 = 1;                         -Optional message not needed by the control
+//        msgs.frame.data1 = 1;
+//        CAN_transmit(&msgs);
+        sepos_send_controlword(sepos(), 31);
+        __delay_ms(600);
+        while((sepos_receive_statusword(sepos())&0b1000000000000) != 0b1000000000000 ){
+            __delay_ms(40);
+        }   
+           
+        sepos_send_controlword(sepos(), 15);
+        __delay_ms(600);
+        sepos_send_modOfOpp(sepos(), -1);
+        __delay_ms(200);
+     
         msgs.frame.data0 = 2;
         msgs.frame.data1 = 0;
-        //__delay_ms(10);
+        __delay_ms(40);
         CAN_transmit(&msgs);
     }else{
+        //IF the homing bit is 0 we need to tell to the control that we need to have a homing sequence
         msgs.frame.data0 = 0;
         msgs.frame.data1 = 2;
-        //__delay_ms(10);
+        __delay_ms(40);
         CAN_transmit(&msgs);
     }
-    if(msg->frame.data2 != 0){
-        //TODO : go center position
-        //sepos_send_positionValue(sepos(), 218000);
-        //while(sepos_receive_statusword(sepos()) != 0x200 ){
-        //    __delay_ms(10);
-        //}
-    }
-    // TODO : store aliveTime in EEPROM
     
+    //If setCenter bit is not 0 we need to place the motor in the center position 
+    if(msg->frame.data2 != 0){
+       __delay_ms(100);          
+       getCenterFrame(me);        
+       __delay_ms(200); 
+       //TODO : go center position
+       uint32_t position; 
+       position = (((uint32_t)store_read(st(), EE_CENTER_HH))<<24) + (((uint32_t)store_read(st(), EE_CENTER_H))<<16) 
+               + ((uint32_t)store_read(st(), EE_CENTER_L)<<8) + (uint32_t)store_read(st(), EE_CENTER_LL);
+       
+       sepos_send_positionValue(sepos(), position);
+       
+       __delay_ms(500); 
+//       
+//       uint16_t timout = 20;
+//       while(timout != 0){
+//           uint16_t gogole = sepos_receive_statusword(sepos());          
+//           
+//           if(gogole == 0x0400){ 
+//               toto++;
+//               break;
+//           }  
+//           timout--;
+//       }
+//       toto++;     
+    
+    }
+    // Store aliveTime in EEPROM    
     store_write(st(), EE_ALIVE_TIME, msg->frame.data3);
     
 }
 
 /**
+ *  Send alive CAN message each x miliseconds 
  * 
  * @param me
  */
 void sendAliveFrame(CommControl* me) {
-        //IO_RB1_Toggle();  // debug
+    //IO_RB1_Toggle();  // debug purposes 
     
-    /*uint16_t statusWord = depos_recive_statusword();
+    uint16_t statusWord = sepos_receive_statusword(sepos());
     uint8_t statusWordL = (uint8_t) statusWord;
-    uint8_t statusWordH = (uint8_t) statusWord >> 8;*/
+    uint8_t statusWordH = ((uint8_t) statusWord) >> 8;
        
     if(store_read(st(), EE_ALIVE_TIME) > 0){
         me->msg.frame.id = STEERING_ALIVE;
         me->msg.frame.dlc = 2;
-        // msg.frame.data0 = statusWordH;
-        // msg.frame.data1 = statusWordL;
-        // the lines that follow are juste for debugging purposes
-        me->msg.frame.data0 = 0xaa;
-        me->msg.frame.data1 = 0xbb; 
+        me->msg.frame.data0 = statusWordH;
+        me->msg.frame.data1 = statusWordL;
+        // the lines that follow are just for debugging purposes
+        //me->msg.frame.data0 = 0xaa;
+        //me->msg.frame.data1 = 0xbb; 
         me->msg.frame.rtr = 0;
         CAN_transmit(&(me->msg));
     }
 }
 
 /**
+ * This function should be called only once, it's stored in the EEPROM the center value
  * 
  * @param me
  * @param msg
  */
-void setCenter(CommControl* me, uCAN_MSG* msg){
-    uint32_t position;
-    position = (((uint32_t)msg->frame.data0)<<24) + (((uint32_t)msg->frame.data1)<<16) + ((uint32_t)(msg->frame.data2)<<8) + (uint32_t)(msg->frame.data3);
-    
+void setCenter(CommControl* me, uCAN_MSG* msg){  
+    // The uin32_t position is separated in 4 different variable in the memory because the EEPROM storage is 8 bit long
     store_write(st(), EE_CENTER_LL, msg->frame.data3);
     store_write(st(), EE_CENTER_L, msg->frame.data2);
     store_write(st(), EE_CENTER_H, msg->frame.data1);
     store_write(st(), EE_CENTER_HH, msg->frame.data0);
-    
-    //sepos_send_positionValue(sepos(), position);
-     //while(sepos_receive_statusword(sepos()) != 0x200 ){
-     //       __delay_ms(10);
-    //}
-    
 }   
 /**
+ * Send CAN message to the control containing the center position value stored in the EEPROM
  * 
  * @param me
  */
@@ -362,10 +395,12 @@ void getCenterFrame(CommControl* me){
     msgs.frame.data3 = store_read(st(), EE_CENTER_LL);
     
     msgs.frame.rtr = 0;
+    
     CAN_transmit(&msgs);
 }
 
 /**
+ * Set the motor to the given position (received on CAN)
  * 
  * @param me
  * @param msg
@@ -375,10 +410,8 @@ void setPosition(CommControl* me, uCAN_MSG* msg) {
     uint32_t position; 
     position = (((uint32_t)msg->frame.data0)<<24) + (((uint32_t)msg->frame.data1)<<16) + ((uint32_t)(msg->frame.data2)<<8) + (uint32_t)(msg->frame.data3);
     
-    //sepos_send_positionValue(sepos(), position);
-    //while(sepos_receive_statusword(sepos()) != 0x200 ){
-    //        __delay_ms(10);
-    //}
+    sepos_send_positionValue(sepos(), position);
+    
 }
 
 /**
@@ -387,15 +420,15 @@ void setPosition(CommControl* me, uCAN_MSG* msg) {
  */
 void getPositionFrame(CommControl* me) {
     uint32_t position;
-    //position = sepos_receive_positionValue(sepos());
+    position = sepos_receive_positionValue(sepos());
     uCAN_MSG msg;
     msg.frame.idType = dSTANDARD_CAN_MSG_ID_2_0B;
     msg.frame.id  = STEERING_GET_POS_MSG;
     msg.frame.dlc = 4;
     msg.frame.data3 = (uint8_t)(position);
-    msg.frame.data2 = (uint8_t)(position<<8);
-    msg.frame.data1 = (uint8_t)(position<<16);
-    msg.frame.data0 = (uint8_t)(position<<24);
+    msg.frame.data2 = (uint8_t)(position>>8);
+    msg.frame.data1 = (uint8_t)(position>>16);
+    msg.frame.data0 = (uint8_t)(position>>24);
     msg.frame.rtr = 0;
     CAN_transmit(&msg);
 }

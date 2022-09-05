@@ -31,17 +31,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;driveControl/store.c: 9:         DATAEE_WriteByte(EE_ALIVE_TIME, 10);
 [e ( _DATAEE_WriteByte (2 , -> . `E55 1 `us -> -> 10 `i `uc ]
 "10
-[; ;driveControl/store.c: 10:         DATAEE_WriteByte(EE_CENTER_LL, 5);
-[e ( _DATAEE_WriteByte (2 , -> . `E55 2 `us -> -> 5 `i `uc ]
+[; ;driveControl/store.c: 10:         DATAEE_WriteByte(EE_CENTER_LL, 0x90);
+[e ( _DATAEE_WriteByte (2 , -> . `E55 2 `us -> -> 144 `i `uc ]
 "11
-[; ;driveControl/store.c: 11:         DATAEE_WriteByte(EE_CENTER_L, 5);
-[e ( _DATAEE_WriteByte (2 , -> . `E55 3 `us -> -> 5 `i `uc ]
+[; ;driveControl/store.c: 11:         DATAEE_WriteByte(EE_CENTER_L, 0x53);
+[e ( _DATAEE_WriteByte (2 , -> . `E55 3 `us -> -> 83 `i `uc ]
 "12
-[; ;driveControl/store.c: 12:         DATAEE_WriteByte(EE_CENTER_H, 5);
-[e ( _DATAEE_WriteByte (2 , -> . `E55 4 `us -> -> 5 `i `uc ]
+[; ;driveControl/store.c: 12:         DATAEE_WriteByte(EE_CENTER_H, 0x03);
+[e ( _DATAEE_WriteByte (2 , -> . `E55 4 `us -> -> 3 `i `uc ]
 "13
-[; ;driveControl/store.c: 13:         DATAEE_WriteByte(EE_CENTER_HH, 5);
-[e ( _DATAEE_WriteByte (2 , -> . `E55 5 `us -> -> 5 `i `uc ]
+[; ;driveControl/store.c: 13:         DATAEE_WriteByte(EE_CENTER_HH, 0x00);
+[e ( _DATAEE_WriteByte (2 , -> . `E55 5 `us -> -> 0 `i `uc ]
 "16
 [; ;driveControl/store.c: 16:     }
 }

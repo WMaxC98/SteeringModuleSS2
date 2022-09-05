@@ -41,8 +41,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;factory/../driveControl/store.h: 30: typedef struct Store_ {
 [s S3225 `uc -> 5 `i ]
 [n S3225 Store_ eeValues ]
-"50 factory/../sepos/sepos_RS232.h
-[; ;factory/../sepos/sepos_RS232.h: 50: typedef struct Sepos_ {
+"44 factory/../sepos/sepos_RS232.h
+[; ;factory/../sepos/sepos_RS232.h: 44:     typedef struct Sepos_ {
 [s S3230 `uc -> 50 `i `us -> 25 `i `uc -> 50 `i `us -> 25 `i ]
 [n S3230 Sepos_ txbuf txdata rxbuf rxdata ]
 "26 factory/factory.h
@@ -72,8 +72,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "35 factory/../driveControl/store.h
 [; ;factory/../driveControl/store.h: 35: void store_init(Store* me);
 [v _store_init `(v ~T0 @X0 0 ef1`*S3225 ]
-"57 factory/../sepos/sepos_RS232.h
-[; ;factory/../sepos/sepos_RS232.h: 57: void sepos_init(Sepos* me);
+"52 factory/../sepos/sepos_RS232.h
+[; ;factory/../sepos/sepos_RS232.h: 52:     void sepos_init(Sepos* me);
 [v _sepos_init `(v ~T0 @X0 0 ef1`*S3230 ]
 [v F23168 `(v ~T0 @X0 0 tf3`*v`uc`a ]
 "68 factory/../app/../board/button/buttonsm.h
