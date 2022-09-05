@@ -37319,12 +37319,7 @@ _Bool commControl_processEvent(Event* ev) {
     }
     return processed;
 }
-
-
-
-
-
-
+# 222 "driveControl/commControl.c"
 void readCANFrame(CommControl* me, uCAN_MSG* msg) {
     if (CAN_receive(msg) != 0) {
         switch(msg->frame.id){
@@ -37347,7 +37342,7 @@ void readCANFrame(CommControl* me, uCAN_MSG* msg) {
     }
 
 }
-uint8_t toto = 0;
+
 
 
 
@@ -37365,6 +37360,7 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
 
 
     if(msg->frame.data0 != 0){
+
 
 
         sepos_send_controlword(sepos(), 0);
@@ -37403,44 +37399,30 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
 
         msgs.frame.data0 = 2;
         msgs.frame.data1 = 0;
-        _delay((unsigned long)((40)*(64000000/4000.0)));
+
         CAN_transmit(&msgs);
     }else{
 
         msgs.frame.data0 = 0;
         msgs.frame.data1 = 2;
-        _delay((unsigned long)((40)*(64000000/4000.0)));
+
         CAN_transmit(&msgs);
     }
 
 
     if(msg->frame.data2 != 0){
-       _delay((unsigned long)((100)*(64000000/4000.0)));
 
-       uCAN_MSG msgh;
-       msgh.frame.idType = 1;
-       msgh.frame.id = 0x511;
-       msgh.frame.dlc = 4;
 
-       msgh.frame.data0 = store_read(st(), EE_CENTER_HH);
-       msgh.frame.data1 = store_read(st(), EE_CENTER_H);
-       msgh.frame.data2 = store_read(st(), EE_CENTER_L);
-       msgh.frame.data3 = store_read(st(), EE_CENTER_LL);
+       getCenterFrame(me);
 
-       msgh.frame.rtr = 0;
-
-       CAN_transmit(&msgh);
-
-       _delay((unsigned long)((200)*(64000000/4000.0)));
 
        uint32_t position;
        position = (((uint32_t)store_read(st(), EE_CENTER_HH))<<24) + (((uint32_t)store_read(st(), EE_CENTER_H))<<16)
                + ((uint32_t)store_read(st(), EE_CENTER_L)<<8) + (uint32_t)store_read(st(), EE_CENTER_LL);
 
        sepos_send_positionValue(sepos(), position);
-
        _delay((unsigned long)((500)*(64000000/4000.0)));
-# 349 "driveControl/commControl.c"
+# 337 "driveControl/commControl.c"
     }
 
     store_write(st(), EE_ALIVE_TIME, msg->frame.data3);
@@ -37451,21 +37433,22 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
 
 
 
+
 void sendAliveFrame(CommControl* me) {
 
 
-    uint16_t statusWord = sepos_receive_statusword(sepos());
-    uint8_t statusWordL = (uint8_t) statusWord;
-    uint8_t statusWordH = ((uint8_t) statusWord) >> 8;
+
+
+
 
     if(store_read(st(), EE_ALIVE_TIME) > 0){
         me->msg.frame.id = 0x51F;
         me->msg.frame.dlc = 2;
-        me->msg.frame.data0 = statusWordH;
-        me->msg.frame.data1 = statusWordL;
 
 
 
+        me->msg.frame.data0 = 0xaa;
+        me->msg.frame.data1 = 0xbb;
         me->msg.frame.rtr = 0;
         CAN_transmit(&(me->msg));
     }
@@ -37476,17 +37459,15 @@ void sendAliveFrame(CommControl* me) {
 
 
 
+
 void setCenter(CommControl* me, uCAN_MSG* msg){
-
-
-
 
     store_write(st(), EE_CENTER_LL, msg->frame.data3);
     store_write(st(), EE_CENTER_L, msg->frame.data2);
     store_write(st(), EE_CENTER_H, msg->frame.data1);
     store_write(st(), EE_CENTER_HH, msg->frame.data0);
-# 404 "driveControl/commControl.c"
 }
+
 
 
 
@@ -37512,6 +37493,7 @@ void getCenterFrame(CommControl* me){
 
 
 
+
 void setPosition(CommControl* me, uCAN_MSG* msg) {
 
     uint32_t position;
@@ -37520,6 +37502,7 @@ void setPosition(CommControl* me, uCAN_MSG* msg) {
     sepos_send_positionValue(sepos(), position);
 
 }
+
 
 
 

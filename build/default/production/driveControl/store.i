@@ -169,7 +169,7 @@ void store_init(Store* me) {
 
 
 
-        DATAEE_WriteByte(EE_ALIVE_TIME, 10);
+        DATAEE_WriteByte(EE_ALIVE_TIME, 100);
         DATAEE_WriteByte(EE_CENTER_LL, 0x90);
         DATAEE_WriteByte(EE_CENTER_L, 0x53);
         DATAEE_WriteByte(EE_CENTER_H, 0x03);

@@ -150,19 +150,19 @@ ST_ASMALIVE 32
 [v _commControl_startBehaviour commControl_startBehaviour `(v  1 e 1 0 ]
 "43
 [v _commControl_processEvent commControl_processEvent `(a  1 e 1 0 ]
-"220
+"222
 [v _readCANFrame readCANFrame `(v  1 e 1 0 ]
-"249
+"251
 [v _steeringSetup steeringSetup `(v  1 e 1 0 ]
-"345
+"348
 [v _sendAliveFrame sendAliveFrame `(v  1 e 1 0 ]
-"370
+"374
 [v _setCenter setCenter `(v  1 e 1 0 ]
-"395
+"386
 [v _getCenterFrame getCenterFrame `(v  1 e 1 0 ]
-"416
+"408
 [v _setPosition setPosition `(v  1 e 1 0 ]
-"429
+"422
 [v _getPositionFrame getPositionFrame `(v  1 e 1 0 ]
 "3 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/store.c
 [v _store_init store_init `(v  1 e 1 0 ]
@@ -185,9 +185,9 @@ ST_ASMALIVE 32
 [s S128 ButtonSM_ 8 `E23122 1 state 1 0 `*.39S48 1 button 2 1 `E23122 1 actualState 1 3 `*.37(v 1 observerCB 2 4 `*.39v 1 observer 2 6 ]
 [v _bsm bsm `(*.39S128  1 e 2 0 ]
 "10 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule/app/blcontrol.h
-[s S794 BLControl_ 0 ]
+[s S793 BLControl_ 0 ]
 "24 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\factory/factory.c
-[v _blc blc `(*.39S794  1 e 2 0 ]
+[v _blc blc `(*.39S793  1 e 2 0 ]
 "104 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule/driveControl/commControl.h
 "62 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule/mcc_generated_files/ecan.h
 "64
@@ -276,25 +276,25 @@ ST_ASMALIVE 32
 [v _UART1_SetOverrunErrorHandler UART1_SetOverrunErrorHandler `(v  1 e 1 0 ]
 "198
 [v _UART1_SetErrorHandler UART1_SetErrorHandler `(v  1 e 1 0 ]
-"16 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
+"17 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
 [v _sepos_init sepos_init `(v  1 e 1 0 ]
-"27
+"28
 [v _sepos_CalcFieldCRC sepos_CalcFieldCRC `(us  1 e 2 0 ]
-"53
+"54
 [v _sepos_send_RS232 sepos_send_RS232 `(v  1 e 1 0 ]
-"85
+"86
 [v _MyRead MyRead `(uc  1 e 1 0 ]
-"99
+"100
 [v _sepos_receive_RS232 sepos_receive_RS232 `(v  1 e 1 0 ]
-"151
+"152
 [v _sepos_send_modOfOpp sepos_send_modOfOpp `(v  1 e 1 0 ]
-"165
+"166
 [v _sepos_send_controlword sepos_send_controlword `(v  1 e 1 0 ]
-"179
+"180
 [v _sepos_send_positionValue sepos_send_positionValue `(v  1 e 1 0 ]
-"195
+"196
 [v _sepos_receive_positionValue sepos_receive_positionValue `(l  1 e 4 0 ]
-"239
+"240
 [v _sepos_receive_statusword sepos_receive_statusword `(us  1 e 2 0 ]
 "4 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\xf/event.c
 [v _Event_init Event_init `(v  1 e 1 0 ]
@@ -357,27 +357,27 @@ ST_ASMALIVE 32
 [v _TMR0H TMR0H `VEuc  1 e 1 @16311 ]
 "3976
 [v _T0CON0 T0CON0 `VEuc  1 e 1 @16312 ]
-[s S1298 . 1 `uc 1 OUTPS 1 0 :4:0 
+[s S1297 . 1 `uc 1 OUTPS 1 0 :4:0 
 `uc 1 MD16 1 0 :1:4 
 `uc 1 OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 EN 1 0 :1:7 
 ]
 "4004
-[s S1304 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S1303 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T0MD16 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
-[s S1310 . 1 `uc 1 OUTPS0 1 0 :1:0 
+[s S1309 . 1 `uc 1 OUTPS0 1 0 :1:0 
 `uc 1 OUTPS1 1 0 :1:1 
 `uc 1 OUTPS2 1 0 :1:2 
 `uc 1 OUTPS3 1 0 :1:3 
 `uc 1 T016BIT 1 0 :1:4 
 ]
-[u S1316 . 1 `S1298 1 . 1 0 `S1304 1 . 1 0 `S1310 1 . 1 0 ]
-[v _T0CON0bits T0CON0bits `VES1316  1 e 1 @16312 ]
+[u S1315 . 1 `S1297 1 . 1 0 `S1303 1 . 1 0 `S1309 1 . 1 0 ]
+[v _T0CON0bits T0CON0bits `VES1315  1 e 1 @16312 ]
 "4074
 [v _T0CON1 T0CON1 `VEuc  1 e 1 @16313 ]
 "4216
@@ -432,7 +432,7 @@ ST_ASMALIVE 32
 ]
 [u S67 . 1 `S51 1 . 1 0 `S60 1 . 1 0 `S64 1 . 1 0 ]
 [v _PORTCbits PORTCbits `VES67  1 e 1 @16332 ]
-[s S1014 . 1 `uc 1 INT0EDG 1 0 :1:0 
+[s S1013 . 1 `uc 1 INT0EDG 1 0 :1:0 
 `uc 1 INT1EDG 1 0 :1:1 
 `uc 1 INT2EDG 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
@@ -441,11 +441,11 @@ ST_ASMALIVE 32
 `uc 1 GIE 1 0 :1:7 
 ]
 "5038
-[s S1022 . 1 `uc 1 . 1 0 :7:0 
+[s S1021 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S1025 . 1 `S1014 1 . 1 0 `S1022 1 . 1 0 ]
-[v _INTCON0bits INTCON0bits `VES1025  1 e 1 @16338 ]
+[u S1024 . 1 `S1013 1 . 1 0 `S1021 1 . 1 0 ]
+[v _INTCON0bits INTCON0bits `VES1024  1 e 1 @16338 ]
 "6165
 [v _TABLAT TABLAT `VEuc  1 e 1 @16373 ]
 "6194
@@ -518,7 +518,7 @@ ST_ASMALIVE 32
 [v _RXM1EIDH RXM1EIDH `VEuc  1 e 1 @14270 ]
 "16674
 [v _RXM1EIDL RXM1EIDL `VEuc  1 e 1 @14271 ]
-[s S1646 . 1 `uc 1 TXPRI 1 0 :2:0 
+[s S1645 . 1 `uc 1 TXPRI 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 TXREQ 1 0 :1:3 
 `uc 1 TXERR 1 0 :1:4 
@@ -527,11 +527,11 @@ ST_ASMALIVE 32
 `uc 1 TXBIF 1 0 :1:7 
 ]
 "16764
-[s S1654 . 1 `uc 1 TXPRI0 1 0 :1:0 
+[s S1653 . 1 `uc 1 TXPRI0 1 0 :1:0 
 `uc 1 TXPRI1 1 0 :1:1 
 ]
-[u S1657 . 1 `S1646 1 . 1 0 `S1654 1 . 1 0 ]
-[v _TXB2CONbits TXB2CONbits `VES1657  1 e 1 @14272 ]
+[u S1656 . 1 `S1645 1 . 1 0 `S1653 1 . 1 0 ]
+[v _TXB2CONbits TXB2CONbits `VES1656  1 e 1 @14272 ]
 "16809
 [v _TXB2SIDH TXB2SIDH `VEuc  1 e 1 @14273 ]
 "16929
@@ -559,7 +559,7 @@ ST_ASMALIVE 32
 "17700
 [v _TXB2D7 TXB2D7 `VEuc  1 e 1 @14285 ]
 "18046
-[v _TXB1CONbits TXB1CONbits `VES1657  1 e 1 @14288 ]
+[v _TXB1CONbits TXB1CONbits `VES1656  1 e 1 @14288 ]
 "18091
 [v _TXB1SIDH TXB1SIDH `VEuc  1 e 1 @14289 ]
 "18211
@@ -587,7 +587,7 @@ ST_ASMALIVE 32
 "18982
 [v _TXB1D7 TXB1D7 `VEuc  1 e 1 @14301 ]
 "19311
-[v _TXB0CONbits TXB0CONbits `VES1657  1 e 1 @14304 ]
+[v _TXB0CONbits TXB0CONbits `VES1656  1 e 1 @14304 ]
 "19356
 [v _TXB0SIDH TXB0SIDH `VEuc  1 e 1 @14305 ]
 "19476
@@ -614,7 +614,7 @@ ST_ASMALIVE 32
 [v _TXB0D6 TXB0D6 `VEuc  1 e 1 @14316 ]
 "20247
 [v _TXB0D7 TXB0D7 `VEuc  1 e 1 @14317 ]
-[s S1844 . 1 `uc 1 FILHIT0 1 0 :1:0 
+[s S1843 . 1 `uc 1 FILHIT0 1 0 :1:0 
 `uc 1 FILHIT1 1 0 :1:1 
 `uc 1 FILHIT2 1 0 :1:2 
 `uc 1 RXRTRRO_FILHIT3 1 0 :1:3 
@@ -624,18 +624,18 @@ ST_ASMALIVE 32
 `uc 1 RXFUL 1 0 :1:7 
 ]
 "20602
-[s S1853 . 1 `uc 1 . 1 0 :3:0 
+[s S1852 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 RXRTRRO 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 RXM0 1 0 :1:5 
 ]
-[s S1858 . 1 `uc 1 . 1 0 :3:0 
+[s S1857 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 FILHIT3 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 RTRRO 1 0 :1:5 
 ]
-[u S1863 . 1 `S1844 1 . 1 0 `S1853 1 . 1 0 `S1858 1 . 1 0 ]
-[v _RXB1CONbits RXB1CONbits `VES1863  1 e 1 @14320 ]
+[u S1862 . 1 `S1843 1 . 1 0 `S1852 1 . 1 0 `S1857 1 . 1 0 ]
+[v _RXB1CONbits RXB1CONbits `VES1862  1 e 1 @14320 ]
 "20667
 [v _RXB1SIDH RXB1SIDH `VEuc  1 e 1 @14321 ]
 "20787
@@ -662,7 +662,7 @@ ST_ASMALIVE 32
 [v _RXB1D6 RXB1D6 `VEuc  1 e 1 @14332 ]
 "21580
 [v _RXB1D7 RXB1D7 `VEuc  1 e 1 @14333 ]
-[s S1114 . 1 `uc 1 I2C1TXIE 1 0 :1:0 
+[s S1113 . 1 `uc 1 I2C1TXIE 1 0 :1:0 
 `uc 1 I2C1IE 1 0 :1:1 
 `uc 1 I2C1EIE 1 0 :1:2 
 `uc 1 U1RXIE 1 0 :1:3 
@@ -672,20 +672,20 @@ ST_ASMALIVE 32
 `uc 1 TMR0IE 1 0 :1:7 
 ]
 "25404
-[s S1123 . 1 `uc 1 RXB0IE 1 0 :1:0 
+[s S1122 . 1 `uc 1 RXB0IE 1 0 :1:0 
 `uc 1 RXB1IE 1 0 :1:1 
 `uc 1 TXB0IE 1 0 :1:2 
 `uc 1 TXB1IE 1 0 :1:3 
 `uc 1 TXB2IE 1 0 :1:4 
 ]
-[s S1129 . 1 `uc 1 . 1 0 :1:0 
+[s S1128 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RXBNIE 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBNIE 1 0 :1:4 
 ]
-[u S1134 . 1 `S1114 1 . 1 0 `S1123 1 . 1 0 `S1129 1 . 1 0 ]
-[v _PIE3bits PIE3bits `VES1134  1 e 1 @14739 ]
-[s S1040 . 1 `uc 1 RXB0IE 1 0 :1:0 
+[u S1133 . 1 `S1113 1 . 1 0 `S1122 1 . 1 0 `S1128 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES1133  1 e 1 @14739 ]
+[s S1039 . 1 `uc 1 RXB0IE 1 0 :1:0 
 `uc 1 RXB1IE 1 0 :1:1 
 `uc 1 TXB0IE 1 0 :1:2 
 `uc 1 TXB1IE 1 0 :1:3 
@@ -695,16 +695,16 @@ ST_ASMALIVE 32
 `uc 1 IRXIE 1 0 :1:7 
 ]
 "25572
-[s S1049 . 1 `uc 1 FIFOFIE 1 0 :1:0 
+[s S1048 . 1 `uc 1 FIFOFIE 1 0 :1:0 
 `uc 1 RXBnIE 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBnIE 1 0 :1:4 
 ]
-[s S1054 . 1 `uc 1 FIFOWMIE 1 0 :1:0 
+[s S1053 . 1 `uc 1 FIFOWMIE 1 0 :1:0 
 ]
-[u S1056 . 1 `S1040 1 . 1 0 `S1049 1 . 1 0 `S1054 1 . 1 0 ]
-[v _PIE5bits PIE5bits `VES1056  1 e 1 @14741 ]
-[s S1515 . 1 `uc 1 SWIF 1 0 :1:0 
+[u S1055 . 1 `S1039 1 . 1 0 `S1048 1 . 1 0 `S1053 1 . 1 0 ]
+[v _PIE5bits PIE5bits `VES1055  1 e 1 @14741 ]
+[s S1514 . 1 `uc 1 SWIF 1 0 :1:0 
 `uc 1 HLVDIF 1 0 :1:1 
 `uc 1 OSFIF 1 0 :1:2 
 `uc 1 CSWIF 1 0 :1:3 
@@ -714,9 +714,9 @@ ST_ASMALIVE 32
 `uc 1 IOCIF 1 0 :1:7 
 ]
 "25896
-[u S1524 . 1 `S1515 1 . 1 0 ]
-[v _PIR0bits PIR0bits `VES1524  1 e 1 @14752 ]
-[s S1159 . 1 `uc 1 I2C1TXIF 1 0 :1:0 
+[u S1523 . 1 `S1514 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES1523  1 e 1 @14752 ]
+[s S1158 . 1 `uc 1 I2C1TXIF 1 0 :1:0 
 `uc 1 I2C1IF 1 0 :1:1 
 `uc 1 I2C1EIF 1 0 :1:2 
 `uc 1 U1RXIF 1 0 :1:3 
@@ -726,14 +726,14 @@ ST_ASMALIVE 32
 `uc 1 TMR0IF 1 0 :1:7 
 ]
 "26128
-[s S1168 . 1 `uc 1 . 1 0 :1:0 
+[s S1167 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RXBNIF 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBNIF 1 0 :1:4 
 ]
-[u S1173 . 1 `S1159 1 . 1 0 `S1168 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES1173  1 e 1 @14755 ]
-[s S1077 . 1 `uc 1 RXB0IF 1 0 :1:0 
+[u S1172 . 1 `S1158 1 . 1 0 `S1167 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES1172  1 e 1 @14755 ]
+[s S1076 . 1 `uc 1 RXB0IF 1 0 :1:0 
 `uc 1 RXB1IF 1 0 :1:1 
 `uc 1 TXB0IF 1 0 :1:2 
 `uc 1 TXB1IF 1 0 :1:3 
@@ -743,15 +743,15 @@ ST_ASMALIVE 32
 `uc 1 IRXIF 1 0 :1:7 
 ]
 "26271
-[s S1086 . 1 `uc 1 FIFOFIF 1 0 :1:0 
+[s S1085 . 1 `uc 1 FIFOFIF 1 0 :1:0 
 `uc 1 RXBnIF 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBnIF 1 0 :1:4 
 ]
-[s S1091 . 1 `uc 1 FIFOWMIF 1 0 :1:0 
+[s S1090 . 1 `uc 1 FIFOWMIF 1 0 :1:0 
 ]
-[u S1093 . 1 `S1077 1 . 1 0 `S1086 1 . 1 0 `S1091 1 . 1 0 ]
-[v _PIR5bits PIR5bits `VES1093  1 e 1 @14757 ]
+[u S1092 . 1 `S1076 1 . 1 0 `S1085 1 . 1 0 `S1090 1 . 1 0 ]
+[v _PIR5bits PIR5bits `VES1092  1 e 1 @14757 ]
 "26578
 [v _PMD0 PMD0 `VEuc  1 e 1 @14784 ]
 "26655
@@ -784,7 +784,7 @@ ST_ASMALIVE 32
 [v _NVMADRH NVMADRH `VEuc  1 e 1 @14817 ]
 "27823
 [v _NVMDAT NVMDAT `VEuc  1 e 1 @14819 ]
-[s S1433 . 1 `uc 1 RD 1 0 :1:0 
+[s S1432 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -793,19 +793,19 @@ ST_ASMALIVE 32
 `uc 1 REG 1 0 :2:6 
 ]
 "27981
-[s S1441 . 1 `uc 1 . 1 0 :6:0 
+[s S1440 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 REG0 1 0 :1:6 
 `uc 1 REG1 1 0 :1:7 
 ]
-[s S1445 . 1 `uc 1 . 1 0 :6:0 
+[s S1444 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 NVMREG 1 0 :2:6 
 ]
-[s S1448 . 1 `uc 1 . 1 0 :6:0 
+[s S1447 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 NVMREG0 1 0 :1:6 
 `uc 1 NVMREG1 1 0 :1:7 
 ]
-[u S1452 . 1 `S1433 1 . 1 0 `S1441 1 . 1 0 `S1445 1 . 1 0 `S1448 1 . 1 0 ]
-[v _NVMCON1bits NVMCON1bits `VES1452  1 e 1 @14821 ]
+[u S1451 . 1 `S1432 1 . 1 0 `S1440 1 . 1 0 `S1444 1 . 1 0 `S1447 1 . 1 0 ]
+[v _NVMCON1bits NVMCON1bits `VES1451  1 e 1 @14821 ]
 "28041
 [v _NVMCON2 NVMCON2 `VEuc  1 e 1 @14822 ]
 "28921
@@ -868,34 +868,34 @@ ST_ASMALIVE 32
 [v _U1P3H U1P3H `VEuc  1 e 1 @15857 ]
 "47328
 [v _U1CON0 U1CON0 `VEuc  1 e 1 @15858 ]
-[s S2129 . 1 `uc 1 MODE0 1 0 :1:0 
+[s S2128 . 1 `uc 1 MODE0 1 0 :1:0 
 `uc 1 MODE1 1 0 :1:1 
 `uc 1 MODE2 1 0 :1:2 
 ]
 "47359
-[s S2133 . 1 `uc 1 U1MODE 1 0 :4:0 
+[s S2132 . 1 `uc 1 U1MODE 1 0 :4:0 
 `uc 1 U1RXEN 1 0 :1:4 
 `uc 1 U1TXEN 1 0 :1:5 
 `uc 1 U1ABDEN 1 0 :1:6 
 `uc 1 U1BRGS 1 0 :1:7 
 ]
 "47359
-[s S2139 . 1 `uc 1 U1MODE0 1 0 :1:0 
+[s S2138 . 1 `uc 1 U1MODE0 1 0 :1:0 
 `uc 1 U1MODE1 1 0 :1:1 
 `uc 1 U1MODE2 1 0 :1:2 
 ]
 "47359
-[s S2143 . 1 `uc 1 MODE 1 0 :4:0 
+[s S2142 . 1 `uc 1 MODE 1 0 :4:0 
 `uc 1 RXEN 1 0 :1:4 
 `uc 1 TXEN 1 0 :1:5 
 `uc 1 ABDEN 1 0 :1:6 
 `uc 1 BRGS 1 0 :1:7 
 ]
 "47359
-[u S2149 . 1 `S2129 1 . 1 0 `S2133 1 . 1 0 `S2139 1 . 1 0 `S2143 1 . 1 0 ]
+[u S2148 . 1 `S2128 1 . 1 0 `S2132 1 . 1 0 `S2138 1 . 1 0 `S2142 1 . 1 0 ]
 "47359
 "47359
-[v _U1CON0bits U1CON0bits `VES2149  1 e 1 @15858 ]
+[v _U1CON0bits U1CON0bits `VES2148  1 e 1 @15858 ]
 "47444
 [v _U1CON1 U1CON1 `VEuc  1 e 1 @15859 ]
 "47524
@@ -910,7 +910,7 @@ ST_ASMALIVE 32
 [v _U1UIR U1UIR `VEuc  1 e 1 @15864 ]
 "47899
 [v _U1ERRIR U1ERRIR `VEuc  1 e 1 @15865 ]
-[s S2175 . 1 `uc 1 TXCIF 1 0 :1:0 
+[s S2174 . 1 `uc 1 TXCIF 1 0 :1:0 
 `uc 1 RXFOIF 1 0 :1:1 
 `uc 1 RXBKIF 1 0 :1:2 
 `uc 1 FERIF 1 0 :1:3 
@@ -920,7 +920,7 @@ ST_ASMALIVE 32
 `uc 1 TXMTIF 1 0 :1:7 
 ]
 "47926
-[s S2184 . 1 `uc 1 U1TXCIF 1 0 :1:0 
+[s S2183 . 1 `uc 1 U1TXCIF 1 0 :1:0 
 `uc 1 U1RXFOIF 1 0 :1:1 
 `uc 1 U1RXBKIF 1 0 :1:2 
 `uc 1 U1FERIF 1 0 :1:3 
@@ -930,13 +930,13 @@ ST_ASMALIVE 32
 `uc 1 U1TXMTIF 1 0 :1:7 
 ]
 "47926
-[u S2193 . 1 `S2175 1 . 1 0 `S2184 1 . 1 0 ]
+[u S2192 . 1 `S2174 1 . 1 0 `S2183 1 . 1 0 ]
 "47926
 "47926
-[v _U1ERRIRbits U1ERRIRbits `VES2193  1 e 1 @15865 ]
+[v _U1ERRIRbits U1ERRIRbits `VES2192  1 e 1 @15865 ]
 "48011
 [v _U1ERRIE U1ERRIE `VEuc  1 e 1 @15866 ]
-[s S1763 . 1 `uc 1 FILHIT0 1 0 :1:0 
+[s S1762 . 1 `uc 1 FILHIT0 1 0 :1:0 
 `uc 1 JTOFF_FILHIT1 1 0 :1:1 
 `uc 1 RB0DBEN_FILHIT2 1 0 :1:2 
 `uc 1 RXRTRRO_FILHIT3 1 0 :1:3 
@@ -946,11 +946,11 @@ ST_ASMALIVE 32
 `uc 1 RXFUL 1 0 :1:7 
 ]
 "63147
-[s S1772 . 1 `uc 1 FILHIT 1 0 :5:0 
+[s S1771 . 1 `uc 1 FILHIT 1 0 :5:0 
 `uc 1 RTRRO 1 0 :1:5 
 ]
 "63147
-[s S1775 . 1 `uc 1 . 1 0 :1:0 
+[s S1774 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 FILHIT1 1 0 :1:1 
 `uc 1 FILHIT2 1 0 :1:2 
 `uc 1 FILHIT3 1 0 :1:3 
@@ -958,16 +958,16 @@ ST_ASMALIVE 32
 `uc 1 RXM0 1 0 :1:5 
 ]
 "63147
-[s S1782 . 1 `uc 1 . 1 0 :1:0 
+[s S1781 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 JTOFF 1 0 :1:1 
 `uc 1 RB0DBEN 1 0 :1:2 
 `uc 1 RXRTRRO 1 0 :1:3 
 ]
 "63147
-[u S1787 . 1 `S1763 1 . 1 0 `S1772 1 . 1 0 `S1775 1 . 1 0 `S1782 1 . 1 0 ]
+[u S1786 . 1 `S1762 1 . 1 0 `S1771 1 . 1 0 `S1774 1 . 1 0 `S1781 1 . 1 0 ]
 "63147
 "63147
-[v _RXB0CONbits RXB0CONbits `VES1787  1 e 1 @16256 ]
+[v _RXB0CONbits RXB0CONbits `VES1786  1 e 1 @16256 ]
 "63237
 [v _RXB0SIDH RXB0SIDH `VEuc  1 e 1 @16257 ]
 "63357
@@ -998,7 +998,7 @@ ST_ASMALIVE 32
 [v _CANSTAT CANSTAT `VEuc  1 e 1 @16270 ]
 "64392
 [v _CANCON CANCON `VEuc  1 e 1 @16271 ]
-[s S1900 . 1 `uc 1 EWARN 1 0 :1:0 
+[s S1899 . 1 `uc 1 EWARN 1 0 :1:0 
 `uc 1 RXWARN 1 0 :1:1 
 `uc 1 TXWARN 1 0 :1:2 
 `uc 1 RXBP 1 0 :1:3 
@@ -1008,62 +1008,62 @@ ST_ASMALIVE 32
 `uc 1 RXB0OVFL 1 0 :1:7 
 ]
 "64550
-[s S1909 . 1 `uc 1 . 1 0 :7:0 
+[s S1908 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_FIFOEMPTY 1 0 :1:7 
 ]
 "64550
-[s S1912 . 1 `uc 1 . 1 0 :7:0 
+[s S1911 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 nFIFOEMPTY 1 0 :1:7 
 ]
 "64550
-[s S1915 . 1 `uc 1 . 1 0 :6:0 
+[s S1914 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RXBNOVFL 1 0 :1:6 
 `uc 1 FIFOEMPTY 1 0 :1:7 
 ]
 "64550
-[u S1919 . 1 `S1900 1 . 1 0 `S1909 1 . 1 0 `S1912 1 . 1 0 `S1915 1 . 1 0 ]
+[u S1918 . 1 `S1899 1 . 1 0 `S1908 1 . 1 0 `S1911 1 . 1 0 `S1914 1 . 1 0 ]
 "64550
 "64550
-[v _COMSTATbits COMSTATbits `VES1919  1 e 1 @16272 ]
+[v _COMSTATbits COMSTATbits `VES1918  1 e 1 @16272 ]
 "64615
 [v _ECANCON ECANCON `VEuc  1 e 1 @16273 ]
 [s S25 LED_ 1 `uc 1 id 1 0 ]
 "5 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\factory/factory.c
 [s S48 Button_ 2 `uc 1 id 1 0 `a 1 isPullUp 1 1 ]
 [s S128 ButtonSM_ 8 `E23122 1 state 1 0 `*.39S48 1 button 2 1 `E23122 1 actualState 1 3 `*.37(v 1 observerCB 2 4 `*.39v 1 observer 2 6 ]
-[s S794 BLControl_ 0 ]
+[s S793 BLControl_ 0 ]
 [s S307 . 15 `uc 1 idType 1 0 `ul 1 id 4 1 `uc 1 dlc 1 5 `uc 1 data0 1 6 `uc 1 data1 1 7 `uc 1 data2 1 8 `uc 1 data3 1 9 `uc 1 data4 1 10 `uc 1 data5 1 11 `uc 1 data6 1 12 `uc 1 data7 1 13 `uc 1 rtr 1 14 ]
 [u S320 . 15 `S307 1 frame 15 0 `[15]uc 1 array 15 0 ]
 [s S323 CommControl_ 17 `E23113 1 commSM_State 1 0 `E23123 1 aliveSM_State 1 1 `S320 1 msg 15 2 ]
 [s S356 Store_ 5 `[5]uc 1 eeValues 5 0 ]
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
-[s S835 Factory_ 233 `S25 1 l_ 1 0 `S48 1 b_ 2 1 `S128 1 bsm_ 8 3 `S794 1 blc_ 0 11 `S323 1 cc_ 17 11 `S356 1 st_ 5 28 `S425 1 sepos_ 200 33 ]
-[v _theFactory theFactory `S835  1 s 233 theFactory ]
+[s S834 Factory_ 233 `S25 1 l_ 1 0 `S48 1 b_ 2 1 `S128 1 bsm_ 8 3 `S793 1 blc_ 0 11 `S323 1 cc_ 17 11 `S356 1 st_ 5 28 `S425 1 sepos_ 200 33 ]
+[v _theFactory theFactory `S834  1 s 233 theFactory ]
 "59 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\mcc_generated_files/tmr0.c
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-[s S2055 . 1 `uc 1 perr 1 0 :1:0 
+[s S2054 . 1 `uc 1 perr 1 0 :1:0 
 `uc 1 ferr 1 0 :1:1 
 `uc 1 oerr 1 0 :1:2 
 `uc 1 reserved 1 0 :5:3 
 ]
 "53 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\mcc_generated_files/uart1.c
-[u S2060 . 1 `S2055 1 . 1 0 `uc 1 status 1 0 ]
-[v _uart1RxLastError uart1RxLastError `VES2060  1 s 1 uart1RxLastError ]
+[u S2059 . 1 `S2054 1 . 1 0 `uc 1 status 1 0 ]
+[v _uart1RxLastError uart1RxLastError `VES2059  1 s 1 uart1RxLastError ]
 "58
 [v _UART1_FramingErrorHandler UART1_FramingErrorHandler `*.37(v  1 e 2 0 ]
 "59
 [v _UART1_OverrunErrorHandler UART1_OverrunErrorHandler `*.37(v  1 e 2 0 ]
 "60
 [v _UART1_ErrorHandler UART1_ErrorHandler `*.37(v  1 e 2 0 ]
-"13 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
+"14 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
 [v _dummy dummy `uc  1 s 1 dummy ]
-"14
+"15
 [v _error error `uc  1 s 1 error ]
 [s S142 Event_ 15 `uc 1 id 1 0 `*.37(a 1 processEvent 2 1 `*.39v 1 target 2 3 `us 1 delay 2 5 `o 1 data 8 7 ]
 "63 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\xf/xf.c
-[s S2531 Timer_ 17 `us 1 tm 2 0 `S142 1 ev 15 2 ]
-[s S2534 XF 506 `[12]S2531 1 timerList 204 0 `[20]S142 1 eventQueue 300 204 `uc 1 in 1 504 `uc 1 out 1 505 ]
-[v _theXF theXF `S2534  1 e 506 0 ]
+[s S2552 Timer_ 17 `us 1 tm 2 0 `S142 1 ev 15 2 ]
+[s S2555 XF 506 `[12]S2552 1 timerList 204 0 `[20]S142 1 eventQueue 300 204 `uc 1 in 1 504 `uc 1 out 1 505 ]
+[v _theXF theXF `S2555  1 e 506 0 ]
 "8 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\main.c
 [v _main main `(v  1 e 1 0 ]
 {
@@ -1123,71 +1123,71 @@ ST_ASMALIVE 32
 [v commControl_processEvent@ev ev `*.39S142  1 p 2 91 ]
 "213
 } 0
-"249
+"251
 [v _steeringSetup steeringSetup `(v  1 e 1 0 ]
 {
-"314
+"318
 [v steeringSetup@position position `ul  1 a 4 72 ]
 [s S307 . 15 `uc 1 idType 1 0 `ul 1 id 4 1 `uc 1 dlc 1 5 `uc 1 data0 1 6 `uc 1 data1 1 7 `uc 1 data2 1 8 `uc 1 data3 1 9 `uc 1 data4 1 10 `uc 1 data5 1 11 `uc 1 data6 1 12 `uc 1 data7 1 13 `uc 1 rtr 1 14 ]
-"250
+"252
 [u S320 . 15 `S307 1 frame 15 0 `[15]uc 1 array 15 0 ]
 [v steeringSetup@msgs msgs `S320  1 a 15 76 ]
-"249
+"251
 [s S323 CommControl_ 17 `E23113 1 commSM_State 1 0 `E23123 1 aliveSM_State 1 1 `S320 1 msg 15 2 ]
 [v steeringSetup@me me `*.39S323  1 p 2 44 ]
 [v steeringSetup@msg msg `*.39S320  1 p 2 46 ]
-"339
+"341
 } 0
-"151 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
+"152 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
 [v _sepos_send_modOfOpp sepos_send_modOfOpp `(v  1 e 1 0 ]
 {
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
 [v sepos_send_modOfOpp@me me `*.39S425  1 p 2 31 ]
 [v sepos_send_modOfOpp@mode mode `c  1 p 1 33 ]
-"163
+"164
 } 0
-"165
+"166
 [v _sepos_send_controlword sepos_send_controlword `(v  1 e 1 0 ]
 {
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
 [v sepos_send_controlword@me me `*.39S425  1 p 2 31 ]
 [v sepos_send_controlword@controlword controlword `us  1 p 2 33 ]
-"177
+"178
 } 0
-"395 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
+"386 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
 [v _getCenterFrame getCenterFrame `(v  1 e 1 0 ]
 {
 [s S307 . 15 `uc 1 idType 1 0 `ul 1 id 4 1 `uc 1 dlc 1 5 `uc 1 data0 1 6 `uc 1 data1 1 7 `uc 1 data2 1 8 `uc 1 data3 1 9 `uc 1 data4 1 10 `uc 1 data5 1 11 `uc 1 data6 1 12 `uc 1 data7 1 13 `uc 1 rtr 1 14 ]
-"396
+"387
 [u S320 . 15 `S307 1 frame 15 0 `[15]uc 1 array 15 0 ]
 [v getCenterFrame@msgs msgs `S320  1 a 15 29 ]
-"395
+"386
 [s S323 CommControl_ 17 `E23113 1 commSM_State 1 0 `E23123 1 aliveSM_State 1 1 `S320 1 msg 15 2 ]
 [v getCenterFrame@me me `*.39S323  1 p 2 27 ]
-"409
+"400
 } 0
-"416
+"408
 [v _setPosition setPosition `(v  1 e 1 0 ]
 {
-"418
+"410
 [v setPosition@position position `ul  1 a 4 65 ]
 [s S307 . 15 `uc 1 idType 1 0 `ul 1 id 4 1 `uc 1 dlc 1 5 `uc 1 data0 1 6 `uc 1 data1 1 7 `uc 1 data2 1 8 `uc 1 data3 1 9 `uc 1 data4 1 10 `uc 1 data5 1 11 `uc 1 data6 1 12 `uc 1 data7 1 13 `uc 1 rtr 1 14 ]
-"416
+"408
 [u S320 . 15 `S307 1 frame 15 0 `[15]uc 1 array 15 0 ]
 [s S323 CommControl_ 17 `E23113 1 commSM_State 1 0 `E23123 1 aliveSM_State 1 1 `S320 1 msg 15 2 ]
 [v setPosition@me me `*.39S323  1 p 2 37 ]
 [v setPosition@msg msg `*.39S320  1 p 2 39 ]
-"423
+"415
 } 0
-"179 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
+"180 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
 [v _sepos_send_positionValue sepos_send_positionValue `(v  1 e 1 0 ]
 {
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
 [v sepos_send_positionValue@me me `*.39S425  1 p 2 31 ]
 [v sepos_send_positionValue@position position `l  1 p 4 33 ]
-"193
+"194
 } 0
-"370 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
+"374 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
 [v _setCenter setCenter `(v  1 e 1 0 ]
 {
 [s S307 . 15 `uc 1 idType 1 0 `ul 1 id 4 1 `uc 1 dlc 1 5 `uc 1 data0 1 6 `uc 1 data1 1 7 `uc 1 data2 1 8 `uc 1 data3 1 9 `uc 1 data4 1 10 `uc 1 data5 1 11 `uc 1 data6 1 12 `uc 1 data7 1 13 `uc 1 rtr 1 14 ]
@@ -1195,7 +1195,7 @@ ST_ASMALIVE 32
 [s S323 CommControl_ 17 `E23113 1 commSM_State 1 0 `E23123 1 aliveSM_State 1 1 `S320 1 msg 15 2 ]
 [v setCenter@me me `*.39S323  1 p 2 8 ]
 [v setCenter@msg msg `*.39S320  1 p 2 10 ]
-"390
+"380
 } 0
 "36 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/store.c
 [v _store_write store_write `(v  1 e 1 0 ]
@@ -1206,19 +1206,21 @@ ST_ASMALIVE 32
 [v store_write@value value `uc  1 p 1 7 ]
 "41
 } 0
-"345 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
+"348 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
 [v _sendAliveFrame sendAliveFrame `(v  1 e 1 0 ]
 {
-"348
-[v sendAliveFrame@statusWord statusWord `us  1 a 2 37 ]
-"349
-[v sendAliveFrame@statusWordL statusWordL `uc  1 a 1 39 ]
+"351
+[v sendAliveFrame@statusWord statusWord `us  1 a 2 39 ]
+"353
+[v sendAliveFrame@statusWordH statusWordH `uc  1 a 1 38 ]
+"352
+[v sendAliveFrame@statusWordL statusWordL `uc  1 a 1 37 ]
 [s S307 . 15 `uc 1 idType 1 0 `ul 1 id 4 1 `uc 1 dlc 1 5 `uc 1 data0 1 6 `uc 1 data1 1 7 `uc 1 data2 1 8 `uc 1 data3 1 9 `uc 1 data4 1 10 `uc 1 data5 1 11 `uc 1 data6 1 12 `uc 1 data7 1 13 `uc 1 rtr 1 14 ]
-"345
+"348
 [u S320 . 15 `S307 1 frame 15 0 `[15]uc 1 array 15 0 ]
 [s S323 CommControl_ 17 `E23113 1 commSM_State 1 0 `E23123 1 aliveSM_State 1 1 `S320 1 msg 15 2 ]
 [v sendAliveFrame@me me `*.39S323  1 p 2 35 ]
-"363
+"366
 } 0
 "28 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/store.c
 [v _store_read store_read `(uc  1 e 1 0 ]
@@ -1231,21 +1233,21 @@ ST_ASMALIVE 32
 [v store_read@item item `E55  1 p 1 4 ]
 "34
 } 0
-"239 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
+"240 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
 [v _sepos_receive_statusword sepos_receive_statusword `(us  1 e 2 0 ]
 {
-[s S2296 bits16_ 2 `uc 1 byte1 1 0 :8:0 
+[s S2295 bits16_ 2 `uc 1 byte1 1 0 :8:0 
 `uc 1 byte2 1 1 :8:0 
 ]
-"251
-[u S2299 b8to16_ 2 `S2296 1 b 2 0 `s 1 i16 2 0 ]
-[v sepos_receive_statusword@x x `S2299  1 a 2 33 ]
+"255
+[u S2298 b8to16_ 2 `S2295 1 b 2 0 `s 1 i16 2 0 ]
+[v sepos_receive_statusword@x x `S2298  1 a 2 33 ]
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
-"239
+"240
 [v sepos_receive_statusword@me me `*.39S425  1 p 2 31 ]
-"259
+"263
 } 0
-"220 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
+"222 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
 [v _readCANFrame readCANFrame `(v  1 e 1 0 ]
 {
 [s S307 . 15 `uc 1 idType 1 0 `ul 1 id 4 1 `uc 1 dlc 1 5 `uc 1 data0 1 6 `uc 1 data1 1 7 `uc 1 data2 1 8 `uc 1 data3 1 9 `uc 1 data4 1 10 `uc 1 data5 1 11 `uc 1 data6 1 12 `uc 1 data7 1 13 `uc 1 rtr 1 14 ]
@@ -1253,7 +1255,7 @@ ST_ASMALIVE 32
 [s S323 CommControl_ 17 `E23113 1 commSM_State 1 0 `E23123 1 aliveSM_State 1 1 `S320 1 msg 15 2 ]
 [v readCANFrame@me me `*.39S323  1 p 2 73 ]
 [v readCANFrame@msg msg `*.39S320  1 p 2 75 ]
-"241
+"243
 } 0
 "210 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\mcc_generated_files/ecan.c
 [v _CAN_receive CAN_receive `(uc  1 e 1 0 ]
@@ -1301,79 +1303,79 @@ ST_ASMALIVE 32
 [v convertReg2ExtendedCANid@tempRXBn_EIDH tempRXBn_EIDH `uc  1 a 1 8 ]
 "356
 } 0
-"429 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
+"422 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\driveControl/commControl.c
 [v _getPositionFrame getPositionFrame `(v  1 e 1 0 ]
 {
 [s S307 . 15 `uc 1 idType 1 0 `ul 1 id 4 1 `uc 1 dlc 1 5 `uc 1 data0 1 6 `uc 1 data1 1 7 `uc 1 data2 1 8 `uc 1 data3 1 9 `uc 1 data4 1 10 `uc 1 data5 1 11 `uc 1 data6 1 12 `uc 1 data7 1 13 `uc 1 rtr 1 14 ]
-"432
+"425
 [u S320 . 15 `S307 1 frame 15 0 `[15]uc 1 array 15 0 ]
 [v getPositionFrame@msg msg `S320  1 a 15 45 ]
-"430
+"423
 [v getPositionFrame@position position `ul  1 a 4 41 ]
-"429
+"422
 [s S323 CommControl_ 17 `E23113 1 commSM_State 1 0 `E23123 1 aliveSM_State 1 1 `S320 1 msg 15 2 ]
 [v getPositionFrame@me me `*.39S323  1 p 2 39 ]
-"442
+"435
 } 0
-"195 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
+"196 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
 [v _sepos_receive_positionValue sepos_receive_positionValue `(l  1 e 4 0 ]
 {
-[s S2288 bits32_ 4 `uc 1 byte1 1 0 :8:0 
+[s S2287 bits32_ 4 `uc 1 byte1 1 0 :8:0 
 `uc 1 byte2 1 1 :8:0 
 `uc 1 byte3 1 2 :8:0 
 `uc 1 byte4 1 3 :8:0 
 ]
-"207
-[u S2293 b8to32_ 4 `S2288 1 b 4 0 `l 1 i32 4 0 ]
-[v sepos_receive_positionValue@x x `S2293  1 a 4 35 ]
+"208
+[u S2292 b8to32_ 4 `S2287 1 b 4 0 `l 1 i32 4 0 ]
+[v sepos_receive_positionValue@x x `S2292  1 a 4 35 ]
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
-"195
+"196
 [v sepos_receive_positionValue@me me `*.39S425  1 p 2 31 ]
-"214
+"215
 } 0
-"53
+"54
 [v _sepos_send_RS232 sepos_send_RS232 `(v  1 e 1 0 ]
 {
-"76
-[v sepos_send_RS232@i_2329 i `uc  1 a 1 28 ]
-"60
+"77
+[v sepos_send_RS232@i_2350 i `uc  1 a 1 28 ]
+"61
 [v sepos_send_RS232@i i `uc  1 a 1 29 ]
-"57
+"58
 [v sepos_send_RS232@length length `uc  1 a 1 30 ]
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
-"53
+"54
 [v sepos_send_RS232@me me `*.39S425  1 p 2 16 ]
-"83
+"84
 } 0
-"27
+"28
 [v _sepos_CalcFieldCRC sepos_CalcFieldCRC `(us  1 e 2 0 ]
 {
-"30
+"31
 [v sepos_CalcFieldCRC@CRC CRC `us  1 a 2 14 ]
-"28
-[v sepos_CalcFieldCRC@shifter shifter `us  1 a 2 12 ]
 "29
+[v sepos_CalcFieldCRC@shifter shifter `us  1 a 2 12 ]
+"30
 [v sepos_CalcFieldCRC@carry carry `us  1 a 2 10 ]
-"28
+"29
 [v sepos_CalcFieldCRC@c c `us  1 a 2 8 ]
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
-"27
+"28
 [v sepos_CalcFieldCRC@me me `*.39S425  1 p 2 0 ]
 [v sepos_CalcFieldCRC@pDataArray pDataArray `*.39us  1 p 2 2 ]
 [v sepos_CalcFieldCRC@ArrayLength ArrayLength `us  1 p 2 4 ]
-"51
+"52
 } 0
-"99
+"100
 [v _sepos_receive_RS232 sepos_receive_RS232 `(v  1 e 1 0 ]
 {
-"124
-[v sepos_receive_RS232@i_2343 i `uc  1 a 1 12 ]
-"103
+"125
+[v sepos_receive_RS232@i_2364 i `uc  1 a 1 12 ]
+"104
 [v sepos_receive_RS232@i i `uc  1 a 1 13 ]
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
-"99
+"100
 [v sepos_receive_RS232@me me `*.39S425  1 p 2 6 ]
-"149
+"150
 } 0
 "170 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\mcc_generated_files/uart1.c
 [v _UART1_Write UART1_Write `(v  1 e 1 0 ]
@@ -1383,16 +1385,16 @@ ST_ASMALIVE 32
 [v UART1_Write@txData txData `uc  1 a 1 0 ]
 "177
 } 0
-"85 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
+"86 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
 [v _MyRead MyRead `(uc  1 e 1 0 ]
 {
-"86
+"87
 [v MyRead@count count `us  1 a 2 4 ]
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
-"85
+"86
 [v MyRead@me me `*.39S425  1 p 2 0 ]
 [v MyRead@error error `*.39uc  1 p 2 2 ]
-"97
+"98
 } 0
 "126 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\mcc_generated_files/uart1.c
 [v _UART1_is_rx_ready UART1_is_rx_ready `(a  1 e 1 0 ]
@@ -1764,15 +1766,15 @@ ST_ASMALIVE 32
 {
 "35
 } 0
-"16 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
+"17 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\sepos/sepos_RS232.c
 [v _sepos_init sepos_init `(v  1 e 1 0 ]
 {
-"17
+"18
 [v sepos_init@i i `uc  1 a 1 6 ]
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
-"16
+"17
 [v sepos_init@me me `*.39S425  1 p 2 2 ]
-"25
+"26
 } 0
 "44 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule/sepos/sepos_RS232.h
 [s S425 Sepos_ 200 `[50]uc 1 txbuf 50 0 `[25]us 1 txdata 50 50 `[50]uc 1 rxbuf 50 100 `[25]us 1 rxdata 50 150 ]
@@ -1884,9 +1886,9 @@ ST_ASMALIVE 32
 "22
 } 0
 "10 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule/app/blcontrol.h
-[s S794 BLControl_ 0 ]
+[s S793 BLControl_ 0 ]
 "24 C:\Users\maxim\OneDrive\Cours 2eme\Summer School\steeringModule\factory/factory.c
-[v _blc blc `(*.39S794  1 e 2 0 ]
+[v _blc blc `(*.39S793  1 e 2 0 ]
 {
 "27
 } 0

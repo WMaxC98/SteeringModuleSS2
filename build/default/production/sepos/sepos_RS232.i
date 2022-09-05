@@ -36788,6 +36788,7 @@ void PMD_Initialize(void);
 # 4 "sepos/sepos_RS232.c" 2
 
 
+
 uint16_t sepos_CalcFieldCRC(Sepos* me, uint16_t* pDataArray, uint16_t ArrayLength);
 
 void sepos_send_RS232(Sepos* me);
@@ -36915,7 +36916,7 @@ void sepos_receive_RS232(Sepos* me) {
     }
 
     UART1_Write(0x4F);
-# 149 "sepos/sepos_RS232.c"
+# 150 "sepos/sepos_RS232.c"
 }
 
 void sepos_send_modOfOpp(Sepos* me, int8_t mode){
@@ -37000,7 +37001,7 @@ uint16_t sepos_receive_digitalInput(Sepos* me){
     x.b.byte2 = me->rxbuf[7];
 
     if(error != 0){
-        return error;
+        return 0xDEDE;
     }
 
     return x.i16;

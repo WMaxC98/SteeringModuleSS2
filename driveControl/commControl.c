@@ -298,28 +298,28 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
      
         msgs.frame.data0 = 2;
         msgs.frame.data1 = 0;
-        __delay_ms(40);
+
         CAN_transmit(&msgs);
     }else{
         //IF the homing bit is 0 we need to tell to the control that we need to have a homing sequence
         msgs.frame.data0 = 0;
         msgs.frame.data1 = 2;
-        __delay_ms(40);
+
         CAN_transmit(&msgs);
     }
     
     //If setCenter bit is not 0 we need to place the motor in the center position 
     if(msg->frame.data2 != 0){
-       __delay_ms(100);          
+       //__delay_ms(100);  
+       // Send the center position to the control        
        getCenterFrame(me);        
-       __delay_ms(200); 
-       //TODO : go center position
+       //__delay_ms(200); 
+
        uint32_t position; 
        position = (((uint32_t)store_read(st(), EE_CENTER_HH))<<24) + (((uint32_t)store_read(st(), EE_CENTER_H))<<16) 
                + ((uint32_t)store_read(st(), EE_CENTER_L)<<8) + (uint32_t)store_read(st(), EE_CENTER_LL);
        
        sepos_send_positionValue(sepos(), position);
-       
        __delay_ms(500); 
 //       
 //       uint16_t timout = 20;
@@ -348,18 +348,18 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
 void sendAliveFrame(CommControl* me) {
     //IO_RB1_Toggle();  // debug purposes 
     
-    uint16_t statusWord = sepos_receive_statusword(sepos());
-    uint8_t statusWordL = (uint8_t) statusWord;
-    uint8_t statusWordH = ((uint8_t) statusWord) >> 8;
+    //uint16_t statusWord = sepos_receive_statusword(sepos());
+    //uint8_t statusWordL = (uint8_t) statusWord;
+   // uint8_t statusWordH = (uint8_t) (statusWord >> 8);
        
     if(store_read(st(), EE_ALIVE_TIME) > 0){
         me->msg.frame.id = STEERING_ALIVE;
         me->msg.frame.dlc = 2;
-        me->msg.frame.data0 = statusWordH;
-        me->msg.frame.data1 = statusWordL;
+        //me->msg.frame.data0 = statusWordH;
+        //me->msg.frame.data1 = statusWordL;
         // the lines that follow are just for debugging purposes
-        //me->msg.frame.data0 = 0xaa;
-        //me->msg.frame.data1 = 0xbb; 
+        me->msg.frame.data0 = 0xaa;
+        me->msg.frame.data1 = 0xbb; 
         me->msg.frame.rtr = 0;
         CAN_transmit(&(me->msg));
     }
@@ -415,6 +415,7 @@ void setPosition(CommControl* me, uCAN_MSG* msg) {
 }
 
 /**
+ * Send CAN message containing the actual motor position
  * 
  * @param me
  */

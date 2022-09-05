@@ -2,6 +2,7 @@
 #include <xc.h>
 #include "sepos_RS232.h"
 #include "../mcc_generated_files/mcc.h"
+#include "../mcc_generated_files/pin_manager.h"
 
 uint16_t sepos_CalcFieldCRC(Sepos* me, uint16_t* pDataArray, uint16_t ArrayLength);
 
@@ -230,7 +231,7 @@ uint16_t sepos_receive_digitalInput(Sepos* me){
     x.b.byte2 = me->rxbuf[7];
 
     if(error != 0){
-        return error;
+        return 0xDEDE;
     }
     
     return x.i16;                                                               //return the data
@@ -243,10 +244,10 @@ uint16_t sepos_receive_statusword(Sepos* me){
     me->txbuf[3] = 0x60;                                                        //MSB of index
     me->txbuf[4] = 0x0;                                                         //Subindex
     me->txbuf[5] = NODE_ID;                                                     //Node ID
-        
+  
     sepos_send_RS232(me);                                                       //send tram
-
-    sepos_receive_RS232(me);                                                    //receive the data
+ 
+    sepos_receive_RS232(me);                                                    //receive the data    
 
     b8to16 x;
     x.b.byte1 = me->rxbuf[6];

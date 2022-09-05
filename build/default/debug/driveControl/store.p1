@@ -28,8 +28,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;driveControl/store.c: 5:         DATAEE_WriteByte(EE_INIT, 0xA5);
 [e ( _DATAEE_WriteByte (2 , -> . `E55 0 `us -> -> 165 `i `uc ]
 "9
-[; ;driveControl/store.c: 9:         DATAEE_WriteByte(EE_ALIVE_TIME, 10);
-[e ( _DATAEE_WriteByte (2 , -> . `E55 1 `us -> -> 10 `i `uc ]
+[; ;driveControl/store.c: 9:         DATAEE_WriteByte(EE_ALIVE_TIME, 100);
+[e ( _DATAEE_WriteByte (2 , -> . `E55 1 `us -> -> 100 `i `uc ]
 "10
 [; ;driveControl/store.c: 10:         DATAEE_WriteByte(EE_CENTER_LL, 0x90);
 [e ( _DATAEE_WriteByte (2 , -> . `E55 2 `us -> -> 144 `i `uc ]
