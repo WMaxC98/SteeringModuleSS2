@@ -18,6 +18,8 @@ extern "C" {
 #define POSITION_MODE   -1
 #define CURRENT_MODE    -3
 #define HOMING_MODE     6
+#define ARRAY_50        50
+#define ARRAY_25        25
 
     typedef struct bits32_ {
         unsigned byte1 : 8;
@@ -42,10 +44,10 @@ extern "C" {
     } b8to16;
 
     typedef struct Sepos_ {
-        uint8_t txbuf[50];
-        uint16_t txdata[25];
-        uint8_t rxbuf[50];
-        uint16_t rxdata[25];
+        uint8_t txbuf[ARRAY_50];
+        uint16_t txdata[ARRAY_25];
+        uint8_t rxbuf[ARRAY_50];
+        uint16_t rxdata[ARRAY_25];
     } Sepos;
 
     //public methods
@@ -56,7 +58,8 @@ extern "C" {
     int32_t sepos_receive_positionValue(Sepos* me);
     uint16_t sepos_receive_digitalInput(Sepos* me);
     uint16_t sepos_receive_statusword(Sepos* me);
-
+    uint8_t sepos_receive_modOfOpp(Sepos* me);
+    uint16_t sepos_receive_controlword(Sepos* me);
 
 #ifdef	__cplusplus
 }

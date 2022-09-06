@@ -1,4 +1,4 @@
-# 1 "sepos/sepos_RS232.c"
+# 1 "driveControl/setupSM.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "sepos/sepos_RS232.c" 2
+# 1 "driveControl/setupSM.c" 2
+# 1 "driveControl/setupSM.h" 1
+# 15 "driveControl/setupSM.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 1 3
 
 
@@ -113,8 +115,15 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 2 3
-# 1 "sepos/sepos_RS232.c" 2
+# 15 "driveControl/setupSM.h" 2
 
+# 1 "driveControl/../xf/xf.h" 1
+# 15 "driveControl/../xf/xf.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdbool.h" 1 3
+# 15 "driveControl/../xf/xf.h" 2
+
+# 1 "driveControl/../xf/../mcc_generated_files/mcc.h" 1
+# 49 "driveControl/../xf/../mcc_generated_files/mcc.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -36449,66 +36458,19 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC18F-K_DFP/1.4.87/xc8\\pic\\include\\xc.h" 2 3
-# 2 "sepos/sepos_RS232.c" 2
+# 49 "driveControl/../xf/../mcc_generated_files/mcc.h" 2
 
-# 1 "sepos/sepos_RS232.h" 1
-# 24 "sepos/sepos_RS232.h"
-    typedef struct bits32_ {
-        unsigned byte1 : 8;
-        unsigned byte2 : 8;
-        unsigned byte3 : 8;
-        unsigned byte4 : 8;
-    } bits32;
+# 1 "driveControl/../xf/../mcc_generated_files/device_config.h" 1
+# 50 "driveControl/../xf/../mcc_generated_files/mcc.h" 2
 
-    typedef struct bits16_ {
-        unsigned byte1 : 8;
-        unsigned byte2 : 8;
-    } bits16;
-
-    typedef union b8to32_ {
-        bits32 b;
-        int32_t i32;
-    } b8to32;
-
-    typedef union b8to16_ {
-        bits16 b;
-        int16_t i16;
-    } b8to16;
-
-    typedef struct Sepos_ {
-        uint8_t txbuf[50];
-        uint16_t txdata[25];
-        uint8_t rxbuf[50];
-        uint16_t rxdata[25];
-    } Sepos;
-
-
-    void sepos_init(Sepos* me);
-    void sepos_send_modOfOpp(Sepos* me, int8_t mode);
-    void sepos_send_controlword(Sepos* me, uint16_t controlword);
-    void sepos_send_positionValue(Sepos* me, int32_t position);
-    int32_t sepos_receive_positionValue(Sepos* me);
-    uint16_t sepos_receive_digitalInput(Sepos* me);
-    uint16_t sepos_receive_statusword(Sepos* me);
-    uint8_t sepos_receive_modOfOpp(Sepos* me);
-    uint16_t sepos_receive_controlword(Sepos* me);
-# 3 "sepos/sepos_RS232.c" 2
-
-# 1 "sepos/../mcc_generated_files/mcc.h" 1
-# 50 "sepos/../mcc_generated_files/mcc.h"
-# 1 "sepos/../mcc_generated_files/device_config.h" 1
-# 50 "sepos/../mcc_generated_files/mcc.h" 2
-
-# 1 "sepos/../mcc_generated_files/pin_manager.h" 1
-# 206 "sepos/../mcc_generated_files/pin_manager.h"
+# 1 "driveControl/../xf/../mcc_generated_files/pin_manager.h" 1
+# 206 "driveControl/../xf/../mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 218 "sepos/../mcc_generated_files/pin_manager.h"
+# 218 "driveControl/../xf/../mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
-# 51 "sepos/../mcc_generated_files/mcc.h" 2
+# 51 "driveControl/../xf/../mcc_generated_files/mcc.h" 2
 
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdbool.h" 1 3
-# 53 "sepos/../mcc_generated_files/mcc.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\conio.h" 1 3
 
@@ -36662,57 +36624,57 @@ char *ctermid(char *);
 
 char *tempnam(const char *, const char *);
 # 7 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\conio.h" 2 3
-# 54 "sepos/../mcc_generated_files/mcc.h" 2
+# 54 "driveControl/../xf/../mcc_generated_files/mcc.h" 2
 
-# 1 "sepos/../mcc_generated_files/interrupt_manager.h" 1
-# 87 "sepos/../mcc_generated_files/interrupt_manager.h"
+# 1 "driveControl/../xf/../mcc_generated_files/interrupt_manager.h" 1
+# 87 "driveControl/../xf/../mcc_generated_files/interrupt_manager.h"
 void INTERRUPT_Initialize (void);
-# 55 "sepos/../mcc_generated_files/mcc.h" 2
+# 55 "driveControl/../xf/../mcc_generated_files/mcc.h" 2
 
-# 1 "sepos/../mcc_generated_files/memory.h" 1
-# 99 "sepos/../mcc_generated_files/memory.h"
+# 1 "driveControl/../xf/../mcc_generated_files/memory.h" 1
+# 99 "driveControl/../xf/../mcc_generated_files/memory.h"
 uint8_t FLASH_ReadByte(uint32_t flashAddr);
-# 125 "sepos/../mcc_generated_files/memory.h"
+# 125 "driveControl/../xf/../mcc_generated_files/memory.h"
 uint16_t FLASH_ReadWord(uint32_t flashAddr);
-# 157 "sepos/../mcc_generated_files/memory.h"
+# 157 "driveControl/../xf/../mcc_generated_files/memory.h"
 void FLASH_WriteByte(uint32_t flashAddr, uint8_t *flashRdBufPtr, uint8_t byte);
-# 193 "sepos/../mcc_generated_files/memory.h"
+# 193 "driveControl/../xf/../mcc_generated_files/memory.h"
 int8_t FLASH_WriteBlock(uint32_t writeAddr, uint8_t *flashWrBufPtr);
-# 218 "sepos/../mcc_generated_files/memory.h"
+# 218 "driveControl/../xf/../mcc_generated_files/memory.h"
 void FLASH_EraseBlock(uint32_t baseAddr);
-# 249 "sepos/../mcc_generated_files/memory.h"
+# 249 "driveControl/../xf/../mcc_generated_files/memory.h"
 void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData);
-# 275 "sepos/../mcc_generated_files/memory.h"
+# 275 "driveControl/../xf/../mcc_generated_files/memory.h"
 uint8_t DATAEE_ReadByte(uint16_t bAdd);
 
 void MEMORY_Tasks(void);
-# 56 "sepos/../mcc_generated_files/mcc.h" 2
+# 56 "driveControl/../xf/../mcc_generated_files/mcc.h" 2
 
-# 1 "sepos/../mcc_generated_files/tmr0.h" 1
-# 100 "sepos/../mcc_generated_files/tmr0.h"
+# 1 "driveControl/../xf/../mcc_generated_files/tmr0.h" 1
+# 100 "driveControl/../xf/../mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
-# 129 "sepos/../mcc_generated_files/tmr0.h"
+# 129 "driveControl/../xf/../mcc_generated_files/tmr0.h"
 void TMR0_StartTimer(void);
-# 161 "sepos/../mcc_generated_files/tmr0.h"
+# 161 "driveControl/../xf/../mcc_generated_files/tmr0.h"
 void TMR0_StopTimer(void);
-# 196 "sepos/../mcc_generated_files/tmr0.h"
+# 196 "driveControl/../xf/../mcc_generated_files/tmr0.h"
 uint8_t TMR0_ReadTimer(void);
-# 235 "sepos/../mcc_generated_files/tmr0.h"
+# 235 "driveControl/../xf/../mcc_generated_files/tmr0.h"
 void TMR0_WriteTimer(uint8_t timerVal);
-# 272 "sepos/../mcc_generated_files/tmr0.h"
+# 272 "driveControl/../xf/../mcc_generated_files/tmr0.h"
 void TMR0_Reload(uint8_t periodVal);
-# 291 "sepos/../mcc_generated_files/tmr0.h"
+# 291 "driveControl/../xf/../mcc_generated_files/tmr0.h"
 void TMR0_ISR(void);
-# 310 "sepos/../mcc_generated_files/tmr0.h"
+# 310 "driveControl/../xf/../mcc_generated_files/tmr0.h"
  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
-# 328 "sepos/../mcc_generated_files/tmr0.h"
+# 328 "driveControl/../xf/../mcc_generated_files/tmr0.h"
 extern void (*TMR0_InterruptHandler)(void);
-# 346 "sepos/../mcc_generated_files/tmr0.h"
+# 346 "driveControl/../xf/../mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 57 "sepos/../mcc_generated_files/mcc.h" 2
+# 57 "driveControl/../xf/../mcc_generated_files/mcc.h" 2
 
-# 1 "sepos/../mcc_generated_files/uart1.h" 1
-# 74 "sepos/../mcc_generated_files/uart1.h"
+# 1 "driveControl/../xf/../mcc_generated_files/uart1.h" 1
+# 74 "driveControl/../xf/../mcc_generated_files/uart1.h"
 typedef union {
     struct {
         unsigned perr : 1;
@@ -36722,30 +36684,30 @@ typedef union {
     };
     uint8_t status;
 }uart1_status_t;
-# 110 "sepos/../mcc_generated_files/uart1.h"
+# 110 "driveControl/../xf/../mcc_generated_files/uart1.h"
 void UART1_Initialize(void);
-# 158 "sepos/../mcc_generated_files/uart1.h"
+# 158 "driveControl/../xf/../mcc_generated_files/uart1.h"
 _Bool UART1_is_rx_ready(void);
-# 206 "sepos/../mcc_generated_files/uart1.h"
+# 206 "driveControl/../xf/../mcc_generated_files/uart1.h"
 _Bool UART1_is_tx_ready(void);
-# 253 "sepos/../mcc_generated_files/uart1.h"
+# 253 "driveControl/../xf/../mcc_generated_files/uart1.h"
 _Bool UART1_is_tx_done(void);
-# 301 "sepos/../mcc_generated_files/uart1.h"
+# 301 "driveControl/../xf/../mcc_generated_files/uart1.h"
 uart1_status_t UART1_get_last_status(void);
-# 350 "sepos/../mcc_generated_files/uart1.h"
+# 350 "driveControl/../xf/../mcc_generated_files/uart1.h"
 uint8_t UART1_Read(void);
-# 375 "sepos/../mcc_generated_files/uart1.h"
+# 375 "driveControl/../xf/../mcc_generated_files/uart1.h"
 void UART1_Write(uint8_t txData);
-# 395 "sepos/../mcc_generated_files/uart1.h"
+# 395 "driveControl/../xf/../mcc_generated_files/uart1.h"
 void UART1_SetFramingErrorHandler(void (* interruptHandler)(void));
-# 413 "sepos/../mcc_generated_files/uart1.h"
+# 413 "driveControl/../xf/../mcc_generated_files/uart1.h"
 void UART1_SetOverrunErrorHandler(void (* interruptHandler)(void));
-# 431 "sepos/../mcc_generated_files/uart1.h"
+# 431 "driveControl/../xf/../mcc_generated_files/uart1.h"
 void UART1_SetErrorHandler(void (* interruptHandler)(void));
-# 58 "sepos/../mcc_generated_files/mcc.h" 2
+# 58 "driveControl/../xf/../mcc_generated_files/mcc.h" 2
 
-# 1 "sepos/../mcc_generated_files/ecan.h" 1
-# 62 "sepos/../mcc_generated_files/ecan.h"
+# 1 "driveControl/../xf/../mcc_generated_files/ecan.h" 1
+# 62 "driveControl/../xf/../mcc_generated_files/ecan.h"
 typedef union {
 
     struct {
@@ -36764,94 +36726,42 @@ typedef union {
     } frame;
     uint8_t array[15];
 } uCAN_MSG;
-# 114 "sepos/../mcc_generated_files/ecan.h"
+# 114 "driveControl/../xf/../mcc_generated_files/ecan.h"
 void ECAN_Initialize(void);
-# 136 "sepos/../mcc_generated_files/ecan.h"
+# 136 "driveControl/../xf/../mcc_generated_files/ecan.h"
 void CAN_sleep(void);
-# 157 "sepos/../mcc_generated_files/ecan.h"
+# 157 "driveControl/../xf/../mcc_generated_files/ecan.h"
 uint8_t CAN_transmit(uCAN_MSG *tempCanMsg);
-# 181 "sepos/../mcc_generated_files/ecan.h"
+# 181 "driveControl/../xf/../mcc_generated_files/ecan.h"
 uint8_t CAN_receive(uCAN_MSG *tempCanMsg);
-# 203 "sepos/../mcc_generated_files/ecan.h"
+# 203 "driveControl/../xf/../mcc_generated_files/ecan.h"
 uint8_t CAN_messagesInBuffer(void);
-# 227 "sepos/../mcc_generated_files/ecan.h"
+# 227 "driveControl/../xf/../mcc_generated_files/ecan.h"
 uint8_t CAN_isBusOff(void);
-# 251 "sepos/../mcc_generated_files/ecan.h"
+# 251 "driveControl/../xf/../mcc_generated_files/ecan.h"
 uint8_t CAN_isRXErrorPassive(void);
-# 275 "sepos/../mcc_generated_files/ecan.h"
+# 275 "driveControl/../xf/../mcc_generated_files/ecan.h"
 uint8_t CAN_isTXErrorPassive(void);
-# 59 "sepos/../mcc_generated_files/mcc.h" 2
-# 74 "sepos/../mcc_generated_files/mcc.h"
+# 59 "driveControl/../xf/../mcc_generated_files/mcc.h" 2
+# 74 "driveControl/../xf/../mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 87 "sepos/../mcc_generated_files/mcc.h"
+# 87 "driveControl/../xf/../mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 100 "sepos/../mcc_generated_files/mcc.h"
+# 100 "driveControl/../xf/../mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 4 "sepos/sepos_RS232.c" 2
+# 16 "driveControl/../xf/xf.h" 2
+
+# 1 "driveControl/../xf/event.h" 1
 
 
-# 1 "sepos/../factory/factory.h" 1
-# 10 "sepos/../factory/factory.h"
-# 1 "sepos/../factory/../board/led/led.h" 1
-
-
-
-
-
-
-
-
-struct LED_
-{
-
-    uint8_t id;
-};
-
-typedef struct LED_ LED;
-
-void LED_init(LED* me, uint8_t id);
-void LED_initHW(LED* me);
-void LED_on(LED* me);
-void LED_off(LED* me);
-void LED_setState(LED* me,uint8_t state);
-# 10 "sepos/../factory/factory.h" 2
-
-# 1 "sepos/../factory/../board/button/button.h" 1
-# 11 "sepos/../factory/../board/button/button.h"
-struct Button_
-{
-  uint8_t id;
-  _Bool isPullUp;
-};
-
-typedef struct Button_ Button;
-
-void Button_init(Button* me, uint8_t id, _Bool isPullUp);
-void Button_initHW(Button* me);
-uint8_t Button_read(Button* me);
-void Button_setId(Button* me, uint8_t id);
-uint8_t Button_getId(Button* me);
-# 11 "sepos/../factory/factory.h" 2
-
-# 1 "sepos/../factory/../board/button/buttonsm.h" 1
-
-
-
-
-
-# 1 "sepos/../factory/../board/button/../../xf/xf.h" 1
-# 17 "sepos/../factory/../board/button/../../xf/xf.h"
-# 1 "sepos/../factory/../board/button/../../xf/event.h" 1
-
-
-# 1 "sepos/../factory/../board/button/../../xf/ireactive.h" 1
+# 1 "driveControl/../xf/ireactive.h" 1
 
 
 
 struct Event_;
 
 typedef _Bool (*processEventT)(struct Event_* ev);
-# 4 "sepos/../factory/../board/button/../../xf/event.h" 2
+# 4 "driveControl/../xf/event.h" 2
 
 
 
@@ -36882,7 +36792,7 @@ void Event_setDelay(Event* me, uint16_t delay);
 uint16_t Event_getDelay(Event* me);
 void Event_setData(Event* me, int64_t data);
 int64_t Event_getData(Event* me);
-# 17 "sepos/../factory/../board/button/../../xf/xf.h" 2
+# 17 "driveControl/../xf/xf.h" 2
 
 
 
@@ -36893,7 +36803,7 @@ typedef struct Timer_
     uint16_t tm;
     Event ev;
 } Timer;
-# 38 "sepos/../factory/../board/button/../../xf/xf.h"
+# 38 "driveControl/../xf/xf.h"
 typedef struct XF
 {
     Timer timerList[12];
@@ -36909,7 +36819,7 @@ typedef struct XF
 
 
 void XF_init();
-# 61 "sepos/../factory/../board/button/../../xf/xf.h"
+# 61 "driveControl/../xf/xf.h"
 void XF_unscheduleTimer(uint8_t id, _Bool inISR);
 
 
@@ -36918,185 +36828,17 @@ void XF_unscheduleTimer(uint8_t id, _Bool inISR);
 
 
 void XF_decrementAndQueueTimers();
-# 80 "sepos/../factory/../board/button/../../xf/xf.h"
+# 80 "driveControl/../xf/xf.h"
 uint8_t POST(void* target, processEventT processEvent, uint8_t id, uint16_t delay, int64_t data);
 
 void XF_executeOnce();
-# 7 "sepos/../factory/../board/button/buttonsm.h" 2
+# 16 "driveControl/setupSM.h" 2
 
 
 
 
 
 
-
-
-typedef enum BSMEvent
-{
-    evBSMInit = 10,
-    evBSMDefault,
-    evBSMPollTM
-} BSMEvent;
-
-
-
-
-
-typedef enum BSMSTate_
-{
-    ST_BSMINIT,
-    ST_BSMWAIT,
-    ST_BSMPOLL,
-    ST_BSMPRESSED,
-    ST_BSMRELEASED
-} BSMState;
-# 47 "sepos/../factory/../board/button/buttonsm.h"
-typedef void (*buttonObserverCBT)(void*, uint8_t, _Bool);
-
-
-
-
-struct ButtonSM_
-{
-    BSMState state;
-    Button* button;
-    BSMState actualState;
-
-    buttonObserverCBT observerCB;
-    void* observer;
-};
-
-typedef struct ButtonSM_ ButtonSM;
-
-
-void ButtonSM_init(ButtonSM* me, Button* button);
-void ButtonSM_startBehaviour(ButtonSM* me);
-_Bool ButtonSM_processEvent(Event* ev);
-void ButtonSM_setObserver(ButtonSM* me, void* observer, buttonObserverCBT observerCB);
-# 12 "sepos/../factory/factory.h" 2
-
-# 1 "sepos/../factory/../app/blcontrol.h" 1
-
-
-
-
-
-
-
-
-struct BLControl_
-{
-
-};
-
-typedef struct BLControl_ BLControl;
-
-void BLControl_init(BLControl* me);
-void BLControl_onButton(void* me, uint8_t buttonId, _Bool pressed);
-# 13 "sepos/../factory/factory.h" 2
-
-# 1 "sepos/../factory/../driveControl/commControl.h" 1
-# 44 "sepos/../factory/../driveControl/commControl.h"
-    typedef struct CanId_ {
-        unsigned msgNbr : 4;
-        unsigned dest : 3;
-        unsigned space : 1;
-        unsigned src : 3;
-        unsigned unused1 : 5;
-        unsigned unused2 : 8;
-        unsigned unused3 : 8;
-    } CanId;
-
-    typedef union CanIdParser_ {
-        CanId cid;
-        uint32_t raw;
-    } CanIdParser;
-
-
-
-
-    typedef enum CommSMState_ {
-        ST_CSMINIT = 10,
-        ST_CSMSETUP,
-        ST_CSMWAIT,
-        ST_CSMPROCESS,
-        ST_CSMSET,
-        ST_CSMGET,
-        ST_CSMSETCENTER,
-        ST_CSMGETCENTER
-
-    } CommSMState;
-
-
-
-
-    typedef enum AliveSMState_ {
-        ST_ASMINIT = 30,
-        ST_ASMWAIT,
-        ST_ASMALIVE
-
-    } AliveSMState;
-
-
-
-
-    typedef enum CommEvents_ {
-        evCInit = 40,
-        evCTM,
-        evCMsg,
-        evCSetup,
-        evCDefault,
-        evGetSteering,
-        evGetCenter,
-        evAInit,
-        evATM,
-        evADefault
-    } CommEvents;
-
-
-
-
-
-    typedef struct CommControl_ {
-        CommSMState commSM_State;
-        AliveSMState aliveSM_State;
-
-        uCAN_MSG msg;
-
-    } CommControl;
-
-
-    void commControl_init(CommControl* me);
-    void commControl_startBehaviour(CommControl* me);
-    _Bool commControl_processEvent(Event* ev);
-    void getCenterFrame(CommControl* me );
-# 14 "sepos/../factory/factory.h" 2
-
-# 1 "sepos/../factory/../driveControl/store.h" 1
-# 20 "sepos/../factory/../driveControl/store.h"
-typedef enum EEITEMID_ {
-    EE_INIT = 0,
-    EE_ALIVE_TIME,
-    EE_CENTER_LL,
-    EE_CENTER_L,
-    EE_CENTER_H,
-    EE_CENTER_HH
-
-} EEITEMID;
-
-typedef struct Store_ {
-    uint8_t eeValues[5];
-} Store;
-
-
-void store_init(Store* me);
-uint8_t store_read(Store* me, EEITEMID item);
-void store_write(Store* me, EEITEMID item, uint8_t value);
-# 15 "sepos/../factory/factory.h" 2
-
-
-# 1 "sepos/../factory/../driveControl/setupSM.h" 1
-# 22 "sepos/../factory/../driveControl/setupSM.h"
     typedef enum SetupSMState_ {
         ST_SSMINIT = 30,
         ST_SSMWAIT,
@@ -37177,7 +36919,259 @@ void store_write(Store* me, EEITEMID item, uint8_t value);
     void setupSM_init(SetupSM* me);
     void setupSM_startBehaviour(SetupSM* me);
     _Bool setupSM_processEvent(Event* ev);
-# 17 "sepos/../factory/factory.h" 2
+# 1 "driveControl/setupSM.c" 2
+
+# 1 "driveControl/../factory/factory.h" 1
+# 10 "driveControl/../factory/factory.h"
+# 1 "driveControl/../factory/../board/led/led.h" 1
+
+
+
+
+
+
+
+
+struct LED_
+{
+
+    uint8_t id;
+};
+
+typedef struct LED_ LED;
+
+void LED_init(LED* me, uint8_t id);
+void LED_initHW(LED* me);
+void LED_on(LED* me);
+void LED_off(LED* me);
+void LED_setState(LED* me,uint8_t state);
+# 10 "driveControl/../factory/factory.h" 2
+
+# 1 "driveControl/../factory/../board/button/button.h" 1
+# 11 "driveControl/../factory/../board/button/button.h"
+struct Button_
+{
+  uint8_t id;
+  _Bool isPullUp;
+};
+
+typedef struct Button_ Button;
+
+void Button_init(Button* me, uint8_t id, _Bool isPullUp);
+void Button_initHW(Button* me);
+uint8_t Button_read(Button* me);
+void Button_setId(Button* me, uint8_t id);
+uint8_t Button_getId(Button* me);
+# 11 "driveControl/../factory/factory.h" 2
+
+# 1 "driveControl/../factory/../board/button/buttonsm.h" 1
+# 15 "driveControl/../factory/../board/button/buttonsm.h"
+typedef enum BSMEvent
+{
+    evBSMInit = 10,
+    evBSMDefault,
+    evBSMPollTM
+} BSMEvent;
+
+
+
+
+
+typedef enum BSMSTate_
+{
+    ST_BSMINIT,
+    ST_BSMWAIT,
+    ST_BSMPOLL,
+    ST_BSMPRESSED,
+    ST_BSMRELEASED
+} BSMState;
+# 47 "driveControl/../factory/../board/button/buttonsm.h"
+typedef void (*buttonObserverCBT)(void*, uint8_t, _Bool);
+
+
+
+
+struct ButtonSM_
+{
+    BSMState state;
+    Button* button;
+    BSMState actualState;
+
+    buttonObserverCBT observerCB;
+    void* observer;
+};
+
+typedef struct ButtonSM_ ButtonSM;
+
+
+void ButtonSM_init(ButtonSM* me, Button* button);
+void ButtonSM_startBehaviour(ButtonSM* me);
+_Bool ButtonSM_processEvent(Event* ev);
+void ButtonSM_setObserver(ButtonSM* me, void* observer, buttonObserverCBT observerCB);
+# 12 "driveControl/../factory/factory.h" 2
+
+# 1 "driveControl/../factory/../app/blcontrol.h" 1
+
+
+
+
+
+
+
+
+struct BLControl_
+{
+
+};
+
+typedef struct BLControl_ BLControl;
+
+void BLControl_init(BLControl* me);
+void BLControl_onButton(void* me, uint8_t buttonId, _Bool pressed);
+# 13 "driveControl/../factory/factory.h" 2
+
+# 1 "driveControl/../factory/../driveControl/commControl.h" 1
+# 44 "driveControl/../factory/../driveControl/commControl.h"
+    typedef struct CanId_ {
+        unsigned msgNbr : 4;
+        unsigned dest : 3;
+        unsigned space : 1;
+        unsigned src : 3;
+        unsigned unused1 : 5;
+        unsigned unused2 : 8;
+        unsigned unused3 : 8;
+    } CanId;
+
+    typedef union CanIdParser_ {
+        CanId cid;
+        uint32_t raw;
+    } CanIdParser;
+
+
+
+
+    typedef enum CommSMState_ {
+        ST_CSMINIT = 10,
+        ST_CSMSETUP,
+        ST_CSMWAIT,
+        ST_CSMPROCESS,
+        ST_CSMSET,
+        ST_CSMGET,
+        ST_CSMSETCENTER,
+        ST_CSMGETCENTER
+
+    } CommSMState;
+
+
+
+
+    typedef enum AliveSMState_ {
+        ST_ASMINIT = 30,
+        ST_ASMWAIT,
+        ST_ASMALIVE
+
+    } AliveSMState;
+
+
+
+
+    typedef enum CommEvents_ {
+        evCInit = 40,
+        evCTM,
+        evCMsg,
+        evCSetup,
+        evCDefault,
+        evGetSteering,
+        evGetCenter,
+        evAInit,
+        evATM,
+        evADefault
+    } CommEvents;
+
+
+
+
+
+    typedef struct CommControl_ {
+        CommSMState commSM_State;
+        AliveSMState aliveSM_State;
+
+        uCAN_MSG msg;
+
+    } CommControl;
+
+
+    void commControl_init(CommControl* me);
+    void commControl_startBehaviour(CommControl* me);
+    _Bool commControl_processEvent(Event* ev);
+    void getCenterFrame(CommControl* me );
+# 14 "driveControl/../factory/factory.h" 2
+
+# 1 "driveControl/../factory/../driveControl/store.h" 1
+# 20 "driveControl/../factory/../driveControl/store.h"
+typedef enum EEITEMID_ {
+    EE_INIT = 0,
+    EE_ALIVE_TIME,
+    EE_CENTER_LL,
+    EE_CENTER_L,
+    EE_CENTER_H,
+    EE_CENTER_HH
+
+} EEITEMID;
+
+typedef struct Store_ {
+    uint8_t eeValues[5];
+} Store;
+
+
+void store_init(Store* me);
+uint8_t store_read(Store* me, EEITEMID item);
+void store_write(Store* me, EEITEMID item, uint8_t value);
+# 15 "driveControl/../factory/factory.h" 2
+
+# 1 "driveControl/../factory/../sepos/sepos_RS232.h" 1
+# 24 "driveControl/../factory/../sepos/sepos_RS232.h"
+    typedef struct bits32_ {
+        unsigned byte1 : 8;
+        unsigned byte2 : 8;
+        unsigned byte3 : 8;
+        unsigned byte4 : 8;
+    } bits32;
+
+    typedef struct bits16_ {
+        unsigned byte1 : 8;
+        unsigned byte2 : 8;
+    } bits16;
+
+    typedef union b8to32_ {
+        bits32 b;
+        int32_t i32;
+    } b8to32;
+
+    typedef union b8to16_ {
+        bits16 b;
+        int16_t i16;
+    } b8to16;
+
+    typedef struct Sepos_ {
+        uint8_t txbuf[50];
+        uint16_t txdata[25];
+        uint8_t rxbuf[50];
+        uint16_t rxdata[25];
+    } Sepos;
+
+
+    void sepos_init(Sepos* me);
+    void sepos_send_modOfOpp(Sepos* me, int8_t mode);
+    void sepos_send_controlword(Sepos* me, uint16_t controlword);
+    void sepos_send_positionValue(Sepos* me, int32_t position);
+    int32_t sepos_receive_positionValue(Sepos* me);
+    uint16_t sepos_receive_digitalInput(Sepos* me);
+    uint16_t sepos_receive_statusword(Sepos* me);
+    uint8_t sepos_receive_modOfOpp(Sepos* me);
+    uint16_t sepos_receive_controlword(Sepos* me);
+# 16 "driveControl/../factory/factory.h" 2
+
 
 
 
@@ -37214,284 +37208,435 @@ CommControl* cc();
 Store* st();
 Sepos* sepos();
 SetupSM* setupSM();
-# 6 "sepos/sepos_RS232.c" 2
+# 2 "driveControl/setupSM.c" 2
+# 12 "driveControl/setupSM.c"
+void setupSM_init(SetupSM* me) {
+    me->setupSM_State = ST_SSMINIT;
+
+    me->msg.frame.idType = 1;
+    me->msg.frame.rtr = 0;
+
+}
 
 
-uint16_t sepos_CalcFieldCRC(Sepos* me, uint16_t* pDataArray, uint16_t ArrayLength);
 
-void sepos_send_RS232(Sepos* me);
 
-void sepos_recive_RS232(Sepos* me);
-uint8_t MyRead(Sepos* me, uint8_t* error);
 
-static uint8_t dummy;
-static uint8_t error = 0;
+void setupSM_startBehaviour(SetupSM* me) {
+    POST(me, &setupSM_processEvent, evSInit, 0, 0);
 
-void sepos_init(Sepos* me){
-    for(uint8_t i = 0; i < 50; i++){
-        me->rxbuf[i] = 0;
-        me->txbuf[i] = 0;
-        if(i < 25){
-            me->rxdata[i] = 0;
-            me->txdata[i] = 0;
+}
+uint16_t toto;
+_Bool setupSM_processEvent(Event* ev) {
+    SetupSM* me = (SetupSM*) ev->target;
+    _Bool processed = 0;
+    SetupSMState oldSMState = me->setupSM_State;
+
+
+
+
+
+    switch (me->setupSM_State) {
+        case ST_SSMINIT:
+            if (Event_getId(ev) == evSInit) {
+                me->setupSM_State = ST_SSMWAIT;
+            }
+            break;
+        case ST_SSMWAIT:
+            if (Event_getId(ev) == evSTM) {
+                me->setupSM_State = ST_SSMPROCESS;
+            }
+            break;
+        case ST_SSMPROCESS:
+            switch(Event_getId(ev)) {
+                case evSInit0:
+                    me->setupSM_State = ST_SSMINIT0;
+                    break;
+                case evSHom6:
+                    me->setupSM_State = ST_SSMHOM6;
+                    break;
+                case evSCenter:
+                    me->setupSM_State = ST_SSMCENTER;
+                    break;
+                case evSDefault:
+                    me->setupSM_State = ST_SSMEND;
+                    break;
+                default:
+                    break;
+            }
+            break;
+
+
+
+        case ST_SSMINIT0:
+            if(Event_getId(ev) == evSICheck0){
+                me->setupSM_State = ST_SSMICHECK0;
+            }
+            break;
+        case ST_SSMICHECK0:
+            if(Event_getId(ev) == evSInitRS){
+                me->setupSM_State = ST_SSMINITRS;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMINIT0;
+            }
+            break;
+
+        case ST_SSMINITRS:
+            if(Event_getId(ev) == evSICheckRS){
+                me->setupSM_State = ST_SSMICHECKRS;
+            }
+            break;
+        case ST_SSMICHECKRS:
+            if(Event_getId(ev) == evSInit6){
+                me->setupSM_State = ST_SSMINIT6;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMINITRS;
+            }
+            break;
+
+        case ST_SSMINIT6:
+            if(Event_getId(ev) == evSICheck6){
+                me->setupSM_State = ST_SSMICHECK6;
+            }
+            break;
+        case ST_SSMICHECK6:
+            if(Event_getId(ev) == evSInit7){
+                me->setupSM_State = ST_SSMINIT7;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMINIT6;
+            }
+            break;
+
+        case ST_SSMINIT7:
+            if(Event_getId(ev) == evSICheck7){
+                me->setupSM_State = ST_SSMICHECK7;
+            }
+            break;
+        case ST_SSMICHECK7:
+            if(Event_getId(ev) == evSInit15){
+                me->setupSM_State = ST_SSMINIT15;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMINIT7;
+            }
+            break;
+
+        case ST_SSMINIT15:
+            if(Event_getId(ev) == evSICheck15){
+                me->setupSM_State = ST_SSMICHECK15;
+            }
+            break;
+        case ST_SSMICHECK15:
+            if(Event_getId(ev) == evSInitEnd){
+                me->setupSM_State = ST_SSMPROCESS;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMINIT15;
+            }
+            break;
+
+
+
+        case ST_SSMHOM6:
+            if(Event_getId(ev) == evSHCheck6){
+                me->setupSM_State = ST_SSMHCHECK6;
+            }
+            break;
+        case ST_SSMHCHECK6:
+            if(Event_getId(ev) == evSHom31){
+                me->setupSM_State = ST_SSMHOM31;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMHOM6;
+            }
+            break;
+
+        case ST_SSMHOM31:
+            if(Event_getId(ev) == evSHCheck31){
+                me->setupSM_State = ST_SSMHCHECK31;
+            }
+            break;
+        case ST_SSMHCHECK31:
+            if(Event_getId(ev) == evSHom1000){
+                me->setupSM_State = ST_SSMHOM1000;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMHOM31;
+            }
+            break;
+
+        case ST_SSMHOM1000:
+            if(Event_getId(ev) == evSHCheck1000){
+                me->setupSM_State = ST_SSMHCHECK1000;
+            }
+            break;
+        case ST_SSMHCHECK1000:
+            if(Event_getId(ev) == evSHom15){
+                me->setupSM_State = ST_SSMHOM15;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMHOM1000;
+            }
+            break;
+
+        case ST_SSMHOM15:
+            if(Event_getId(ev) == evSHCheck15){
+                me->setupSM_State = ST_SSMHCHECK15;
+            }
+            break;
+        case ST_SSMHCHECK15:
+            if(Event_getId(ev) == evSHom1){
+                me->setupSM_State = ST_SSMHOM1;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMHOM15;
+            }
+            break;
+
+        case ST_SSMHOM1:
+            if(Event_getId(ev) == evSHCheck1){
+                me->setupSM_State = ST_SSMHCHECK1;
+            }
+            break;
+        case ST_SSMHCHECK1:
+            if(Event_getId(ev) == evSHomEnd){
+                me->setupSM_State = ST_SSMPROCESS;
+            }
+            else if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMHOM1;
+            }
+            break;
+
+
+
+
+        case ST_SSMCENTER:
+           if(Event_getId(ev) == evSDefault){
+                me->setupSM_State = ST_SSMPROCESS;
+            }
+            break;
+
+        default :
+
+            break;
+    }
+    if (oldSMState != me->setupSM_State) {
+        processed = 1;
+        switch (me->setupSM_State) {
+            case ST_SSMINIT:
+
+                break;
+            case ST_SSMWAIT :
+                me->msg = cc()->msg;
+                POST(me, &setupSM_processEvent, evSTM, 0, 0);
+                break;
+            case ST_SSMPROCESS :
+                if(me->msg.frame.data3 != 0){
+                    store_write(st(), EE_ALIVE_TIME, me->msg.frame.data3);
+                    me->msg.frame.data3 = 0;
+                }
+                if(me->msg.frame.data0 != 0){
+                    POST(me, &setupSM_processEvent, evSInit0, 0, 0);
+                }
+                else if(me->msg.frame.data1 != 0){
+                    POST(me, &setupSM_processEvent, evSHom6, 0, 0);
+                }
+                else if(me->msg.frame.data2 != 0){
+                    POST(me, &setupSM_processEvent, evSCenter, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+                break;
+
+
+
+            case ST_SSMINIT0:
+                if(oldSMState == ST_SSMPROCESS){
+                    sepos_send_controlword(sepos(), 0);
+                }
+                POST(me, &setupSM_processEvent, evSICheck0, 200, 0);
+            break;
+            case ST_SSMICHECK0:
+                if(sepos_receive_controlword(sepos()) == 0x0000){
+                    POST(me, &setupSM_processEvent, evSInitRS, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+            case ST_SSMINITRS:
+                if(oldSMState == ST_SSMICHECK0){
+                    sepos_send_controlword(sepos(), 0x80);
+                }
+                POST(me, &setupSM_processEvent, evSICheckRS, 200, 0);
+            break;
+            case ST_SSMICHECKRS:
+                if(sepos_receive_controlword(sepos()) == 0x0080){
+                    POST(me, &setupSM_processEvent, evSInit6, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+            case ST_SSMINIT6:
+                if(oldSMState == ST_SSMICHECKRS){
+                    sepos_send_controlword(sepos(), 6);
+                }
+                POST(me, &setupSM_processEvent, evSICheck6, 200, 0);
+            break;
+            case ST_SSMICHECK6:
+                if(sepos_receive_controlword(sepos()) == 0x0006){
+                    POST(me, &setupSM_processEvent, evSInit7, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+            case ST_SSMINIT7:
+                if(oldSMState == ST_SSMICHECK6){
+                    sepos_send_controlword(sepos(), 7);
+                }
+                POST(me, &setupSM_processEvent, evSICheck7, 1000, 0);
+            break;
+            case ST_SSMICHECK7:
+                if(sepos_receive_controlword(sepos()) == 0x0007){
+                    POST(me, &setupSM_processEvent, evSInit15, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+            case ST_SSMINIT15:
+                if(oldSMState == ST_SSMICHECK7){
+                    sepos_send_controlword(sepos(), 15);
+                }
+                POST(me, &setupSM_processEvent, evSICheck15, 800, 0);
+            break;
+            case ST_SSMICHECK15:
+                if(sepos_receive_controlword(sepos()) == 0x000F){
+                    me->msg.frame.data0 = 0;
+                    POST(me, &setupSM_processEvent, evSInitEnd, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+
+
+            case ST_SSMHOM6:
+                if(oldSMState == ST_SSMPROCESS){
+                    sepos_send_modOfOpp(sepos(), 6);
+# 347 "driveControl/setupSM.c"
+                }
+                POST(me, &setupSM_processEvent, evSHCheck6, 600, 0);
+            break;
+            case ST_SSMHCHECK6:
+                if(sepos_receive_modOfOpp(sepos()) == 0x06){
+                    POST(me, &setupSM_processEvent, evSHom31, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+            case ST_SSMHOM31:
+                if(oldSMState == ST_SSMHCHECK6){
+                    sepos_send_controlword(sepos(), 31);
+                }
+                POST(me, &setupSM_processEvent, evSHCheck31, 600, 0);
+            break;
+            case ST_SSMHCHECK31:
+                if(sepos_receive_controlword(sepos()) == 0x001F){
+                    POST(me, &setupSM_processEvent, evSHom1000, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+            case ST_SSMHOM1000:
+                if(oldSMState == ST_SSMHCHECK31){
+
+                }
+                POST(me, &setupSM_processEvent, evSHCheck1000, 40, 0);
+            break;
+            case ST_SSMHCHECK1000:
+                toto = (sepos_receive_statusword(sepos())&0x1000);
+                if(toto == 0x1000){
+                    POST(me, &setupSM_processEvent, evSHom15, 600, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+            case ST_SSMHOM15:
+                if(oldSMState == ST_SSMHCHECK1000){
+                    sepos_send_controlword(sepos(), 15);
+                }
+                POST(me, &setupSM_processEvent, evSHCheck15, 600, 0);
+            break;
+            case ST_SSMHCHECK15:
+                if(sepos_receive_controlword(sepos()) == 0x000F){
+                    POST(me, &setupSM_processEvent, evSHom1, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+            case ST_SSMHOM1:
+                if(oldSMState == ST_SSMHCHECK15){
+                    sepos_send_modOfOpp(sepos(), -1);
+                }
+                POST(me, &setupSM_processEvent, evSHCheck1, 200, 0);
+            break;
+            case ST_SSMHCHECK1:
+                if(sepos_receive_modOfOpp(sepos()) == 0xFF){
+                    uCAN_MSG msgs;
+                    msgs.frame.idType = 1;
+                    msgs.frame.id = 0x510;
+                    msgs.frame.dlc = 2;
+                    msgs.frame.data0 = 2;
+                    msgs.frame.data1 = 0;
+                    msgs.frame.rtr = 0;
+                    CAN_transmit(&msgs);
+                    me->msg.frame.data1 = 0;
+                    POST(me, &setupSM_processEvent, evSHomEnd, 0, 0);
+                }
+                else{
+                    POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+                }
+            break;
+
+
+
+
+            case ST_SSMCENTER:
+                getCenterFrame(cc());
+                uint32_t position;
+                position = (((uint32_t)store_read(st(), EE_CENTER_HH))<<24) + (((uint32_t)store_read(st(), EE_CENTER_H))<<16)
+                + ((uint32_t)store_read(st(), EE_CENTER_L)<<8) + (uint32_t)store_read(st(), EE_CENTER_LL);
+
+                sepos_send_positionValue(sepos(), position);
+                me->msg.frame.data2 = 0;
+                POST(me, &setupSM_processEvent, evSDefault, 0, 0);
+            break;
+
+            case ST_SSMEND:
+                POST(cc(), &commControl_processEvent, evCDefault,0,0);
+            default:
+                break;
         }
     }
-}
-
-uint16_t sepos_CalcFieldCRC(Sepos* me, uint16_t* pDataArray, uint16_t ArrayLength){
-    uint16_t shifter, c;
-    uint16_t carry;
-    uint16_t CRC = 0;
-
-    while (ArrayLength--){
-        shifter = 0x8000;
-        c = *pDataArray++;
-        do {
-
-
-            carry = CRC & 0x8000;
-            CRC <<= 1;
-            if (c & shifter) CRC++;
-            if (carry) CRC ^= 0x1021;
-            shifter >>= 1;
-
-
-
-
-
-        } while (shifter);
-    }
-    return CRC;
-}
-
-void sepos_send_RS232(Sepos* me) {
-    dummy = U1RXB;
-    dummy = U1RXB;
-
-    uint8_t length = me->txbuf[1] + 2;
-
-    me->txdata[0] = (uint16_t) (me->txbuf[0] << (8)) | me->txbuf[1];
-    for (uint8_t i = 1; i < length; i++) {
-        me->txdata[i] = (uint16_t) (me->txbuf[1 + 2 * i] << (8)) | me->txbuf[0 + 2 * i];
-    }
-
-    me->txdata[length] = 0;
-    me->txdata[length] = sepos_CalcFieldCRC(me, me->txdata, length + 1);
-
-    me->txbuf[0 + 2 * length] = me->txdata[length];
-    me->txbuf[1 + 2 * length] = me->txdata[length] >> (8);
-
-    UART1_Write(me->txbuf[0]);
-
-    if (MyRead(me, &error) != 0x4F) {
-        return;
-    }
-
-    for (uint8_t i = 1; i <= 1 + 2 * length; i++) {
-        UART1_Write(me->txbuf[i]);
-    }
-
-    if (MyRead(me, &error) != 0x4F) {
-        return;
-    }
-}
-
-uint8_t MyRead(Sepos* me, uint8_t* error) {
-    uint16_t count = 0;
-    *error = 0x0;
-    while (UART1_is_rx_ready() == 0) {
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-        count++;
-        if (count > 20000) {
-            *error = 0xFF;
-            return 0xEE;
-        }
-    }
-    return UART1_Read();
-}
-
-void sepos_receive_RS232(Sepos* me) {
-    dummy = U1RXB;
-    dummy = U1RXB;
-    error = 0x0;
-    for (uint8_t i = 0; i < 50; i++) {
-        me->rxbuf[i] = 0;
-        if (i < 25) {
-            me->rxdata[i] = 0;
-        }
-    }
-
-    me->rxbuf[0] = MyRead(me, &error);
-    if (error != 0) {
-        error = 44;
-        return;
-    }
-
-    UART1_Write(0x4F);
-
-    me->rxbuf[1] = MyRead(me, &error);
-    if (error != 0) {
-        error = 100;
-        return;
-    }
-
-    for (uint8_t i = 2; i < me->rxbuf[1] * 2 + 6; i++) {
-        me->rxbuf[i] = MyRead(me, &error);
-        if (error != 0) {
-            error = 24;
-            return;
-        }
-    }
-
-    UART1_Write(0x4F);
-# 151 "sepos/sepos_RS232.c"
-}
-
-void sepos_send_modOfOpp(Sepos* me, int8_t mode){
-    me->txbuf[0] = 0x11;
-    me->txbuf[1] = 0x02;
-    me->txbuf[2] = 0x60;
-    me->txbuf[3] = 0x60;
-    me->txbuf[4] = 0x0;
-    me->txbuf[5] = 1;
-    me->txbuf[6] = mode;
-    me->txbuf[7] = 0;
-
-    sepos_send_RS232(me);
-
-}
-
-void sepos_send_controlword(Sepos* me, uint16_t controlword){
-    me->txbuf[0] = 0x11;
-    me->txbuf[1] = 0x02;
-    me->txbuf[2] = 0x40;
-    me->txbuf[3] = 0x60;
-    me->txbuf[4] = 0x0;
-    me->txbuf[5] = 1;
-    me->txbuf[6] = controlword;
-    me->txbuf[7] = controlword >> 8;
-
-    sepos_send_RS232(me);
-
-}
-
-void sepos_send_positionValue(Sepos* me, int32_t position){
-    me->txbuf[0] = 0x11;
-    me->txbuf[1] = 0x03;
-    me->txbuf[2] = 0x62;
-    me->txbuf[3] = 0x20;
-    me->txbuf[4] = 0x0;
-    me->txbuf[5] = 1;
-    me->txbuf[6] = position;
-    me->txbuf[7] = position >> 8;
-    me->txbuf[8] = position >> 16;
-    me->txbuf[9] = position >> 24;
-
-   sepos_send_RS232(me);
-
-}
-
-int32_t sepos_receive_positionValue(Sepos* me){
-    me->txbuf[0] = 0x10;
-    me->txbuf[1] = 0x01;
-    me->txbuf[2] = 0x64;
-    me->txbuf[3] = 0x60;
-    me->txbuf[4] = 0x0;
-    me->txbuf[5] = 1;
-
-    sepos_send_RS232(me);
-
-    sepos_receive_RS232(me);
-
-    b8to32 x;
-    x.b.byte1 = me->rxbuf[6];
-    x.b.byte2 = me->rxbuf[7];
-    x.b.byte3 = me->rxbuf[8];
-    x.b.byte4 = me->rxbuf[9];
-
-    return x.i32;
-}
-
-uint16_t sepos_receive_digitalInput(Sepos* me){
-    me->txbuf[0] = 0x10;
-    me->txbuf[1] = 0x01;
-    me->txbuf[2] = 0x71;
-    me->txbuf[3] = 0x20;
-    me->txbuf[4] = 0x1;
-    me->txbuf[5] = 1;
-
-    sepos_send_RS232(me);
-
-    sepos_receive_RS232(me);
-
-    b8to16 x;
-    x.b.byte1 = me->rxbuf[6];
-    x.b.byte2 = me->rxbuf[7];
-
-    if(error != 0){
-        return 0xDEDE;
-    }
-
-    return x.i16;
-}
-
-uint16_t sepos_receive_statusword(Sepos* me){
-    me->txbuf[0] = 0x10;
-    me->txbuf[1] = 0x01;
-    me->txbuf[2] = 0x41;
-    me->txbuf[3] = 0x60;
-    me->txbuf[4] = 0x0;
-    me->txbuf[5] = 1;
-
-    sepos_send_RS232(me);
-
-    sepos_receive_RS232(me);
-
-    b8to16 x;
-    x.b.byte1 = me->rxbuf[6];
-    x.b.byte2 = me->rxbuf[7];
-
-    if(error != 0){
-        return 0xEEEE;
-    }
-    return x.i16;
-}
-uint8_t sepos_receive_modOfOpp(Sepos* me) {
-    me->txbuf[0] = 0x10;
-    me->txbuf[1] = 0x01;
-    me->txbuf[2] = 0x61;
-    me->txbuf[3] = 0x60;
-    me->txbuf[4] = 0x0;
-    me->txbuf[5] = 1;
-
-    sepos_send_RS232(me);
-
-    sepos_receive_RS232(me);
-
-    if(error != 0){
-        return 0x0;
-    }
-    return me->rxbuf[6];
-}
-
-uint16_t sepos_receive_controlword(Sepos* me) {
-    me->txbuf[0] = 0x10;
-    me->txbuf[1] = 0x01;
-    me->txbuf[2] = 0x40;
-    me->txbuf[3] = 0x60;
-    me->txbuf[4] = 0x0;
-    me->txbuf[5] = 1;
-
-    sepos_send_RS232(me);
-
-    sepos_receive_RS232(me);
-
-    b8to16 x;
-    x.b.byte1 = me->rxbuf[6];
-    x.b.byte2 = me->rxbuf[7];
-
-    if(error != 0){
-        return 0xFFFF;
-    }
-    return x.i16;
+    return processed;
 }

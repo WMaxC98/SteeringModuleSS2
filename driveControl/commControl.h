@@ -16,9 +16,9 @@ extern "C" {
 #include "../mcc_generated_files/mcc.h"
 #include "../xf/xf.h"
 
-#define MYID                    0x5        // steering module id
+#define MYID                    0x5         // steering module id
         
-#define STEERING_SETUP_MSG      0x150   
+#define STEERING_SETUP_MSG      0x150       //CAN message ID
 #define STEERING_SET_MSG        0x151   
 #define STEERING_CENTER_MSG     0x052 
     
@@ -113,6 +113,7 @@ extern "C" {
     void commControl_init(CommControl* me);
     void commControl_startBehaviour(CommControl* me);
     bool commControl_processEvent(Event* ev);
+    void getCenterFrame(CommControl* me );
 
 
 

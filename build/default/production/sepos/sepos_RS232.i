@@ -36452,7 +36452,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 2 "sepos/sepos_RS232.c" 2
 
 # 1 "sepos/sepos_RS232.h" 1
-# 22 "sepos/sepos_RS232.h"
+# 24 "sepos/sepos_RS232.h"
     typedef struct bits32_ {
         unsigned byte1 : 8;
         unsigned byte2 : 8;
@@ -36490,6 +36490,8 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
     int32_t sepos_receive_positionValue(Sepos* me);
     uint16_t sepos_receive_digitalInput(Sepos* me);
     uint16_t sepos_receive_statusword(Sepos* me);
+    uint8_t sepos_receive_modOfOpp(Sepos* me);
+    uint16_t sepos_receive_controlword(Sepos* me);
 # 3 "sepos/sepos_RS232.c" 2
 
 # 1 "sepos/../mcc_generated_files/mcc.h" 1
@@ -36788,6 +36790,432 @@ void PMD_Initialize(void);
 # 4 "sepos/sepos_RS232.c" 2
 
 
+# 1 "sepos/../factory/factory.h" 1
+# 10 "sepos/../factory/factory.h"
+# 1 "sepos/../factory/../board/led/led.h" 1
+
+
+
+
+
+
+
+
+struct LED_
+{
+
+    uint8_t id;
+};
+
+typedef struct LED_ LED;
+
+void LED_init(LED* me, uint8_t id);
+void LED_initHW(LED* me);
+void LED_on(LED* me);
+void LED_off(LED* me);
+void LED_setState(LED* me,uint8_t state);
+# 10 "sepos/../factory/factory.h" 2
+
+# 1 "sepos/../factory/../board/button/button.h" 1
+# 11 "sepos/../factory/../board/button/button.h"
+struct Button_
+{
+  uint8_t id;
+  _Bool isPullUp;
+};
+
+typedef struct Button_ Button;
+
+void Button_init(Button* me, uint8_t id, _Bool isPullUp);
+void Button_initHW(Button* me);
+uint8_t Button_read(Button* me);
+void Button_setId(Button* me, uint8_t id);
+uint8_t Button_getId(Button* me);
+# 11 "sepos/../factory/factory.h" 2
+
+# 1 "sepos/../factory/../board/button/buttonsm.h" 1
+
+
+
+
+
+# 1 "sepos/../factory/../board/button/../../xf/xf.h" 1
+# 17 "sepos/../factory/../board/button/../../xf/xf.h"
+# 1 "sepos/../factory/../board/button/../../xf/event.h" 1
+
+
+# 1 "sepos/../factory/../board/button/../../xf/ireactive.h" 1
+
+
+
+struct Event_;
+
+typedef _Bool (*processEventT)(struct Event_* ev);
+# 4 "sepos/../factory/../board/button/../../xf/event.h" 2
+
+
+
+
+typedef uint8_t evIDT;
+
+
+struct Event_
+{
+    evIDT id;
+    processEventT processEvent;
+    void* target;
+    uint16_t delay;
+    int64_t data;
+};
+
+typedef struct Event_ Event;
+
+
+void Event_init(Event* me);
+void Event_setTarget(Event* me, void* target);
+void Event_setPE(Event* me, processEventT processEvent);
+void* Event_getTarget(Event* me);
+processEventT Event_getPE(Event* me);
+void Event_setId(Event* me, evIDT eventID);
+evIDT Event_getId(Event* me);
+void Event_setDelay(Event* me, uint16_t delay);
+uint16_t Event_getDelay(Event* me);
+void Event_setData(Event* me, int64_t data);
+int64_t Event_getData(Event* me);
+# 17 "sepos/../factory/../board/button/../../xf/xf.h" 2
+
+
+
+
+
+typedef struct Timer_
+{
+    uint16_t tm;
+    Event ev;
+} Timer;
+# 38 "sepos/../factory/../board/button/../../xf/xf.h"
+typedef struct XF
+{
+    Timer timerList[12];
+    Event eventQueue[20];
+    uint8_t in;
+    uint8_t out;
+} XF;
+
+
+
+
+
+
+
+void XF_init();
+# 61 "sepos/../factory/../board/button/../../xf/xf.h"
+void XF_unscheduleTimer(uint8_t id, _Bool inISR);
+
+
+
+
+
+
+void XF_decrementAndQueueTimers();
+# 80 "sepos/../factory/../board/button/../../xf/xf.h"
+uint8_t POST(void* target, processEventT processEvent, uint8_t id, uint16_t delay, int64_t data);
+
+void XF_executeOnce();
+# 7 "sepos/../factory/../board/button/buttonsm.h" 2
+
+
+
+
+
+
+
+
+typedef enum BSMEvent
+{
+    evBSMInit = 10,
+    evBSMDefault,
+    evBSMPollTM
+} BSMEvent;
+
+
+
+
+
+typedef enum BSMSTate_
+{
+    ST_BSMINIT,
+    ST_BSMWAIT,
+    ST_BSMPOLL,
+    ST_BSMPRESSED,
+    ST_BSMRELEASED
+} BSMState;
+# 47 "sepos/../factory/../board/button/buttonsm.h"
+typedef void (*buttonObserverCBT)(void*, uint8_t, _Bool);
+
+
+
+
+struct ButtonSM_
+{
+    BSMState state;
+    Button* button;
+    BSMState actualState;
+
+    buttonObserverCBT observerCB;
+    void* observer;
+};
+
+typedef struct ButtonSM_ ButtonSM;
+
+
+void ButtonSM_init(ButtonSM* me, Button* button);
+void ButtonSM_startBehaviour(ButtonSM* me);
+_Bool ButtonSM_processEvent(Event* ev);
+void ButtonSM_setObserver(ButtonSM* me, void* observer, buttonObserverCBT observerCB);
+# 12 "sepos/../factory/factory.h" 2
+
+# 1 "sepos/../factory/../app/blcontrol.h" 1
+
+
+
+
+
+
+
+
+struct BLControl_
+{
+
+};
+
+typedef struct BLControl_ BLControl;
+
+void BLControl_init(BLControl* me);
+void BLControl_onButton(void* me, uint8_t buttonId, _Bool pressed);
+# 13 "sepos/../factory/factory.h" 2
+
+# 1 "sepos/../factory/../driveControl/commControl.h" 1
+# 44 "sepos/../factory/../driveControl/commControl.h"
+    typedef struct CanId_ {
+        unsigned msgNbr : 4;
+        unsigned dest : 3;
+        unsigned space : 1;
+        unsigned src : 3;
+        unsigned unused1 : 5;
+        unsigned unused2 : 8;
+        unsigned unused3 : 8;
+    } CanId;
+
+    typedef union CanIdParser_ {
+        CanId cid;
+        uint32_t raw;
+    } CanIdParser;
+
+
+
+
+    typedef enum CommSMState_ {
+        ST_CSMINIT = 10,
+        ST_CSMSETUP,
+        ST_CSMWAIT,
+        ST_CSMPROCESS,
+        ST_CSMSET,
+        ST_CSMGET,
+        ST_CSMSETCENTER,
+        ST_CSMGETCENTER
+
+    } CommSMState;
+
+
+
+
+    typedef enum AliveSMState_ {
+        ST_ASMINIT = 30,
+        ST_ASMWAIT,
+        ST_ASMALIVE
+
+    } AliveSMState;
+
+
+
+
+    typedef enum CommEvents_ {
+        evCInit = 40,
+        evCTM,
+        evCMsg,
+        evCSetup,
+        evCDefault,
+        evGetSteering,
+        evGetCenter,
+        evAInit,
+        evATM,
+        evADefault
+    } CommEvents;
+
+
+
+
+
+    typedef struct CommControl_ {
+        CommSMState commSM_State;
+        AliveSMState aliveSM_State;
+
+        uCAN_MSG msg;
+
+    } CommControl;
+
+
+    void commControl_init(CommControl* me);
+    void commControl_startBehaviour(CommControl* me);
+    _Bool commControl_processEvent(Event* ev);
+    void getCenterFrame(CommControl* me );
+# 14 "sepos/../factory/factory.h" 2
+
+# 1 "sepos/../factory/../driveControl/store.h" 1
+# 20 "sepos/../factory/../driveControl/store.h"
+typedef enum EEITEMID_ {
+    EE_INIT = 0,
+    EE_ALIVE_TIME,
+    EE_CENTER_LL,
+    EE_CENTER_L,
+    EE_CENTER_H,
+    EE_CENTER_HH
+
+} EEITEMID;
+
+typedef struct Store_ {
+    uint8_t eeValues[5];
+} Store;
+
+
+void store_init(Store* me);
+uint8_t store_read(Store* me, EEITEMID item);
+void store_write(Store* me, EEITEMID item, uint8_t value);
+# 15 "sepos/../factory/factory.h" 2
+
+
+# 1 "sepos/../factory/../driveControl/setupSM.h" 1
+# 22 "sepos/../factory/../driveControl/setupSM.h"
+    typedef enum SetupSMState_ {
+        ST_SSMINIT = 30,
+        ST_SSMWAIT,
+        ST_SSMPROCESS,
+
+        ST_SSMINIT0,
+        ST_SSMICHECK0,
+        ST_SSMINITRS,
+        ST_SSMICHECKRS,
+        ST_SSMINIT6,
+        ST_SSMICHECK6,
+        ST_SSMINIT7,
+        ST_SSMICHECK7,
+        ST_SSMINIT15,
+        ST_SSMICHECK15,
+
+        ST_SSMHOM6,
+        ST_SSMHCHECK6,
+        ST_SSMHOM31,
+        ST_SSMHCHECK31,
+        ST_SSMHOM1000,
+        ST_SSMHCHECK1000,
+        ST_SSMHOM15,
+        ST_SSMHCHECK15,
+        ST_SSMHOM1,
+        ST_SSMHCHECK1,
+
+        ST_SSMCENTER,
+
+        ST_SSMEND
+
+    } SetupSMState;
+
+
+
+
+    typedef enum SetupSMEvents_ {
+        evSInit = 40,
+        evSTM,
+        evSDefault,
+
+        evSInit0,
+        evSICheck0,
+        evSInitRS,
+        evSICheckRS,
+        evSInit6,
+        evSICheck6,
+        evSInit7,
+        evSICheck7,
+        evSInit15,
+        evSICheck15,
+        evSInitEnd,
+
+        evSHom6,
+        evSHCheck6,
+        evSHom31,
+        evSHCheck31,
+        evSHom1000,
+        evSHCheck1000,
+        evSHom15,
+        evSHCheck15,
+        evSHom1,
+        evSHCheck1,
+        evSHomEnd,
+
+        evSCenter
+
+    } SetupSMEvents;
+
+    typedef struct SetupSM_ {
+        SetupSMState setupSM_State;
+
+        uCAN_MSG msg;
+
+    } SetupSM;
+
+
+    void setupSM_init(SetupSM* me);
+    void setupSM_startBehaviour(SetupSM* me);
+    _Bool setupSM_processEvent(Event* ev);
+# 17 "sepos/../factory/factory.h" 2
+
+
+
+
+
+
+
+void bObs(void*, uint8_t,_Bool);
+
+struct Factory_
+{
+    LED l_;
+    Button b_;
+    ButtonSM bsm_;
+    BLControl blc_;
+    CommControl cc_;
+    Store st_;
+    Sepos sepos_;
+    SetupSM setupSM_;
+};
+
+typedef struct Factory_ Factory;
+
+void Factory_init();
+void Factory_build();
+void Factory_start();
+
+
+LED* l();
+Button* b();
+ButtonSM* bsm();
+BLControl* blc();
+CommControl* cc();
+Store* st();
+Sepos* sepos();
+SetupSM* setupSM();
+# 6 "sepos/sepos_RS232.c" 2
+
 
 uint16_t sepos_CalcFieldCRC(Sepos* me, uint16_t* pDataArray, uint16_t ArrayLength);
 
@@ -36800,7 +37228,7 @@ static uint8_t dummy;
 static uint8_t error = 0;
 
 void sepos_init(Sepos* me){
-    for(uint8_t i; i < 50; i++){
+    for(uint8_t i = 0; i < 50; i++){
         me->rxbuf[i] = 0;
         me->txbuf[i] = 0;
         if(i < 25){
@@ -36916,7 +37344,7 @@ void sepos_receive_RS232(Sepos* me) {
     }
 
     UART1_Write(0x4F);
-# 150 "sepos/sepos_RS232.c"
+# 151 "sepos/sepos_RS232.c"
 }
 
 void sepos_send_modOfOpp(Sepos* me, int8_t mode){
@@ -37025,6 +37453,45 @@ uint16_t sepos_receive_statusword(Sepos* me){
 
     if(error != 0){
         return 0xEEEE;
+    }
+    return x.i16;
+}
+uint8_t sepos_receive_modOfOpp(Sepos* me) {
+    me->txbuf[0] = 0x10;
+    me->txbuf[1] = 0x01;
+    me->txbuf[2] = 0x60;
+    me->txbuf[3] = 0x60;
+    me->txbuf[4] = 0x0;
+    me->txbuf[5] = 1;
+
+    sepos_send_RS232(me);
+
+    sepos_receive_RS232(me);
+
+    if(error != 0){
+        return 0x0;
+    }
+    return me->rxbuf[6];
+}
+
+uint16_t sepos_receive_controlword(Sepos* me) {
+    me->txbuf[0] = 0x10;
+    me->txbuf[1] = 0x01;
+    me->txbuf[2] = 0x40;
+    me->txbuf[3] = 0x60;
+    me->txbuf[4] = 0x0;
+    me->txbuf[5] = 1;
+
+    sepos_send_RS232(me);
+
+    sepos_receive_RS232(me);
+
+    b8to16 x;
+    x.b.byte1 = me->rxbuf[6];
+    x.b.byte2 = me->rxbuf[7];
+
+    if(error != 0){
+        return 0xFFFF;
     }
     return x.i16;
 }

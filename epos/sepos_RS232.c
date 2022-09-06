@@ -244,3 +244,43 @@ uint16_t sepos_recive_statusword(){
     
     return rxbuf[6] | rxbuf[7] << 8;                                            //return the data
 }
+
+uint8_t sepos_receive_modOfOpp(Sepos* me) {
+    me->txbuf[0] = READ_CODE;                                                   //Opcode
+    me->txbuf[1] = 0x01;                                                        //Len-1
+    me->txbuf[2] = 0x60;                                                        //LSB of index
+    me->txbuf[3] = 0x60;                                                        //MSB of index
+    me->txbuf[4] = 0x0;                                                         //Subindex
+    me->txbuf[5] = NODE_ID;                                                     //Node ID
+
+    sepos_send_RS232(me);                                                         //send tram
+
+    sepos_receive_RS232(me);                                                    //receive the data
+
+    if(error != 0){
+        return 0x0;                                                            //if timeout error return a default non possible value
+    }
+    return me->rxbuf[6];                                                        //return the data
+}
+
+uint16_t sepos_receive_controlword(Sepos* me) {
+    me->txbuf[0] = READ_CODE;                                                   //Opcode
+    me->txbuf[1] = 0x01;                                                        //Len-1
+    me->txbuf[2] = 0x40;                                                        //LSB of index
+    me->txbuf[3] = 0x60;                                                        //MSB of index
+    me->txbuf[4] = 0x0;                                                         //Subindex
+    me->txbuf[5] = NODE_ID;                                                     //Node ID
+
+    sepos_send_RS232(me);                                                         //send tram
+
+    sepos_receive_RS232(me);                                                    //receive the data
+
+    b8to16 x;
+    x.b.byte1 = me->rxbuf[6];
+    x.b.byte2 = me->rxbuf[7];
+
+    if(error != 0){
+        return 0xFFFF;                                                          //if timeout error return a default non possible value
+    }
+    return x.i16;                                                               //return the data
+}

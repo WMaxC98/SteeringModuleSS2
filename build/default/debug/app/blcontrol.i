@@ -36749,7 +36749,8 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 100 "app/../xf/../mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 17 "app/../xf/xf.h" 2
+# 16 "app/../xf/xf.h" 2
+
 # 1 "app/../xf/event.h" 1
 
 
@@ -36791,7 +36792,8 @@ void Event_setDelay(Event* me, uint16_t delay);
 uint16_t Event_getDelay(Event* me);
 void Event_setData(Event* me, int64_t data);
 int64_t Event_getData(Event* me);
-# 18 "app/../xf/xf.h" 2
+# 17 "app/../xf/xf.h" 2
+
 
 
 
@@ -36940,7 +36942,8 @@ void LED_initHW(LED* me);
 void LED_on(LED* me);
 void LED_off(LED* me);
 void LED_setState(LED* me,uint8_t state);
-# 11 "app/../factory/factory.h" 2
+# 10 "app/../factory/factory.h" 2
+
 
 
 
@@ -37018,7 +37021,9 @@ void LED_setState(LED* me,uint8_t state);
     void commControl_init(CommControl* me);
     void commControl_startBehaviour(CommControl* me);
     _Bool commControl_processEvent(Event* ev);
-# 15 "app/../factory/factory.h" 2
+    void getCenterFrame(CommControl* me );
+# 14 "app/../factory/factory.h" 2
+
 # 1 "app/../factory/../driveControl/store.h" 1
 # 20 "app/../factory/../driveControl/store.h"
 typedef enum EEITEMID_ {
@@ -37039,9 +37044,10 @@ typedef struct Store_ {
 void store_init(Store* me);
 uint8_t store_read(Store* me, EEITEMID item);
 void store_write(Store* me, EEITEMID item, uint8_t value);
-# 16 "app/../factory/factory.h" 2
+# 15 "app/../factory/factory.h" 2
+
 # 1 "app/../factory/../sepos/sepos_RS232.h" 1
-# 22 "app/../factory/../sepos/sepos_RS232.h"
+# 24 "app/../factory/../sepos/sepos_RS232.h"
     typedef struct bits32_ {
         unsigned byte1 : 8;
         unsigned byte2 : 8;
@@ -37079,7 +37085,94 @@ void store_write(Store* me, EEITEMID item, uint8_t value);
     int32_t sepos_receive_positionValue(Sepos* me);
     uint16_t sepos_receive_digitalInput(Sepos* me);
     uint16_t sepos_receive_statusword(Sepos* me);
+    uint8_t sepos_receive_modOfOpp(Sepos* me);
+    uint16_t sepos_receive_controlword(Sepos* me);
+# 16 "app/../factory/factory.h" 2
+
+# 1 "app/../factory/../driveControl/setupSM.h" 1
+# 22 "app/../factory/../driveControl/setupSM.h"
+    typedef enum SetupSMState_ {
+        ST_SSMINIT = 30,
+        ST_SSMWAIT,
+        ST_SSMPROCESS,
+
+        ST_SSMINIT0,
+        ST_SSMICHECK0,
+        ST_SSMINITRS,
+        ST_SSMICHECKRS,
+        ST_SSMINIT6,
+        ST_SSMICHECK6,
+        ST_SSMINIT7,
+        ST_SSMICHECK7,
+        ST_SSMINIT15,
+        ST_SSMICHECK15,
+
+        ST_SSMHOM6,
+        ST_SSMHCHECK6,
+        ST_SSMHOM31,
+        ST_SSMHCHECK31,
+        ST_SSMHOM1000,
+        ST_SSMHCHECK1000,
+        ST_SSMHOM15,
+        ST_SSMHCHECK15,
+        ST_SSMHOM1,
+        ST_SSMHCHECK1,
+
+        ST_SSMCENTER,
+
+        ST_SSMEND
+
+    } SetupSMState;
+
+
+
+
+    typedef enum SetupSMEvents_ {
+        evSInit = 40,
+        evSTM,
+        evSDefault,
+
+        evSInit0,
+        evSICheck0,
+        evSInitRS,
+        evSICheckRS,
+        evSInit6,
+        evSICheck6,
+        evSInit7,
+        evSICheck7,
+        evSInit15,
+        evSICheck15,
+        evSInitEnd,
+
+        evSHom6,
+        evSHCheck6,
+        evSHom31,
+        evSHCheck31,
+        evSHom1000,
+        evSHCheck1000,
+        evSHom15,
+        evSHCheck15,
+        evSHom1,
+        evSHCheck1,
+        evSHomEnd,
+
+        evSCenter
+
+    } SetupSMEvents;
+
+    typedef struct SetupSM_ {
+        SetupSMState setupSM_State;
+
+        uCAN_MSG msg;
+
+    } SetupSM;
+
+
+    void setupSM_init(SetupSM* me);
+    void setupSM_startBehaviour(SetupSM* me);
+    _Bool setupSM_processEvent(Event* ev);
 # 17 "app/../factory/factory.h" 2
+
 
 
 
@@ -37097,6 +37190,7 @@ struct Factory_
     CommControl cc_;
     Store st_;
     Sepos sepos_;
+    SetupSM setupSM_;
 };
 
 typedef struct Factory_ Factory;
@@ -37113,6 +37207,7 @@ BLControl* blc();
 CommControl* cc();
 Store* st();
 Sepos* sepos();
+SetupSM* setupSM();
 # 4 "app/blcontrol.c" 2
 
 

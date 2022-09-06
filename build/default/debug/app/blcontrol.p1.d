@@ -18,4 +18,5 @@ app/../factory/factory.h  \
 app/../factory/../board/led/led.h  \
 app/../factory/../driveControl/commControl.h  \
 app/../factory/../driveControl/store.h  \
-app/../factory/../sepos/sepos_RS232.h 
+app/../factory/../sepos/sepos_RS232.h  \
+app/../factory/../driveControl/setupSM.h 

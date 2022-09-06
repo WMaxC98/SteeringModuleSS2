@@ -36792,7 +36792,8 @@ void Event_setDelay(Event* me, uint16_t delay);
 uint16_t Event_getDelay(Event* me);
 void Event_setData(Event* me, int64_t data);
 int64_t Event_getData(Event* me);
-# 18 "mcc_generated_files/../driveControl/../xf/xf.h" 2
+# 17 "mcc_generated_files/../driveControl/../xf/xf.h" 2
+
 
 
 
@@ -36905,6 +36906,7 @@ void XF_executeOnce();
     void commControl_init(CommControl* me);
     void commControl_startBehaviour(CommControl* me);
     _Bool commControl_processEvent(Event* ev);
+    void getCenterFrame(CommControl* me );
 # 53 "mcc_generated_files/ecan.c" 2
 
 

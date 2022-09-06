@@ -33,6 +33,9 @@ uint16_t sepos_recive_digitalInput();
 
 uint16_t sepos_recive_statusword();
 
+uint8_t sepos_receive_modOfOpp(Sepos* me);
+
+uint16_t sepos_receive_controlword(Sepos* me);
 
 #ifdef	__cplusplus
 }

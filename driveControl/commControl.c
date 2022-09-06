@@ -1,13 +1,11 @@
 #include "commControl.h"
 #include "../factory/factory.h"
-#include "../sepos/sepos_RS232.h"
 
 /*
  * Private Methods
  */
 void readCANFrame(CommControl* me, uCAN_MSG* msg);
 void sendAliveFrame(CommControl* me);
-void getCenterFrame(CommControl* me );
 void steeringSetup(CommControl* me, uCAN_MSG* msg);
 void setPosition(CommControl* me, uCAN_MSG* msg);
 void getPositionFrame(CommControl* me);
@@ -188,8 +186,8 @@ bool commControl_processEvent(Event* ev) {
                     POST(me, &commControl_processEvent, evCDefault, 0, 0);
                     break;
                 case ST_CSMSETUP:
-                    steeringSetup(me, &(me->msg));
-                    POST(me, &commControl_processEvent, evCDefault, 0, 0);
+                    setupSM_init(setupSM());
+                    setupSM_startBehaviour(setupSM());
                     break;
                 case ST_CSMSETCENTER:
                     if(me->msg.frame.rtr == 1){

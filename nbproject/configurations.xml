@@ -16,10 +16,6 @@
           <itemPath>board/led/led.h</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder name="f1" displayName="driveControl" projectFiles="true">
-        <itemPath>driveControl/commControl.h</itemPath>
-        <itemPath>driveControl/store.h</itemPath>
-      </logicalFolder>
       <logicalFolder name="factory" displayName="factory" projectFiles="true">
         <itemPath>factory/factory.h</itemPath>
       </logicalFolder>
@@ -39,6 +35,11 @@
       </logicalFolder>
       <logicalFolder name="f2" displayName="sepos" projectFiles="true">
         <itemPath>sepos/sepos_RS232.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="sterringControl" projectFiles="true">
+        <itemPath>driveControl/commControl.h</itemPath>
+        <itemPath>driveControl/store.h</itemPath>
+        <itemPath>driveControl/setupSM.h</itemPath>
       </logicalFolder>
       <logicalFolder name="xf" displayName="xf" projectFiles="true">
         <itemPath>xf/event.h</itemPath>
@@ -65,10 +66,6 @@
           <itemPath>board/led/led.c</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder name="f1" displayName="driveControl" projectFiles="true">
-        <itemPath>driveControl/commControl.c</itemPath>
-        <itemPath>driveControl/store.c</itemPath>
-      </logicalFolder>
       <logicalFolder name="factory" displayName="factory" projectFiles="true">
         <itemPath>factory/factory.c</itemPath>
       </logicalFolder>
@@ -88,6 +85,11 @@
       </logicalFolder>
       <logicalFolder name="f2" displayName="sepos" projectFiles="true">
         <itemPath>sepos/sepos_RS232.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="steeringControl" projectFiles="true">
+        <itemPath>driveControl/commControl.c</itemPath>
+        <itemPath>driveControl/store.c</itemPath>
+        <itemPath>driveControl/setupSM.c</itemPath>
       </logicalFolder>
       <logicalFolder name="xf" displayName="xf" projectFiles="true">
         <itemPath>xf/event.c</itemPath>

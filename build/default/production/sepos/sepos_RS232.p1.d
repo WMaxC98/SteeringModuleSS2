@@ -8,4 +8,15 @@ sepos/../mcc_generated_files/interrupt_manager.h  \
 sepos/../mcc_generated_files/memory.h  \
 sepos/../mcc_generated_files/tmr0.h  \
 sepos/../mcc_generated_files/uart1.h  \
-sepos/../mcc_generated_files/ecan.h 
+sepos/../mcc_generated_files/ecan.h  \
+sepos/../factory/factory.h  \
+sepos/../factory/../board/led/led.h  \
+sepos/../factory/../board/button/button.h  \
+sepos/../factory/../board/button/buttonsm.h  \
+sepos/../factory/../board/button/../../xf/xf.h  \
+sepos/../factory/../board/button/../../xf/event.h  \
+sepos/../factory/../board/button/../../xf/ireactive.h  \
+sepos/../factory/../app/blcontrol.h  \
+sepos/../factory/../driveControl/commControl.h  \
+sepos/../factory/../driveControl/store.h  \
+sepos/../factory/../driveControl/setupSM.h 

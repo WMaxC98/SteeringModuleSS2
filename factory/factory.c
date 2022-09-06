@@ -33,8 +33,13 @@ CommControl* cc(){
 Store* st(){
     return &theFactory.st_;
 }
+
 Sepos* sepos(){
     return &theFactory.sepos_;
+}
+
+SetupSM* setupSM(){
+    return &theFactory.setupSM_;
 }
 
 
