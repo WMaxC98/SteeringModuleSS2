@@ -66,6 +66,7 @@ bool setupSM_processEvent(Event* ev) {
             break;
         //----------------------------------------------------------
         // INIT / RESET
+        //----------------------------------------------------------
         //set sepos controlworld 0 and check it until turn right    
         case ST_SSMINIT0:
             if(Event_getId(ev) == evSICheck0){
@@ -138,6 +139,7 @@ bool setupSM_processEvent(Event* ev) {
             break;
         //----------------------------------------------------------
         // HOMING
+        //----------------------------------------------------------
         //set sepos modOffOpp 6 and check it until turn right  
         case ST_SSMHOM6:
             if(Event_getId(ev) == evSHCheck6){
@@ -210,6 +212,7 @@ bool setupSM_processEvent(Event* ev) {
             break;  
         //----------------------------------------------------------
         // CENTER
+        //----------------------------------------------------------
         //send CAN message of the center position saved in the EEPROM storage  
         //set the motor position to the said center position
         case ST_SSMCENTER:
@@ -252,6 +255,7 @@ bool setupSM_processEvent(Event* ev) {
                 break;
         //----------------------------------------------------------
         // INIT / RESET
+        //----------------------------------------------------------
             //set sepos controlworld 0 and check it until turn right    
             case ST_SSMINIT0:
                 if(oldSMState == ST_SSMPROCESS){
@@ -330,6 +334,7 @@ bool setupSM_processEvent(Event* ev) {
             break;
         //----------------------------------------------------------
         // HOMING
+        //----------------------------------------------------------
             //set sepos modOffOpp 6 and check it until turn right  
             case ST_SSMHOM6:
                 if(oldSMState == ST_SSMPROCESS){
@@ -427,6 +432,7 @@ bool setupSM_processEvent(Event* ev) {
             break;  
         //----------------------------------------------------------
         // CENTER
+        //----------------------------------------------------------
             //send CAN message of the center position saved in the EEPROM storage  
             //set the motor position to the said center position
             case ST_SSMCENTER:

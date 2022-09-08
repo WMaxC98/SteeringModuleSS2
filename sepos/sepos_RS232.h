@@ -35,12 +35,12 @@ extern "C" {
 
     typedef union b8to32_ {
         bits32 b;
-        int32_t i32;
+        uint32_t i32;
     } b8to32;
 
     typedef union b8to16_ {
         bits16 b;
-        int16_t i16;
+        uint16_t i16;
     } b8to16;
 
     typedef struct Sepos_ {
@@ -54,8 +54,8 @@ extern "C" {
     void sepos_init(Sepos* me);
     void sepos_send_modOfOpp(Sepos* me, int8_t mode);
     void sepos_send_controlword(Sepos* me, uint16_t controlword);
-    void sepos_send_positionValue(Sepos* me, int32_t position);
-    int32_t sepos_receive_positionValue(Sepos* me);
+    void sepos_send_positionValue(Sepos* me, uint32_t position);
+    uint32_t sepos_receive_positionValue(Sepos* me);
     uint16_t sepos_receive_digitalInput(Sepos* me);
     uint16_t sepos_receive_statusword(Sepos* me);
     uint8_t sepos_receive_modOfOpp(Sepos* me);

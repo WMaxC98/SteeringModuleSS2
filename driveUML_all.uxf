@@ -1,0 +1,1748 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>942</x>
+      <y>204</y>
+      <w>156</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>XF
+-
++init()
++ POST(...) : TimerID
++ unscheduleTimer(...) : void
++ decrementAndQueueTimers() : void
++ executeOnce() : void
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>204</y>
+      <w>60</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>Event
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1092</x>
+      <y>198</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+eventQueue
+m2=50
+group=1</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>102</y>
+      <w>78</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Time
+TimerID
+MAXTIMER
+MAXEVENT
+NULLTIMER
+NULLEVENT	
+TICKINTERVAL
+halign=left
+
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1038</x>
+      <y>144</y>
+      <w>144</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt; define &gt;&gt;
+group=1</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0;220.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>234</y>
+      <w>60</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>Timer
+-
+tm : Time
+ev : Event
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1092</x>
+      <y>228</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+eventQueue
+m2=50
+group=1</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>240</y>
+      <w>102</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>pin_manager &lt;&lt;driver&gt;&gt;
+group=9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>930</x>
+      <y>78</y>
+      <w>330</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>xf
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>198</x>
+      <y>72</y>
+      <w>132</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>mcc_generated_files
+group=9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>198</x>
+      <y>282</y>
+      <w>150</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>factory</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>408</x>
+      <y>618</y>
+      <w>456</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>depos_rs232</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>96</y>
+      <w>102</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>tmr0 &lt;&lt;driver&gt;&gt;
+group=9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>306</x>
+      <y>96</y>
+      <w>720</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt; uses &gt;&gt;</panel_attributes>
+    <additional_attributes>1130.0;180.0;1130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>408</x>
+      <y>126</y>
+      <w>456</w>
+      <h>414</h>
+    </coordinates>
+    <panel_attributes>DriveControl</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>204</x>
+      <y>306</y>
+      <w>120</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>Factory
+-
++ init() : void
++ start() : void
++ led() : LED*
++ cc() : CommControl*
++ st() : Store*
++ depos() : Depos*
++ blinker() : Blinker*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>282</x>
+      <y>402</y>
+      <w>666</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>1090.0;50.0;1020.0;290.0;10.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>132</y>
+      <w>102</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>Ecan &lt;&lt;driver&gt;&gt;
+
+group=9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>168</y>
+      <w>102</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>Uart1 &lt;&lt;driver&gt;&gt;
+
+group=9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>204</y>
+      <w>102</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>Memory &lt;&lt;driver&gt;&gt;
+
+group=9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>384</y>
+      <w>648</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=blinker_</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;290.0;960.0;290.0;960.0;10.0;1060.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>1134</y>
+      <w>90</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_theFactory:Factory_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>1134</y>
+      <w>60</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_main_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1146</y>
+      <w>18</w>
+      <h>534</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;870.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>1314</y>
+      <w>180</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Factory_init</panel_attributes>
+    <additional_attributes>280.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>1440</y>
+      <w>180</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Factory_start</panel_attributes>
+    <additional_attributes>280.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>1134</y>
+      <w>48</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_theXF:XF_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>1296</y>
+      <w>102</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+XF_init</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>954</x>
+      <y>1134</y>
+      <w>102</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_mcc_generated_files_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>1272</y>
+      <w>690</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+SYSTEM_Initalize()</panel_attributes>
+    <additional_attributes>1130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>1500</y>
+      <w>690</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+TMR0_SetInteruptHandler(XF_decrementAndQueueTimers)</panel_attributes>
+    <additional_attributes>1130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>318</x>
+      <y>1560</y>
+      <w>690</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>for ever</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>1578</y>
+      <w>102</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+XF_executeOnce</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>672</x>
+      <y>1188</y>
+      <w>96</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_cc_ : CommControl_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>714</x>
+      <y>1200</y>
+      <w>18</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;780.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1332</y>
+      <w>90</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+LED_init()</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>1146</y>
+      <w>18</w>
+      <h>534</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;870.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>414</x>
+      <y>642</y>
+      <w>408</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>Depos_RS232
+--
++ txbuf[ARRAY_50]: uint8_t 
++ txdata[ARRAY_25] : uint16_t 
++ rxbuf[ARRAY_50] : uint8_t 
++ rxdata[ARRAY_25] : uint16_t 
+--
++ depos_init(me : Depos*) : void 
++ depos_send_modOfOpp(me : Depos*, mode : int8_t) : void 
++ depos_send_controlword(me : Depos*, controlword : uint16_t) : void 
++ depos_send_torque(me : Depos*, torque : int16_t) : void 
++ depos_receive_velocity(me : Depos*) : int32_t 
++ depos_receive_statusword(me : Depos*) : uint16_t 
++ depos_receive_actualTorque(me : Depos*) : int16_t 
+- depos_CalcFieldCRC(me : Depos*, pDataArray : uint16_t*, ArrayLength : uint16_t) : uint16_t 
+- depos_send_RS232(me : Depos*) : void 
+- depos_receive_RS232(me : Depos*) : void 
+- MyRead(me : Depos*, error : uint8_t*) : uint8_t 
+group=13</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>246</x>
+      <y>402</y>
+      <w>702</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=l_</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0;1150.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>318</x>
+      <y>282</y>
+      <w>108</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=cc_</panel_attributes>
+    <additional_attributes>10.0;100.0;80.0;10.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>852</x>
+      <y>1224</y>
+      <w>90</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_depos_:DriveEPOS_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1176</y>
+      <w>90</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1194</y>
+      <w>156</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1212</y>
+      <w>246</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes>
+    <additional_attributes>390.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>1146</y>
+      <w>18</w>
+      <h>534</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;870.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>996</x>
+      <y>1146</y>
+      <w>18</w>
+      <h>534</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;870.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1386</y>
+      <w>246</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+commControl_init()</panel_attributes>
+    <additional_attributes>390.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1404</y>
+      <w>336</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+store_init()</panel_attributes>
+    <additional_attributes>540.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1962</x>
+      <y>90</y>
+      <w>162</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>ST_CSMWAIT
+-
+/entry: 
+start poll timeout
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1974</x>
+      <y>228</y>
+      <w>138</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>ST_CSMPROCESS
+--
+/entry:
+receives the CAN frames and POST the corresponding events
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2040</x>
+      <y>42</y>
+      <w>42</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evCInit</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2076</x>
+      <y>138</y>
+      <w>90</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evCTM(POLLCTM)</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>2232</x>
+      <y>228</y>
+      <w>150</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>ST_CSMBRAKE
+-
+/entry:
+disables the DRIVE MOTOR
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1698</x>
+      <y>228</y>
+      <w>150</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>ST_CSMPOWER
+-
+/entry:
+sends motor power to DRIVE MOTOR:
+1) reads incomming CAN frame
+2) sends corresponding EPOS frame to motor respecting the acceleration ramp
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1842</x>
+      <y>252</y>
+      <w>144</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evCMsg[DRIVE_POWER]</panel_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2106</x>
+      <y>246</y>
+      <w>138</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evCMsg[DRIVE-BRAKE]</panel_attributes>
+    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1770</x>
+      <y>114</y>
+      <w>204</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evCDefault</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2118</x>
+      <y>114</y>
+      <w>246</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evCDefault</panel_attributes>
+    <additional_attributes>320.0;190.0;320.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>2496</x>
+      <y>204</y>
+      <w>156</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>ST_SSMSPEED
+-
+/entry:
+sends speed to CONTROL MODULE:
+1) reads EPOS velocity
+2) sends CAN frame containing the speed
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2568</x>
+      <y>150</y>
+      <w>156</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evSTM(EE_SPEED * TIMEFACTOR)</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>114</y>
+      <w>348</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; uses &gt;&gt;</panel_attributes>
+    <additional_attributes>560.0;150.0;430.0;20.0;10.0;20.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>318</x>
+      <y>390</y>
+      <w>108</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=st_</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;120.0;160.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1422</y>
+      <w>426</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+depos_init()</panel_attributes>
+    <additional_attributes>690.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>414</x>
+      <y>864</y>
+      <w>90</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>EposFrame &lt;&lt;struct&gt;&gt;
+-
+opcode : uint8_t
+len : uint8_t
+index : uint8_t
+nodeId : uint8_t
+subindex : uint8_t
+crc : uint16_t
+group=13</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>810</y>
+      <w>54</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=13</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1974</x>
+      <y>384</y>
+      <w>138</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>ST_CSMSETUP
+-
+/entry:
+1) disables the DRIVE MOTOR
+2) sends the activation sequence
+3) sends the mode of opperation
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2034</x>
+      <y>300</y>
+      <w>108</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evCMsg[DRIVE_SETUP]</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>2532</x>
+      <y>102</y>
+      <w>90</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>ST_SSMWAIT
+-
+/entry: 
+start poll timeout
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2568</x>
+      <y>48</y>
+      <w>42</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evSInit</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>2568</x>
+      <y>42</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>type=initial</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2454</x>
+      <y>120</y>
+      <w>90</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evSDefault</panel_attributes>
+    <additional_attributes>70.0;200.0;10.0;200.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2562</x>
+      <y>426</y>
+      <w>150</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evATM(EE_ALIVE * TIMEFACTOR)</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>2526</x>
+      <y>378</y>
+      <w>90</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>ST_ASMWAIT
+-
+/entry: 
+start poll timeout
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2568</x>
+      <y>324</y>
+      <w>42</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evAInit</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>2568</x>
+      <y>318</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>type=initial</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2448</x>
+      <y>396</y>
+      <w>90</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evADefault</panel_attributes>
+    <additional_attributes>70.0;200.0;10.0;200.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>2490</x>
+      <y>480</y>
+      <w>162</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>ST_ASMALIVE
+-
+/entry:
+sends still alive to  CONTROL MODULE:
+1) reads EPOS statusword
+2) sends CAN frame containing the statusword
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>2040</x>
+      <y>42</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>type=initial</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>414</x>
+      <y>144</y>
+      <w>252</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>DriveControl
+--
++ commSM_States : CommSMStates
++ speedSM_States : SpeedSMStates
++ alive_SMStates : AliveSMStates
++ msg : uCAN_MSG
+--
++ commControl_init(me : CommControl*) : void
++ commControl_startBehaviour(me : CommControl*) : void
++ commControl_processEvent(ev : Event*) : bool
++ disableDriver(me : CommControl*) : void
+- readCANFrame(me : CommControl*, uCAN_MSG*) : void
+- sendCANFrame(me : CommControl*, uCAN_MSG*) : void 
+- sendAliveFrame(me : CommControl*) : void 
+- storeSetup(me : CommControl*, msg : uCAN_MSG*) : void 
+- sendSpeedFrame(me : CommControl*) : void 
+- setPower(me : CommControl*) : void 
+- setBrake(me : CommControl*) : void 
+- setupDriveMotor(me : CommControl*) : void 
+
+
+group=15</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>654</x>
+      <y>360</y>
+      <w>96</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>SpeedSMState &lt;&lt;enum&gt;&gt;
+-
+ST_SSMINIT 
+ST_SSMWAIT 
+ST_SSMSPEED
+group=15</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>732</x>
+      <y>264</y>
+      <w>114</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>SpeedSMEvents &lt;&lt;enum&gt;&gt;
+-
+evSInit
+evSTM
+evSDefault
+group=15</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>318</y>
+      <w>66</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=15</panel_attributes>
+    <additional_attributes>90.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>270</y>
+      <w>84</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=15</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>318</y>
+      <w>54</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=15</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>318</y>
+      <w>54</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=15</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>360</y>
+      <w>96</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>CommSMState &lt;&lt;enum&gt;&gt;
+-
+ST_CSMINIT 
+ST_CSMSETUP
+ST_CSMWAIT 
+ST_CSMPROCESS
+ST_CSMPOWER
+ST_CSMBRAKE
+group=15</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>528</x>
+      <y>360</y>
+      <w>114</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>CommSMEvents &lt;&lt;enum&gt;&gt;
+-
+evCInit
+evCTM
+evCMsg[nbr]
+evCSetup
+evCDefault
+group=15</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>414</x>
+      <y>450</y>
+      <w>246</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>Store
+--
++ eeValues[MAXVALUE] : uint8_t
+--
++ store_init(me : Store*) : void
++ store_read(me : Store*, item : uint8_t) : unit8_t
++ store_write(me : Store*, item : uint8_t, value : uint8_t) : void
+
+group=14</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>450</y>
+      <w>90</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>EEItemId &lt;&lt;enum&gt;&gt;
+-
+EE_INIT
+EE_MODE
+EE_ALIVE
+EE_SPEED
+EE_STOP
+group=14</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>654</x>
+      <y>462</y>
+      <w>78</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=14</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1626</x>
+      <y>96</y>
+      <w>360</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evCDefault</panel_attributes>
+    <additional_attributes>580.0;540.0;10.0;540.0;10.0;10.0;560.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>216</y>
+      <w>126</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>190.0;20.0;100.0;20.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>894</x>
+      <y>1236</y>
+      <w>18</w>
+      <h>444</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;720.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1230</y>
+      <w>336</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes>
+    <additional_attributes>540.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1248</y>
+      <w>426</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;create&gt;&gt;</panel_attributes>
+    <additional_attributes>690.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>768</x>
+      <y>1206</y>
+      <w>84</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_store_ : Store_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>804</x>
+      <y>1218</y>
+      <w>18</w>
+      <h>462</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;750.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1350</y>
+      <w>90</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+LED_initHW()</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1368</y>
+      <w>156</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Blinker_init()</panel_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1458</y>
+      <w>156</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+Blinker_startBehaviour()</panel_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>1476</y>
+      <w>246</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+commControl_startBehaviour()</panel_attributes>
+    <additional_attributes>390.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2004</x>
+      <y>138</y>
+      <w>60</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+evCDefault</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>732</x>
+      <y>210</y>
+      <w>96</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>AliveSMState &lt;&lt;enum&gt;&gt;
+-
+ST_ASMINIT 
+ST_ASMWAIT 
+ST_ASMALIVE
+group=15</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>732</x>
+      <y>150</y>
+      <w>114</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>AliveSMEvents &lt;&lt;enum&gt;&gt;
+-
+evAInit
+evATM
+evADefault
+group=15</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>228</y>
+      <w>84</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=15</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>168</y>
+      <w>84</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=15</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>936</x>
+      <y>378</y>
+      <w>192</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Blinker
+--
++ state : LedSMStates
+--
++ Blinker_init(me : Blinker*) : void 
++ Blinker_startBehaviour(me : Blinker*) : void 
++ Blinker_processEvent(ev : Event*) : bool 
+style=wordwrap
+
+group=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>936</x>
+      <y>570</y>
+      <w>174</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>LED
+--
++ id : uint8_t
+--
++ LED_init(me : LED*, id : uint8_t) : void 
++ LED_initHW(me : LED*) : void 
++ LED_on(me : LED*) : void 
++ LED_off(me : LED*) : void </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1050</x>
+      <y>498</y>
+      <w>108</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>LedSMEvents &lt;&lt; enum &gt;&gt;
+--
+evLSMInit
+evLSMTM
+
+group=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>936</x>
+      <y>498</y>
+      <w>108</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>LedSMStates &lt;&lt; enum &gt;&gt;
+--
+ST_LSMINIT
+ST_LSMOFF
+ST_LSMON
+group=16</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>444</y>
+      <w>54</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=16</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1092</x>
+      <y>444</y>
+      <w>54</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt; define &gt;&gt;
+group=16</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>930</x>
+      <y>360</y>
+      <w>282</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>board</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>402</y>
+      <w>210</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=depos_</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;470.0;330.0;470.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1050</x>
+      <y>264</y>
+      <w>48</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt; uses &gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>1152</y>
+      <w>54</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_l_ : LED_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>594</x>
+      <y>1170</y>
+      <w>78</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_blinker_ : Blinker_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>1182</y>
+      <w>18</w>
+      <h>498</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;810.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>558</x>
+      <y>1164</y>
+      <w>18</w>
+      <h>516</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;840.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>1518</y>
+      <w>690</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+WWDT_SoftEnable()</panel_attributes>
+    <additional_attributes>1130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>1596</y>
+      <w>690</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+CLRWDT()</panel_attributes>
+    <additional_attributes>1130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1266</x>
+      <y>1134</y>
+      <w>60</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_main_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1290</x>
+      <y>1146</y>
+      <w>18</w>
+      <h>534</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;870.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>198</x>
+      <y>36</y>
+      <w>108</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>*Package diagramm*
+fontsize=18
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1992</x>
+      <y>0</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>*Communication SM*
+fontsize=18
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2538</x>
+      <y>6</y>
+      <w>66</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>*Speed SM*
+fontsize=18
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2544</x>
+      <y>288</y>
+      <w>66</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>*Alive SM*
+fontsize=18
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>300</x>
+      <y>1086</y>
+      <w>132</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>*Initialization sequence*
+fontsize=18
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1434</x>
+      <y>1134</y>
+      <w>90</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_depos_:DriveEPOS_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1476</x>
+      <y>1146</y>
+      <w>18</w>
+      <h>444</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;720.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1332</x>
+      <y>1134</y>
+      <w>96</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>_cc_ : CommControl_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1374</x>
+      <y>1146</y>
+      <w>18</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>lt=x.</panel_attributes>
+    <additional_attributes>10.0;780.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

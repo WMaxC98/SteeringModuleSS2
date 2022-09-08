@@ -56,7 +56,7 @@ void sepos_send_RS232(Sepos* me) {
     dummy = U1RXB;
     dummy = U1RXB;
     
-    uint8_t length = me->txbuf[1] + 2;                                          //len-1 + 1 byte len and 1 byte opcode + compensate for len - 1 
+    uint16_t length = me->txbuf[1] + 2;                                          //len-1 + 1 byte len and 1 byte opcode + compensate for len - 1 
 
     me->txdata[0] = (uint16_t) (me->txbuf[0] << (8)) | me->txbuf[1];
     for (uint8_t i = 1; i < length; i++) {                                      //put the data in a table 16bit little endian
@@ -66,8 +66,8 @@ void sepos_send_RS232(Sepos* me) {
     me->txdata[length] = 0;
     me->txdata[length] = sepos_CalcFieldCRC(me, me->txdata, length + 1);        //create and add the CRC
 
-    me->txbuf[0 + 2 * length] = me->txdata[length];                             //put the CRC in the table 8 bits
-    me->txbuf[1 + 2 * length] = me->txdata[length] >> (8);
+    me->txbuf[0 + 2 * length] = (uint8_t) (me->txdata[length]);                             //put the CRC in the table 8 bits
+    me->txbuf[1 + 2 * length] = (uint8_t) (me->txdata[length] >> (8));
 
     UART1_Write(me->txbuf[0]);                                                  //send Opcode
 
@@ -157,7 +157,7 @@ void sepos_send_modOfOpp(Sepos* me, int8_t mode){
     me->txbuf[3] = 0x60;                                                            //MSB of index
     me->txbuf[4] = 0x0;                                                             //Subindex
     me->txbuf[5] = NODE_ID;                                                         //Node ID
-    me->txbuf[6] = mode;                                                            //mode of operation
+    me->txbuf[6] = (uint8_t) mode;                                                            //mode of operation
     me->txbuf[7] = 0;
 
     sepos_send_RS232(me);
@@ -171,30 +171,30 @@ void sepos_send_controlword(Sepos* me, uint16_t controlword){
     me->txbuf[3] = 0x60;                                                            //MSB of index
     me->txbuf[4] = 0x0;                                                             //Subindex
     me->txbuf[5] = NODE_ID;                                                         //Node ID
-    me->txbuf[6] = controlword;                                                     //LSB controlword
-    me->txbuf[7] = controlword >> 8;                                                //MSB controlword
+    me->txbuf[6] = (uint8_t) controlword;                                                     //LSB controlword
+    me->txbuf[7] = (uint8_t) (controlword >> 8);                                                //MSB controlword
     
     sepos_send_RS232(me);
 
 }
 
-void sepos_send_positionValue(Sepos* me, int32_t position){
+void sepos_send_positionValue(Sepos* me, uint32_t position){
     me->txbuf[0] = WRITE_CODE;                                                      //Opcode
     me->txbuf[1] = 0x03;                                                            //Len-1
     me->txbuf[2] = 0x62;                                                            //LSB of index
     me->txbuf[3] = 0x20;                                                            //MSB of index
     me->txbuf[4] = 0x0;                                                             //Subindex
     me->txbuf[5] = NODE_ID;                                                         //Node ID
-    me->txbuf[6] = position;                                                        //LSB position
-    me->txbuf[7] = position >> 8;                                                   //byte 1 position
-    me->txbuf[8] = position >> 16;                                                  //byte 2 position
-    me->txbuf[9] = position >> 24;                                                  //MSB position
+    me->txbuf[6] = (uint8_t) position;                                                        //LSB position
+    me->txbuf[7] = (uint8_t) (position >> 8);                                                   //byte 1 position
+    me->txbuf[8] = (uint8_t) (position >> 16);                                                  //byte 2 position
+    me->txbuf[9] = (uint8_t) (position >> 24);                                                  //MSB position
     
    sepos_send_RS232(me);
 
 }
 
-int32_t sepos_receive_positionValue(Sepos* me){
+uint32_t sepos_receive_positionValue(Sepos* me){
     me->txbuf[0] = READ_CODE;                                                       //Opcode
     me->txbuf[1] = 0x01;                                                            //Len-1
     me->txbuf[2] = 0x64;                                                            //LSB of index

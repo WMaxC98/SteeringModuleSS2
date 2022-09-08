@@ -66,15 +66,15 @@ void Factory_build()
 /**
  * this method is for debuging purpose to test if the PIC is working
  */
-void factory_toggleLed(){
+bool factory_toggleLed(Event* ev){
     IO_RB0_Toggle();
-    POST(&theFactory, &factory_toggleLed, 11, 1000, 0);
-    
+    POST(&theFactory, factory_toggleLed, 11, 1000, 0);
+    return false;
 }
 //start all state machines
 void Factory_start()
 {
     ButtonSM_startBehaviour(bsm());
     commControl_startBehaviour(cc());
-    POST(&theFactory, &factory_toggleLed, 11, 1000, 0);
+    POST(&theFactory, factory_toggleLed, 11, 1000, 0);
 }

@@ -15,7 +15,7 @@ extern "C" {
 #include <stdint.h>
 #include "../mcc_generated_files/memory.h"
     
-#define MAXEEVALUE 5
+#define MAXEEVALUE 6
 
 typedef enum EEITEMID_ {
     EE_INIT = 0,

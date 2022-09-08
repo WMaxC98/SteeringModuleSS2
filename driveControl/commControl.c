@@ -242,101 +242,103 @@ void readCANFrame(CommControl* me, uCAN_MSG* msg) {
 /**
  * Setup the EPOS2 driver, do the homing sequence and set the motor in center position 
  * 
+ * !!!! OLD UGLY WAY TO DO IT , REPLACE BY A STATE MACHINE !!!!
+ * 
  * @param me
  * @param msg
  */
 
-void steeringSetup(CommControl* me, uCAN_MSG* msg) {
-    uCAN_MSG msgs;
-    msgs.frame.idType = dSTANDARD_CAN_MSG_ID_2_0B;
-    msgs.frame.id = STEERING_STATUS_MSG;
-    msgs.frame.dlc = 2;
-    msgs.frame.data0 = 99;
-    msgs.frame.data1 = 99;
-    msgs.frame.rtr = 0;
+// void steeringSetup(CommControl* me, uCAN_MSG* msg) {
+//     uCAN_MSG msgs;
+//     msgs.frame.idType = dSTANDARD_CAN_MSG_ID_2_0B;
+//     msgs.frame.id = STEERING_STATUS_MSG;
+//     msgs.frame.dlc = 2;
+//     msgs.frame.data0 = 99;
+//     msgs.frame.data1 = 99;
+//     msgs.frame.rtr = 0;
    
-    // If reset/init byte is not 0 we need to stop the motor and begin the initializing sequence 
-    if(msg->frame.data0 != 0){
-        // Massive delays are needed to let the time to the EPOS2 driver to change is working modes
-        // Each delay as been empirically tested individually  
-        // Stop the driver
-        sepos_send_controlword(sepos(), 0); 
-        __delay_ms(200);
-         sepos_send_controlword(sepos(), 0b10000000); 
-        __delay_ms(200);
-        // Start the driver sequence
-        sepos_send_controlword(sepos(), 6);
-        __delay_ms(200);
-        sepos_send_controlword(sepos(), 7);
-        __delay_ms(1000);
-        sepos_send_controlword(sepos(), 15);       
-        // Then the driver is ready
-        __delay_ms(800);
-    }
+//     // If reset/init byte is not 0 we need to stop the motor and begin the initializing sequence 
+//     if(msg->frame.data0 != 0){
+//         // Massive delays are needed to let the time to the EPOS2 driver to change is working modes
+//         // Each delay as been empirically tested individually  
+//         // Stop the driver
+//         sepos_send_controlword(sepos(), 0); 
+//         __delay_ms(200);
+//          sepos_send_controlword(sepos(), 0b10000000); 
+//         __delay_ms(200);
+//         // Start the driver sequence
+//         sepos_send_controlword(sepos(), 6);
+//         __delay_ms(200);
+//         sepos_send_controlword(sepos(), 7);
+//         __delay_ms(1000);
+//         sepos_send_controlword(sepos(), 15);       
+//         // Then the driver is ready
+//         __delay_ms(800);
+//     }
     
-    //If homing bit is not 0 we need to initialize the homing sequence
-    //We also need to communicate the homing sequence status with the control throughout the process
-    if(msg->frame.data1 != 0){
-        // TODO : homing sequence
-        sepos_send_modOfOpp(sepos(), 6);
-        __delay_ms(600);
-//        msgs.frame.data0 = 1;                         -Optional message not needed by the control
-//        msgs.frame.data1 = 1;
-//        CAN_transmit(&msgs);
-        sepos_send_controlword(sepos(), 31);
-        __delay_ms(600);
-        while((sepos_receive_statusword(sepos())&0b1000000000000) != 0b1000000000000 ){
-            __delay_ms(40);
-        }   
+//     //If homing bit is not 0 we need to initialize the homing sequence
+//     //We also need to communicate the homing sequence status with the control throughout the process
+//     if(msg->frame.data1 != 0){
+//         // TODO : homing sequence
+//         sepos_send_modOfOpp(sepos(), 6);
+//         __delay_ms(600);
+// //        msgs.frame.data0 = 1;                         -Optional message not needed by the control
+// //        msgs.frame.data1 = 1;
+// //        CAN_transmit(&msgs);
+//         sepos_send_controlword(sepos(), 31);
+//         __delay_ms(600);
+//         while((sepos_receive_statusword(sepos())&0b1000000000000) != 0b1000000000000 ){
+//             __delay_ms(40);
+//         }   
            
-        sepos_send_controlword(sepos(), 15);
-        __delay_ms(600);
-        sepos_send_modOfOpp(sepos(), -1);
-        __delay_ms(200);
+//         sepos_send_controlword(sepos(), 15);
+//         __delay_ms(600);
+//         sepos_send_modOfOpp(sepos(), -1);
+//         __delay_ms(200);
      
-        msgs.frame.data0 = 2;
-        msgs.frame.data1 = 0;
+//         msgs.frame.data0 = 2;
+//         msgs.frame.data1 = 0;
 
-        CAN_transmit(&msgs);
-    }else{
-        //IF the homing bit is 0 we need to tell to the control that we need to have a homing sequence
-        msgs.frame.data0 = 0;
-        msgs.frame.data1 = 2;
+//         CAN_transmit(&msgs);
+//     }else{
+//         //IF the homing bit is 0 we need to tell to the control that we need to have a homing sequence
+//         msgs.frame.data0 = 0;
+//         msgs.frame.data1 = 2;
 
-        CAN_transmit(&msgs);
-    }
+//         CAN_transmit(&msgs);
+//     }
     
-    //If setCenter bit is not 0 we need to place the motor in the center position 
-    if(msg->frame.data2 != 0){
-       //__delay_ms(100);  
-       // Send the center position to the control        
-       getCenterFrame(me);        
-       //__delay_ms(200); 
+//     //If setCenter bit is not 0 we need to place the motor in the center position 
+//     if(msg->frame.data2 != 0){
+//        //__delay_ms(100);  
+//        // Send the center position to the control        
+//        getCenterFrame(me);        
+//        //__delay_ms(200); 
 
-       uint32_t position; 
-       position = (((uint32_t)store_read(st(), EE_CENTER_HH))<<24) + (((uint32_t)store_read(st(), EE_CENTER_H))<<16) 
-               + ((uint32_t)store_read(st(), EE_CENTER_L)<<8) + (uint32_t)store_read(st(), EE_CENTER_LL);
+//        uint32_t position; 
+//        position = (((uint32_t)store_read(st(), EE_CENTER_HH))<<24) + (((uint32_t)store_read(st(), EE_CENTER_H))<<16) 
+//                + ((uint32_t)store_read(st(), EE_CENTER_L)<<8) + (uint32_t)store_read(st(), EE_CENTER_LL);
        
-       sepos_send_positionValue(sepos(), position);
-       __delay_ms(500); 
-//       
-//       uint16_t timout = 20;
-//       while(timout != 0){
-//           uint16_t gogole = sepos_receive_statusword(sepos());          
-//           
-//           if(gogole == 0x0400){ 
-//               toto++;
-//               break;
-//           }  
-//           timout--;
-//       }
-//       toto++;     
+//        sepos_send_positionValue(sepos(), position);
+//        __delay_ms(500); 
+// //       
+// //       uint16_t timout = 20;
+// //       while(timout != 0){
+// //           uint16_t gogole = sepos_receive_statusword(sepos());          
+// //           
+// //           if(gogole == 0x0400){ 
+// //               toto++;
+// //               break;
+// //           }  
+// //           timout--;
+// //       }
+// //       toto++;     
     
-    }
-    // Store aliveTime in EEPROM    
-    store_write(st(), EE_ALIVE_TIME, msg->frame.data3);
+//     }
+//     // Store aliveTime in EEPROM    
+//     store_write(st(), EE_ALIVE_TIME, msg->frame.data3);
     
-}
+// }
 
 /**
  *  Send alive CAN message each x miliseconds 
@@ -346,18 +348,18 @@ void steeringSetup(CommControl* me, uCAN_MSG* msg) {
 void sendAliveFrame(CommControl* me) {
     //IO_RB1_Toggle();  // debug purposes 
     
-    //uint16_t statusWord = sepos_receive_statusword(sepos());
-    //uint8_t statusWordL = (uint8_t) statusWord;
-   // uint8_t statusWordH = (uint8_t) (statusWord >> 8);
+    uint16_t statusWord = sepos_receive_statusword(sepos());
+    uint8_t statusWordL = (uint8_t) statusWord;
+    uint8_t statusWordH = (uint8_t) (statusWord >> 8);
        
     if(store_read(st(), EE_ALIVE_TIME) > 0){
         me->msg.frame.id = STEERING_ALIVE;
         me->msg.frame.dlc = 2;
-        //me->msg.frame.data0 = statusWordH;
-        //me->msg.frame.data1 = statusWordL;
+        me->msg.frame.data0 = statusWordH;
+        me->msg.frame.data1 = statusWordL;
         // the lines that follow are just for debugging purposes
-        me->msg.frame.data0 = 0xaa;
-        me->msg.frame.data1 = 0xbb; 
+        //me->msg.frame.data0 = 0xaa;
+        //me->msg.frame.data1 = 0xbb; 
         me->msg.frame.rtr = 0;
         CAN_transmit(&(me->msg));
     }

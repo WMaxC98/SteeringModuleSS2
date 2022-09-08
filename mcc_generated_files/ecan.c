@@ -145,7 +145,7 @@ uint8_t CAN_transmit(uCAN_MSG *tempCanMsg) {
         TXB0EIDL = tempEIDL;
         TXB0SIDH = tempSIDH;
         TXB0SIDL = tempSIDL;
-        TXB0DLC  = tempCanMsg->frame.dlc | ((tempCanMsg->frame.rtr)<<6);
+        TXB0DLC  = (unsigned char) (tempCanMsg->frame.dlc | ((tempCanMsg->frame.rtr)<<6));
         TXB0D0   = tempCanMsg->frame.data0;
         TXB0D1   = tempCanMsg->frame.data1;
         TXB0D2   = tempCanMsg->frame.data2;
@@ -168,7 +168,7 @@ uint8_t CAN_transmit(uCAN_MSG *tempCanMsg) {
         TXB1EIDL = tempEIDL;
         TXB1SIDH = tempSIDH;
         TXB1SIDL = tempSIDL;
-        TXB1DLC  = tempCanMsg->frame.dlc | ((tempCanMsg->frame.rtr)<<6);
+        TXB1DLC  = (unsigned char) (tempCanMsg->frame.dlc | ((tempCanMsg->frame.rtr)<<6));
         TXB1D0   = tempCanMsg->frame.data0;
         TXB1D1   = tempCanMsg->frame.data1;
         TXB1D2   = tempCanMsg->frame.data2;
@@ -190,7 +190,7 @@ uint8_t CAN_transmit(uCAN_MSG *tempCanMsg) {
         TXB2EIDL = tempEIDL;
         TXB2SIDH = tempSIDH;
         TXB2SIDL = tempSIDL;
-        TXB2DLC  = tempCanMsg->frame.dlc | ((tempCanMsg->frame.rtr)<<6);
+        TXB2DLC  = (unsigned char) (tempCanMsg->frame.dlc | ((tempCanMsg->frame.rtr)<<6));
         TXB2D0   = tempCanMsg->frame.data0;
         TXB2D1   = tempCanMsg->frame.data1;
         TXB2D2   = tempCanMsg->frame.data2;
